@@ -88,10 +88,12 @@ namespace WorldObjectDataResource
 
             #region Constructors
             public Obj(int apiVersion, EventHandler handler) : this(apiVersion, handler,
-                new Locator(apiVersion, handler), 0, 0, 0, 0) { }
+                new Locator(apiVersion, handler), 0, 0, 0, 0)
+            { }
             public Obj(int apiVersion, EventHandler handler, Obj basis)
                 : this(apiVersion, handler,
-                basis.locator, basis.objectId, basis.minSpecLOD, basis.parentId, basis.slotHash) { }
+                basis.locator, basis.objectId, basis.minSpecLOD, basis.parentId, basis.slotHash)
+            { }
             public Obj(int apiVersion, EventHandler handler,
                 Locator locator, UInt64 objectId, SByte minSpecLOD, UInt64 parentId, UInt32 slotHash)
                 : base(apiVersion, handler)
@@ -206,10 +208,12 @@ namespace WorldObjectDataResource
 
             #region Constructors
             public Locator(int apiVersion, EventHandler handler) : this(apiVersion, handler,
-                new TGIBlock(apiVersion, handler), new Vertex(apiVersion, handler), new Quaternion(apiVersion, handler), 0f, 0) { }
+                new TGIBlock(apiVersion, handler), new Vertex(apiVersion, handler), new Quaternion(apiVersion, handler), 0f, 0)
+            { }
             public Locator(int apiVersion, EventHandler handler, Locator basis)
                 : this(apiVersion, handler,
-                basis.footprintKey, basis.position, basis.rotation, basis.scale, basis.objDefGuid) { }
+                basis.footprintKey, basis.position, basis.rotation, basis.scale, basis.objDefGuid)
+            { }
             public Locator(int apiVersion, EventHandler handler,
                 TGIBlock footprintKey, Vertex position, Quaternion rotation, Single scale, UInt64 objDefGuid)
                 : base(apiVersion, handler)
@@ -324,9 +328,11 @@ namespace WorldObjectDataResource
 
             #region Constructors
             public Lot(int apiVersion, EventHandler handler) : this(apiVersion, handler,
-                0, new TGIBlock(apiVersion, handler), new ObjList(handler), new ObjList(handler), new LocatorList(handler)) { }
+                0, new TGIBlock(apiVersion, handler), new ObjList(handler), new ObjList(handler), new LocatorList(handler))
+            { }
             public Lot(int apiVersion, EventHandler handler, Lot basis) : this(apiVersion, handler,
-                basis.lotId, basis.footprintKey, basis.objects, basis.objectsNoScript, basis.locators) { }
+                basis.lotId, basis.footprintKey, basis.objects, basis.objectsNoScript, basis.locators)
+            { }
             public Lot(int apiVersion, EventHandler handler,
                 UInt32 lotId, TGIBlock footprintKey, ObjList objects, ObjList objectsNoScript, LocatorList locators) : base(apiVersion, handler)
             {

@@ -45,7 +45,7 @@ namespace System.Text
         {
             byte[] bytes = enc.GetBytes(value == null ? "" : value);
             System.IO.BinaryWriter w = new System.IO.BinaryWriter(s, enc);
-            for (int i = bytes.Length; true; ) { w.Write((byte)((i & 0x7F) | (i > 0x7F ? 0x80 : 0))); i = i >> 7; if (i == 0) break; }//zero length? write a zero
+            for (int i = bytes.Length; true;) { w.Write((byte)((i & 0x7F) | (i > 0x7F ? 0x80 : 0))); i = i >> 7; if (i == 0) break; }//zero length? write a zero
             w.Write(bytes);
         }
     }

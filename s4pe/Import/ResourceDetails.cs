@@ -244,7 +244,7 @@ namespace S4PIDemoFE
             ulong ulongResult;
             if (tbGroup.Text.StartsWith((prefix)))
             {
-                if(uint.TryParse(tbGroup.Text.Substring(2), NumberStyles.HexNumber, null, out uintResult))
+                if (uint.TryParse(tbGroup.Text.Substring(2), NumberStyles.HexNumber, null, out uintResult))
                 {
                     uintResult |= uintMask;
                     tbGroup.Text = prefix + uintResult.ToString("X8");

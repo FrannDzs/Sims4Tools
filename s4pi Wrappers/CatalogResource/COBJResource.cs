@@ -28,18 +28,18 @@ namespace CatalogResource
     using s4pi.Interfaces;
 
     public class COBJResource : AbstractCatalogResource
-	{
-		public COBJResource(int APIversion, Stream s)
-			: base(APIversion, s)
-		{
-		}
-	}
+    {
+        public COBJResource(int APIversion, Stream s)
+            : base(APIversion, s)
+        {
+        }
+    }
 
-	public class COBJResourceHandler : AResourceHandler
-	{
-		public COBJResourceHandler()
-		{
-			this.Add(typeof(COBJResource), new List<string>(new[] { "0x319E4F1D" }));
-		}
-	}
+    public class COBJResourceHandler : AResourceHandler
+    {
+        public COBJResourceHandler()
+        {
+            this.Add(typeof(COBJResource), new List<string>(new[] { "0x319E4F1D" }));
+        }
+    }
 }

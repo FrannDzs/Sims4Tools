@@ -30,9 +30,9 @@ namespace meshExpImp.ModelBlocks
         private byte mC;
         private byte mD;
 
-        public UByte4(int apiVersion, EventHandler handler) : base(apiVersion, handler) {}
-        public UByte4(int apiVersion, EventHandler handler, UByte4 basis): this(apiVersion, handler, basis.A,basis.B,basis.C,basis.D){}
-        public UByte4(int apiVersion, EventHandler handler, Stream s): base(apiVersion, handler){Parse(s);}
+        public UByte4(int apiVersion, EventHandler handler) : base(apiVersion, handler) { }
+        public UByte4(int apiVersion, EventHandler handler, UByte4 basis) : this(apiVersion, handler, basis.A, basis.B, basis.C, basis.D) { }
+        public UByte4(int apiVersion, EventHandler handler, Stream s) : base(apiVersion, handler) { Parse(s); }
         public UByte4(int apiVersion, EventHandler handler, byte a, byte b, byte c, byte d) : base(apiVersion, handler)
         {
             mA = a;
@@ -50,25 +50,25 @@ namespace meshExpImp.ModelBlocks
         public byte A
         {
             get { return mA; }
-            set { if(mA!=value){mA = value; OnElementChanged();} }
+            set { if (mA != value) { mA = value; OnElementChanged(); } }
         }
         [ElementPriority(2)]
         public byte B
         {
             get { return mB; }
-            set { if(mB!=value){mB = value; OnElementChanged();} }
+            set { if (mB != value) { mB = value; OnElementChanged(); } }
         }
         [ElementPriority(3)]
         public byte C
         {
             get { return mC; }
-            set { if(mC!=value){mC = value; OnElementChanged();} }
+            set { if (mC != value) { mC = value; OnElementChanged(); } }
         }
         [ElementPriority(4)]
         public byte D
         {
             get { return mD; }
-            set { if(mD!=value){mD = value; OnElementChanged();} }
+            set { if (mD != value) { mD = value; OnElementChanged(); } }
         }
 
         public virtual void Parse(Stream s)
@@ -93,7 +93,7 @@ namespace meshExpImp.ModelBlocks
 
         public override System.Collections.Generic.List<string> ContentFields
         {
-            get { return GetContentFields(requestedApiVersion,GetType()); }
+            get { return GetContentFields(requestedApiVersion, GetType()); }
         }
 
         public override int RecommendedApiVersion

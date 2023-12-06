@@ -59,7 +59,7 @@ namespace s4pi.Animation
                 sb.AppendLine();
                 return sb.ToString();
             }
-        } 
+        }
     }
 
     public class ClipEventParent : ClipEvent
@@ -131,7 +131,7 @@ namespace s4pi.Animation
             ms.Write(this.data, 0, this.data.Length);
         }
     }
-    
+
     public class ClipEventSound : ClipEvent
     {
         private string sound_name;
@@ -215,10 +215,10 @@ namespace s4pi.Animation
         }
 
         protected override void ReadTypeData(Stream ms)
-        {            
+        {
         }
         protected override void WriteTypeData(Stream ms)
-        {            
+        {
         }
     }
 
@@ -425,7 +425,7 @@ namespace s4pi.Animation
         public ClipEventDestroyProp(int apiVersion, EventHandler handler, ClipEventType typeId, uint size)
             : base(apiVersion, handler, typeId)
         {
-            
+
         }
         public ClipEventDestroyProp(int apiVersion, EventHandler handler, ClipEventDestroyProp basis)
             : base(apiVersion, handler, basis)
@@ -1442,7 +1442,7 @@ namespace s4pi.Animation
     public class ClipEventUnknown30 : ClipEvent
     {
         float[] unknown3;
-        uint[]  unknown4;
+        uint[] unknown4;
 
         [ElementPriority(4)]
         public float[] Unknown3

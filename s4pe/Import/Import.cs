@@ -418,10 +418,10 @@ namespace S4PIDemoFE
                                     IResource res = WrapperDealer.GetResource(0, imppkg, rie, true);
 
                                     MyDataFormat impres = new MyDataFormat()
-                                                          {
-                                                              tgin = rie as AResourceIndexEntry,
-                                                              data = res.AsBytes
-                                                          };
+                                    {
+                                        tgin = rie as AResourceIndexEntry,
+                                        data = res.AsBytes
+                                    };
 
                                     // dups Replace | Reject | Allow
                                     // dupsList null | list of allowable dup types

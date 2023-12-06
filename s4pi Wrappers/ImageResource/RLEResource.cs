@@ -658,7 +658,7 @@ namespace s4pi.ImageResource
                             }
                         }
 
-                        for (int offset = 0; offset < mipSize; )
+                        for (int offset = 0; offset < mipSize;)
                         {
                             ushort darkCount = 0;
                             while (darkCount < 0x3FFF &&
@@ -741,7 +741,7 @@ namespace s4pi.ImageResource
                         w.Write(mipHeader.Offset0 + block0Offset);
                     }
                 }
-            } 
+            }
 
             else if (rleVersion == RLEVersion.RLE2)
             {
@@ -774,7 +774,7 @@ namespace s4pi.ImageResource
                         var mipSize = Math.Max(1, (mipWidth + 3) / 4) * Math.Max(1, (mipHeight + 3) / 4) * 16;
                         var mipData = r.ReadBytes(mipSize);
 
-                        for (int offset = 0; offset < mipSize; )
+                        for (int offset = 0; offset < mipSize;)
                         {
                             ushort transparentCount = 0;
                             while (transparentCount < 0x3FFF &&
@@ -915,7 +915,7 @@ namespace s4pi.ImageResource
                         var mipSize = Math.Max(1, (mipWidth + 3) / 4) * Math.Max(1, (mipHeight + 3) / 4) * 16;
                         var mipData = r.ReadBytes(mipSize);
 
-                        for (int offset = 0; offset < mipSize; )
+                        for (int offset = 0; offset < mipSize;)
                         {
                             ushort transparentCount = 0;
                             while (transparentCount < 0x3FFF &&
@@ -952,7 +952,7 @@ namespace s4pi.ImageResource
                                     block1Data.Write(mipData, opaqueOffset + 2, 6);
                                     block2Data.Write(mipData, opaqueOffset + 8, 4);
                                     block3Data.Write(mipData, opaqueOffset + 12, 4);
-                                   // block4Data.Write(fullOpaqueAlpha, 0, 8);
+                                    // block4Data.Write(fullOpaqueAlpha, 0, 8);
                                 }
 
                                 opaqueCount <<= 2;
@@ -1115,7 +1115,7 @@ namespace s4pi.ImageResource
                         maskMip = newMip;
                     }
 
-                    for (int offset = 0; offset < mipSize; )
+                    for (int offset = 0; offset < mipSize;)
                     {
                         ushort transparentCount = 0;
                         while (transparentCount < 0x3FFF &&
@@ -1234,7 +1234,7 @@ namespace s4pi.ImageResource
             output.Position = 0;
             Parse(output);
         }
-        
+
         /// <summary>
         /// Imports to RLES using DXT5 DDS specular stream and uncompressed DDS mask stream
         /// </summary>
@@ -1256,7 +1256,7 @@ namespace s4pi.ImageResource
             RLEInfo maskInfo = new RLEInfo();
             maskInfo.Parse(specularMask);
 
-            if (this.info.Height != maskInfo.Height || this.info.Width != maskInfo.Width) 
+            if (this.info.Height != maskInfo.Height || this.info.Width != maskInfo.Width)
                 throw new InvalidOperationException("Specular texture and mask dimension do not match");
 
             this.info.Version = RLEResource.RLEVersion.RLES;
@@ -1309,7 +1309,7 @@ namespace s4pi.ImageResource
                     byte[] tmp = m.ReadBytes(mipSizeMask);
                     var mipMask = GetMaskMipBlocks(tmp, mipHeightMask, mipWidthMask);
 
-                    for (int offset = 0; offset < mipSize; )
+                    for (int offset = 0; offset < mipSize;)
                     {
                         ushort transparentCount = 0;
                         while (transparentCount < 0x3FFF &&
@@ -1608,7 +1608,7 @@ namespace s4pi.ImageResource
             }
             return true;
         }
-        
+
         private static unsafe bool TestAlphaAll(byte[] array, int offset, Func<byte, bool> test)
         {
             var alpha = stackalloc byte[16];
@@ -1732,7 +1732,7 @@ namespace s4pi.ImageResource
                 this.Unknown0E = other.Unknown0E;
                 this.headerFlags = other.headerFlags;
             }
-            
+
             public void Parse(Stream s)
             {
                 BinaryReader r = new BinaryReader(s);
@@ -1815,7 +1815,7 @@ namespace s4pi.ImageResource
             DDSCaps_Mipmap = 0x400000,
             DDSCaps_Texture = 0x1000
         }
-        
+
         #endregion
     }
 
@@ -1823,7 +1823,7 @@ namespace s4pi.ImageResource
     {
         public RLEResourceTS4Handler()
         {
-            this.Add(typeof(RLEResource), new List<string>(new string[] { "0x3453CF95","0xBA856C78", }));
+            this.Add(typeof(RLEResource), new List<string>(new string[] { "0x3453CF95", "0xBA856C78", }));
         }
     }
 }

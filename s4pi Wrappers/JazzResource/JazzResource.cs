@@ -280,7 +280,8 @@ namespace s4pi.GenericRCOLResource
                 , basis.nameHash
                 , basis.actor1Hash
                 , basis.actor2Hash
-                ) { }
+                )
+            { }
             public Animation(int apiVersion, EventHandler handler
                 , uint nameHash
                 , uint actor1Hash
@@ -1867,7 +1868,7 @@ namespace s4pi.GenericRCOLResource
             , basis.unknown3
             , basis.unknown4
             , basis.unknown5
-                //, basis.unknown6
+            //, basis.unknown6
             , basis.decisionGraphIndexes
             )
         { }

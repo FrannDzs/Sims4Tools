@@ -60,34 +60,34 @@ namespace s4pi.Miscellaneous
             return ms;
         }
         #endregion
-        
+
         #region Subclasses
         public class ColorTimeLineList : DependentList<ColorTimeLine>
         {
-                public ColorTimeLineList(EventHandler handler, long maxSize = -1)
-                    : base(handler, maxSize)
-                {
-                }
+            public ColorTimeLineList(EventHandler handler, long maxSize = -1)
+                : base(handler, maxSize)
+            {
+            }
 
-                public ColorTimeLineList(EventHandler handler, IEnumerable<ColorTimeLine> timeline, long maxSize = -1)
-                    : base(handler, timeline, maxSize)
-                {
-                }
+            public ColorTimeLineList(EventHandler handler, IEnumerable<ColorTimeLine> timeline, long maxSize = -1)
+                : base(handler, timeline, maxSize)
+            {
+            }
 
-                public ColorTimeLineList(EventHandler handler, Stream s, long maxSize = -1)
-                    : base(handler, s, maxSize)
-                {
-                }
+            public ColorTimeLineList(EventHandler handler, Stream s, long maxSize = -1)
+                : base(handler, s, maxSize)
+            {
+            }
 
-                protected override ColorTimeLine CreateElement(Stream s)
-                {
-                    return new ColorTimeLine(recommendedApiVersion, this.elementHandler, s);
-                }
+            protected override ColorTimeLine CreateElement(Stream s)
+            {
+                return new ColorTimeLine(recommendedApiVersion, this.elementHandler, s);
+            }
 
-                protected override void WriteElement(Stream s, ColorTimeLine element)
-                {
-                    element.UnParse(s);
-                }
+            protected override void WriteElement(Stream s, ColorTimeLine element)
+            {
+                element.UnParse(s);
+            }
 
         }
 
@@ -96,7 +96,7 @@ namespace s4pi.Miscellaneous
             #region AHandlerElement Members
             public override int RecommendedApiVersion { get { return recommendedApiVersion; } }
             #endregion
-            
+
             uint version;
             ColorTimeLineData ambientColors;
             ColorTimeLineData directionalColors;
@@ -128,43 +128,43 @@ namespace s4pi.Miscellaneous
             ColorTimeLineData sunRadiusMultipliers;
             float starsAppearTime;
             float starsDisappearTime;
-    
+
             bool remapTimeline;
 
-           /* public ColorTimeLine(int APIversion, EventHandler handler, ColorTimeLine other)
-                : this(APIversion, handler, 
-                    other.version,
-                    other.ambientColors,
-                    other.directionalColors,
-                    other.shadowColors,
-                    other.skyHorizonColors,
-                    other.mFogStartRange,
-                    other.mFogEndRange,
-                    other.skyHorizonDarkColors,
-                    other.skyLightColors,
-                    other.skyDarkColors,
-                    other.sunColors,
-                    other.haloColors,
-                    other.sunDarkCloudColors,
-                    other.sunLightCloudColors,
-                    other.horizonDarkCloudColors,
-                    other.horizonLightCloudColors,
-                    other.cloudShadowCloudColors,
-                    other.poiId, 
-                    other.bloomThresholds,
-                    other.bloomIntensities,
-                    other.SunriseTime,
-                    other.SunsetTime,
-                    other.denseFogColors,
-                    other.denseFogStartRange,
-                    other.denseFogEndRange,
-                    other.moonRadiusMultipliers,
-                    other.sunRadiusMultipliers,
-                    other.starsAppearTime,
-                    other.starsDisappearTime,
-                    other.remapTimeline)
-            {
-            } */
+            /* public ColorTimeLine(int APIversion, EventHandler handler, ColorTimeLine other)
+                 : this(APIversion, handler, 
+                     other.version,
+                     other.ambientColors,
+                     other.directionalColors,
+                     other.shadowColors,
+                     other.skyHorizonColors,
+                     other.mFogStartRange,
+                     other.mFogEndRange,
+                     other.skyHorizonDarkColors,
+                     other.skyLightColors,
+                     other.skyDarkColors,
+                     other.sunColors,
+                     other.haloColors,
+                     other.sunDarkCloudColors,
+                     other.sunLightCloudColors,
+                     other.horizonDarkCloudColors,
+                     other.horizonLightCloudColors,
+                     other.cloudShadowCloudColors,
+                     other.poiId, 
+                     other.bloomThresholds,
+                     other.bloomIntensities,
+                     other.SunriseTime,
+                     other.SunsetTime,
+                     other.denseFogColors,
+                     other.denseFogStartRange,
+                     other.denseFogEndRange,
+                     other.moonRadiusMultipliers,
+                     other.sunRadiusMultipliers,
+                     other.starsAppearTime,
+                     other.starsDisappearTime,
+                     other.remapTimeline)
+             {
+             } */
             public ColorTimeLine(int apiVersion, EventHandler handler)
                 : base(apiVersion, handler)
             {
@@ -235,7 +235,7 @@ namespace s4pi.Miscellaneous
                 if (this.version >= 14)
                 {
                     this.remapTimeline = br.ReadBoolean();
-                } 
+                }
             }
 
             public void UnParse(Stream s)
@@ -336,7 +336,7 @@ namespace s4pi.Miscellaneous
             public float StarsDisappearTime { get { return this.starsDisappearTime; } set { if (this.starsDisappearTime != value) { OnElementChanged(); this.starsDisappearTime = value; } } }
             [ElementPriority(29)]
             public bool RemapTimeline { get { return this.remapTimeline; } set { if (this.remapTimeline != value) { OnElementChanged(); this.remapTimeline = value; } } }
-            
+
             public string Value { get { return ValueBuilder; } }
 
             public override List<string> ContentFields
@@ -464,7 +464,7 @@ namespace s4pi.Miscellaneous
             }
 
         }
-        
+
         public class ColorData : AHandlerElement, IEquatable<ColorData>
         {
             #region AHandlerElement Members
@@ -539,7 +539,7 @@ namespace s4pi.Miscellaneous
                        this.a == other.a &&
                        this.time == other.time;
             }
-        }        
+        }
         #endregion
 
 

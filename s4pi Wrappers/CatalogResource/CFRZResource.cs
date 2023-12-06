@@ -21,7 +21,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using s4pi.Interfaces;
- 
+
 namespace CatalogResource
 {
     public class CFRZResource : AResource
@@ -60,7 +60,7 @@ namespace CatalogResource
         public CatalogCommon CommonBlock
         {
             get { return commonA; }
-            set { if (commonA != value) { commonA = new CatalogCommon(kRecommendedApiVersion,this.OnResourceChanged, value); this.OnResourceChanged(this, EventArgs.Empty); } }
+            set { if (commonA != value) { commonA = new CatalogCommon(kRecommendedApiVersion, this.OnResourceChanged, value); this.OnResourceChanged(this, EventArgs.Empty); } }
         }
         [ElementPriority(3)]
         public TGIBlock TRIMRef

@@ -25,7 +25,7 @@ using System.Linq;
 using System.Collections.Generic;
 namespace meshExpImp.ModelBlocks
 {
-    
+
     public class VRTF : ARCOLBlock
     {
         public class Default : VRTF
@@ -117,7 +117,7 @@ namespace meshExpImp.ModelBlocks
                 default:
                     throw new NotImplementedException();
             }
-            
+
         }
         public static int ByteSizeFromFormat(ElementFormat f)
         {
@@ -157,9 +157,9 @@ namespace meshExpImp.ModelBlocks
                 Parse(s, count);
             }
 
-            public VertexElementLayoutList(EventHandler handler, IEnumerable<ElementLayout> ilt) : base(handler, ilt) {}
+            public VertexElementLayoutList(EventHandler handler, IEnumerable<ElementLayout> ilt) : base(handler, ilt) { }
 
-            protected override void WriteCount(Stream s, int count){}
+            protected override void WriteCount(Stream s, int count) { }
             private void Parse(Stream s, int count)
             {
                 for (int i = 0; i < count; i++)
@@ -184,9 +184,9 @@ namespace meshExpImp.ModelBlocks
             private ElementFormat mFormat;
             private byte mOffset;
 
-            public ElementLayout(int apiVersion, EventHandler handler): base(apiVersion, handler){}
-            public ElementLayout(int apiVersion, EventHandler handler, ElementLayout basis): this(apiVersion, handler,basis.Format,basis.Offset,basis.Usage,basis.UsageIndex){}
-            public ElementLayout(int apiVersion, EventHandler handler, Stream s): base(apiVersion, handler){Parse(s);}
+            public ElementLayout(int apiVersion, EventHandler handler) : base(apiVersion, handler) { }
+            public ElementLayout(int apiVersion, EventHandler handler, ElementLayout basis) : this(apiVersion, handler, basis.Format, basis.Offset, basis.Usage, basis.UsageIndex) { }
+            public ElementLayout(int apiVersion, EventHandler handler, Stream s) : base(apiVersion, handler) { Parse(s); }
             public ElementLayout(int apiVersion, EventHandler handler, ElementFormat format, byte offset, ElementUsage usage, byte usageIndex) : base(apiVersion, handler)
             {
                 mFormat = format;
@@ -198,25 +198,25 @@ namespace meshExpImp.ModelBlocks
             public ElementUsage Usage
             {
                 get { return mUsage; }
-                set { if(mUsage!=value){mUsage = value; OnElementChanged();} }
+                set { if (mUsage != value) { mUsage = value; OnElementChanged(); } }
             }
             [ElementPriority(2)]
             public byte UsageIndex
             {
                 get { return mUsageIndex; }
-                set { if(mUsageIndex!=value){mUsageIndex = value; OnElementChanged();} }
+                set { if (mUsageIndex != value) { mUsageIndex = value; OnElementChanged(); } }
             }
             [ElementPriority(3)]
             public ElementFormat Format
             {
                 get { return mFormat; }
-                set { if(mFormat!=value){mFormat = value; OnElementChanged();} }
+                set { if (mFormat != value) { mFormat = value; OnElementChanged(); } }
             }
             [ElementPriority(4)]
             public byte Offset
             {
                 get { return mOffset; }
-                set { if(mOffset!=value){mOffset = value; OnElementChanged();} }
+                set { if (mOffset != value) { mOffset = value; OnElementChanged(); } }
             }
 
             public string Value
@@ -299,8 +299,8 @@ namespace meshExpImp.ModelBlocks
         {
             mVersion = 0x00000002;
         }
-        public VRTF(int apiVersion, EventHandler handler, VRTF basis): this(apiVersion, handler,basis.Version,basis.Stride, basis.Layouts, basis.ExtendedFormat){}
-        public VRTF(int apiVersion, EventHandler handler, Stream s): base(apiVersion, handler, s){}
+        public VRTF(int apiVersion, EventHandler handler, VRTF basis) : this(apiVersion, handler, basis.Version, basis.Stride, basis.Layouts, basis.ExtendedFormat) { }
+        public VRTF(int apiVersion, EventHandler handler, Stream s) : base(apiVersion, handler, s) { }
         public VRTF(int apiVersion, EventHandler handler, uint version, int stride, VertexElementLayoutList layouts, bool extendedFormat) : base(apiVersion, handler, null)
         {
             mExtendedFormat = extendedFormat;
@@ -309,7 +309,7 @@ namespace meshExpImp.ModelBlocks
             mVersion = version;
         }
 
-        public virtual bool IsDefault ()
+        public virtual bool IsDefault()
         {
             return false;
         }
@@ -318,19 +318,19 @@ namespace meshExpImp.ModelBlocks
         public uint Version
         {
             get { return mVersion; }
-            set { if(mVersion!=value){mVersion = value; OnRCOLChanged(this, EventArgs.Empty);} }
+            set { if (mVersion != value) { mVersion = value; OnRCOLChanged(this, EventArgs.Empty); } }
         }
         [ElementPriority(2)]
         public int Stride
         {
             get { return mStride; }
-            set { if(mStride!=value){mStride = value; OnRCOLChanged(this, EventArgs.Empty);} }
+            set { if (mStride != value) { mStride = value; OnRCOLChanged(this, EventArgs.Empty); } }
         }
         [ElementPriority(3)]
         public bool ExtendedFormat
         {
             get { return mExtendedFormat; }
-            set { if(mExtendedFormat!=value){mExtendedFormat = value; OnRCOLChanged(this, EventArgs.Empty);} }
+            set { if (mExtendedFormat != value) { mExtendedFormat = value; OnRCOLChanged(this, EventArgs.Empty); } }
         }
         [ElementPriority(4)]
         public VertexElementLayoutList Layouts
@@ -368,7 +368,7 @@ namespace meshExpImp.ModelBlocks
             bw.Write(mVersion);
             bw.Write(mStride);
             bw.Write(mLayouts.Count);
-            bw.Write(mExtendedFormat?1:0);
+            bw.Write(mExtendedFormat ? 1 : 0);
             mLayouts.UnParse(s);
             return s;
         }

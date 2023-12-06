@@ -186,7 +186,8 @@ namespace RigResource
             public Bone(int apiVersion, EventHandler handler, Stream s) : base(apiVersion, handler) { Parse(s); }
             public Bone(int apiVersion, EventHandler handler, Bone basis)
                 : this(apiVersion, handler, basis.position, basis.orientation, basis.scaling,
-                basis.name, basis.opposingBoneIndex, basis.parentBoneIndex, basis.hash, basis.flags) { }
+                basis.name, basis.opposingBoneIndex, basis.parentBoneIndex, basis.hash, basis.flags)
+            { }
             public Bone(int apiVersion, EventHandler handler,
                 Vertex position, Quaternion quaternion, Vertex scaling,
                 string name, int opposingBoneIndex, int parentBoneIndex, uint hash, uint unknown2)
@@ -331,7 +332,8 @@ namespace RigResource
                 basis.infoNode4Index, basis.infoNode5Index, basis.infoNode6Index,
                 basis.infoNode7Index, basis.infoNode8Index,
                 basis.infoNode9Index, basis.infoNodeAIndex,
-                basis.poleVectorIndex, basis.slotInfoIndex, basis.slotOffsetIndex, basis.rootIndex) { }
+                basis.poleVectorIndex, basis.slotInfoIndex, basis.slotOffsetIndex, basis.rootIndex)
+            { }
             public IKElement(int apiVersion, EventHandler handler, RigResource owner,
                 IntList bones,
                 int infoNode0Index, int infoNode1Index,
@@ -420,10 +422,10 @@ namespace RigResource
 
             #region AHandlerElement Members
             public override int RecommendedApiVersion { get { return recommendedApiVersion; } }
-            public override List<string> ContentFields 
-            { 
-                get 
-                { 
+            public override List<string> ContentFields
+            {
+                get
+                {
                     List<string> res = GetContentFields(requestedApiVersion, this.GetType());
                     if (this.owner.major < 4)
                     {
@@ -441,7 +443,7 @@ namespace RigResource
                         res.Remove("SlotInfoIndex");
                     }
                     return res;
-                } 
+                }
             }
             #endregion
 
@@ -526,9 +528,9 @@ namespace RigResource
 
             public IKChainList(EventHandler handler, RigResource owner) : base(handler) { this.owner = owner; }
             public IKChainList(EventHandler handler, RigResource owner, Stream s) : base(null) { elementHandler = handler; this.owner = owner; Parse(s); this.handler = handler; }
-            public IKChainList(EventHandler handler, RigResource owner, IEnumerable<IKElement> lb) : base(null) 
-            { 
-                elementHandler = handler; 
+            public IKChainList(EventHandler handler, RigResource owner, IEnumerable<IKElement> lb) : base(null)
+            {
+                elementHandler = handler;
                 this.owner = owner;
                 foreach (var b in lb)
                     this.Add(new IKElement(0, elementHandler, owner, b));

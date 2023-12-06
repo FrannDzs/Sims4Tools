@@ -91,7 +91,7 @@ namespace TerrainBlendMapResource
             bw.Write(_layerBlockWidth);
             bw.Write(layerCount);
             layers.UnParse(ms);
-            
+
             bw.Flush();
             return ms;
         }
@@ -188,7 +188,8 @@ namespace TerrainBlendMapResource
 
             public string Value { get { return ValueBuilder; } }
         }
-        public class LayerBlockList : DependentList<LayerBlock> {
+        public class LayerBlockList : DependentList<LayerBlock>
+        {
             UInt32 vertCount;
 
             #region Constructors
@@ -211,7 +212,7 @@ namespace TerrainBlendMapResource
             protected override int ReadCount(Stream s) { return (int)this.vertCount; }
             protected override void WriteCount(Stream s, int count) { }
             #endregion
-}
+        }
 
         public class Layer : AHandlerElement, IEquatable<Layer>
         {
@@ -286,7 +287,7 @@ namespace TerrainBlendMapResource
             protected override Layer CreateElement(Stream s) { return new Layer(0, elementHandler, s); }
             protected override void WriteElement(Stream s, Layer element) { element.UnParse(s); }
             #endregion
-}
+        }
         #endregion
 
         public Int32 BlockIndex(Int32 layer, UInt32 x, UInt32 z)

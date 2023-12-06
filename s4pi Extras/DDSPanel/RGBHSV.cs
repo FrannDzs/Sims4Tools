@@ -83,7 +83,7 @@ namespace System.Drawing
                 }
             }
 
-            return (uint)this.a << 24 | (uint)Math.Round(r * 255.0f) << 16| (uint)Math.Round(g * 255.0f) << 8 | (uint)Math.Round(b * 255.0f);
+            return (uint)this.a << 24 | (uint)Math.Round(r * 255.0f) << 16 | (uint)Math.Round(g * 255.0f) << 8 | (uint)Math.Round(b * 255.0f);
         }
 
         /// <summary>

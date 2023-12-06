@@ -302,7 +302,7 @@ namespace s4pi.GenericRCOLResource
         public MTRL Mtrl
         {
             get { return mtrl; }
-            set {  if (mtrl != value) { mtrl = new MTRL(requestedApiVersion, handler, mtrl); OnRCOLChanged(this, EventArgs.Empty); } }
+            set { if (mtrl != value) { mtrl = new MTRL(requestedApiVersion, handler, mtrl); OnRCOLChanged(this, EventArgs.Empty); } }
         }
         [ElementPriority(15)]
         public bool IsVideoSurface

@@ -41,50 +41,50 @@ namespace DMAPImageHelper
         [STAThread]
         static void Main(string[] args)
         {
-           if(args.Contains("/export"))
-           {
-               using (FileStream fs = new FileStream(args[1], FileMode.Open))
-               {
-                   using (SaveFileDialog save = new SaveFileDialog() { Filter = "Bitmap|*.bmp", Title = "Save Skintight Image", FileName =  Path.GetFileNameWithoutExtension(args[1]) + "_Skintight" })
-                   {
-                       if (save.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                       {
-                           using (FileStream fs2 = new FileStream(save.FileName, FileMode.Create))
-                           {
-                               DeformerMapResource dmap = new DeformerMapResource(1, fs);
-                               MemoryStream ms = (MemoryStream)dmap.ToBitMap(DeformerMapResource.OutputType.Skin);
-                               if (ms != null)
-                               {
-                                   ms.Position = 0;
-                                   ms.CopyTo(fs2);
-                               }
-                           }
-                       }
-                   }
-               }
-           }
-           if (args.Contains("/exportRobe"))
-           {
-               using (FileStream fs = new FileStream(args[1], FileMode.Open))
-               {
-                   using (SaveFileDialog save = new SaveFileDialog() { Filter = "Bitmap|*.bmp", Title = "Save Robe Image", FileName = Path.GetFileNameWithoutExtension(args[1]) + "_Robe" })
-                   {
-                       if (save.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                       {
-                           using (FileStream fs2 = new FileStream(save.FileName, FileMode.Create))
-                           {
-                               DeformerMapResource dmap = new DeformerMapResource(1, fs);
-                               MemoryStream ms = (MemoryStream)dmap.ToBitMap(DeformerMapResource.OutputType.Robe);
-                               if (ms != null)
-                               {
-                                   ms.Position = 0;
-                                   ms.CopyTo(fs2);
-                               }
-                           }
-                       }
-                   }
-               }
-           }
+            if (args.Contains("/export"))
+            {
+                using (FileStream fs = new FileStream(args[1], FileMode.Open))
+                {
+                    using (SaveFileDialog save = new SaveFileDialog() { Filter = "Bitmap|*.bmp", Title = "Save Skintight Image", FileName = Path.GetFileNameWithoutExtension(args[1]) + "_Skintight" })
+                    {
+                        if (save.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                        {
+                            using (FileStream fs2 = new FileStream(save.FileName, FileMode.Create))
+                            {
+                                DeformerMapResource dmap = new DeformerMapResource(1, fs);
+                                MemoryStream ms = (MemoryStream)dmap.ToBitMap(DeformerMapResource.OutputType.Skin);
+                                if (ms != null)
+                                {
+                                    ms.Position = 0;
+                                    ms.CopyTo(fs2);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            if (args.Contains("/exportRobe"))
+            {
+                using (FileStream fs = new FileStream(args[1], FileMode.Open))
+                {
+                    using (SaveFileDialog save = new SaveFileDialog() { Filter = "Bitmap|*.bmp", Title = "Save Robe Image", FileName = Path.GetFileNameWithoutExtension(args[1]) + "_Robe" })
+                    {
+                        if (save.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                        {
+                            using (FileStream fs2 = new FileStream(save.FileName, FileMode.Create))
+                            {
+                                DeformerMapResource dmap = new DeformerMapResource(1, fs);
+                                MemoryStream ms = (MemoryStream)dmap.ToBitMap(DeformerMapResource.OutputType.Robe);
+                                if (ms != null)
+                                {
+                                    ms.Position = 0;
+                                    ms.CopyTo(fs2);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

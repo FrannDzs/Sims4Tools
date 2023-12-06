@@ -41,7 +41,7 @@ namespace s4pi.Interfaces
         /// <returns>The TypedValue result of invoking the method (or null if the method is void)</returns>
         TypedValue Invoke(string method, params TypedValue[] parms);
 #endif
-        
+
         /// <summary>
         /// A <c>List&lt;string&gt;</c> of available field names on object
         /// </summary>

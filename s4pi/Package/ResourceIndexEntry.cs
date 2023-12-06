@@ -116,10 +116,10 @@ namespace s4pi.Package
         public override UInt16 Compressed
         {
             get { return BitConverter.ToUInt16(indexEntry, 32); }
-            set 
-            { 
+            set
+            {
                 if (value != BitConverter.ToUInt16(indexEntry, 32)) compressionChanged = !compressionChanged;
-                byte[] src = BitConverter.GetBytes(value); Array.Copy(src, 0, indexEntry, 32, src.Length); OnElementChanged(); 
+                byte[] src = BitConverter.GetBytes(value); Array.Copy(src, 0, indexEntry, 32, src.Length); OnElementChanged();
             }
         }
         /// <summary>

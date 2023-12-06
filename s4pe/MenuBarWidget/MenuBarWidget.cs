@@ -176,7 +176,7 @@ namespace S4PIDemoFE
 
         public enum CMS_TP
         {
-            MBE_copy = (int) MB.MBE_copy,
+            MBE_copy = (int)MB.MBE_copy,
             MBE_save,
             MBE_float,
             MBE_ote,
@@ -184,7 +184,7 @@ namespace S4PIDemoFE
 
         public enum CMS_BW
         {
-            MBR_add = (int) MB.MBR_add,
+            MBR_add = (int)MB.MBR_add,
             MBR_copy,
             MBR_paste,
             MBR_duplicate,
@@ -215,43 +215,43 @@ namespace S4PIDemoFE
 
         public void Enable(MD mn, bool state)
         {
-            tsMD[(int) mn].Enabled = state;
+            tsMD[(int)mn].Enabled = state;
             if (mn == MD.MBR) browserWidgetContextMenuStrip.Enabled = state;
         }
 
         public void Enable(MB mn, bool state)
         {
-            tsMB[(int) mn].Enabled = state;
-            if (isCMSTP(mn)) cmsTP[(int) mn - (int) CMS_TP.MBE_copy].Enabled = state;
-            if (isCMSBW(mn)) cmsBW[(int) mn - (int) CMS_BW.MBR_add].Enabled = state;
+            tsMB[(int)mn].Enabled = state;
+            if (isCMSTP(mn)) cmsTP[(int)mn - (int)CMS_TP.MBE_copy].Enabled = state;
+            if (isCMSBW(mn)) cmsBW[(int)mn - (int)CMS_BW.MBR_add].Enabled = state;
         }
 
         public void Checked(MB mn, bool state)
         {
-            tsMB[(int) mn].Checked = state;
-            tsMB[(int) mn].CheckState = state ? CheckState.Checked : CheckState.Unchecked;
+            tsMB[(int)mn].Checked = state;
+            tsMB[(int)mn].CheckState = state ? CheckState.Checked : CheckState.Unchecked;
             if (isCMSTP(mn))
             {
-                cmsTP[(int) mn - (int) CMS_TP.MBE_copy].Checked = state;
-                cmsTP[(int) mn - (int) CMS_TP.MBE_copy].CheckState = state ? CheckState.Checked : CheckState.Unchecked;
+                cmsTP[(int)mn - (int)CMS_TP.MBE_copy].Checked = state;
+                cmsTP[(int)mn - (int)CMS_TP.MBE_copy].CheckState = state ? CheckState.Checked : CheckState.Unchecked;
             }
             if (isCMSBW(mn))
             {
-                cmsBW[(int) mn - (int) CMS_BW.MBR_add].Checked = state;
-                cmsBW[(int) mn - (int) CMS_BW.MBR_add].CheckState = state ? CheckState.Checked : CheckState.Unchecked;
+                cmsBW[(int)mn - (int)CMS_BW.MBR_add].Checked = state;
+                cmsBW[(int)mn - (int)CMS_BW.MBR_add].CheckState = state ? CheckState.Checked : CheckState.Unchecked;
             }
         }
 
         public void Indeterminate(MB mn)
         {
-            tsMB[(int) mn].CheckState = CheckState.Indeterminate;
-            if (isCMSTP(mn)) cmsTP[(int) mn - (int) CMS_TP.MBE_copy].CheckState = CheckState.Indeterminate;
-            if (isCMSBW(mn)) cmsBW[(int) mn - (int) CMS_BW.MBR_add].CheckState = CheckState.Indeterminate;
+            tsMB[(int)mn].CheckState = CheckState.Indeterminate;
+            if (isCMSTP(mn)) cmsTP[(int)mn - (int)CMS_TP.MBE_copy].CheckState = CheckState.Indeterminate;
+            if (isCMSBW(mn)) cmsBW[(int)mn - (int)CMS_BW.MBR_add].CheckState = CheckState.Indeterminate;
         }
 
         public bool IsChecked(MB mn)
         {
-            return tsMB[(int) mn].Checked;
+            return tsMB[(int)mn].Checked;
         }
 
         public class MBDropDownOpeningEventArgs : EventArgs
@@ -275,7 +275,7 @@ namespace S4PIDemoFE
 
         private void tsMD_DropDownOpening(object sender, EventArgs e)
         {
-            OnMBDropDownOpening(sender, (MD) tsMD.IndexOf(sender as ToolStripMenuItem));
+            OnMBDropDownOpening(sender, (MD)tsMD.IndexOf(sender as ToolStripMenuItem));
         }
 
         private void cmsTP_Opening(object sender, CancelEventArgs e)
@@ -314,7 +314,7 @@ namespace S4PIDemoFE
 
         private void tsMBF_Click(object sender, EventArgs e)
         {
-            OnMBFile_Click(sender, (MB) tsMB.IndexOf(sender as ToolStripMenuItem));
+            OnMBFile_Click(sender, (MB)tsMB.IndexOf(sender as ToolStripMenuItem));
         }
 
         public event MBClickEventHandler MBEdit_Click;
@@ -326,7 +326,7 @@ namespace S4PIDemoFE
 
         private void tsMBE_Click(object sender, EventArgs e)
         {
-            OnMBEdit_Click(sender, (MB) tsMB.IndexOf(sender as ToolStripMenuItem));
+            OnMBEdit_Click(sender, (MB)tsMB.IndexOf(sender as ToolStripMenuItem));
         }
 
         public event MBClickEventHandler MBResource_Click;
@@ -338,7 +338,7 @@ namespace S4PIDemoFE
 
         private void tsMBR_Click(object sender, EventArgs e)
         {
-            OnMBResource_Click(sender, (MB) tsMB.IndexOf(sender as ToolStripMenuItem));
+            OnMBResource_Click(sender, (MB)tsMB.IndexOf(sender as ToolStripMenuItem));
         }
 
         public event MBClickEventHandler MBTools_Click;
@@ -350,7 +350,7 @@ namespace S4PIDemoFE
 
         private void tsMBT_Click(object sender, EventArgs e)
         {
-            OnMBTools_Click(sender, (MB) tsMB.IndexOf(sender as ToolStripMenuItem));
+            OnMBTools_Click(sender, (MB)tsMB.IndexOf(sender as ToolStripMenuItem));
         }
 
         public event MBClickEventHandler MBSettings_Click;
@@ -362,7 +362,7 @@ namespace S4PIDemoFE
 
         private void tsMBS_Click(object sender, EventArgs e)
         {
-            OnMBSettings_Click(sender, (MB) tsMB.IndexOf(sender as ToolStripMenuItem));
+            OnMBSettings_Click(sender, (MB)tsMB.IndexOf(sender as ToolStripMenuItem));
         }
 
         public event MBClickEventHandler MBHelp_Click;
@@ -374,7 +374,7 @@ namespace S4PIDemoFE
 
         private void tsMBH_Click(object sender, EventArgs e)
         {
-            OnMBHelp_Click(sender, (MB) tsMB.IndexOf(sender as ToolStripMenuItem));
+            OnMBHelp_Click(sender, (MB)tsMB.IndexOf(sender as ToolStripMenuItem));
         }
 
         public event MBClickEventHandler CMFilter_Click;
@@ -386,17 +386,17 @@ namespace S4PIDemoFE
 
         private void tsCMF_Click(object sender, EventArgs e)
         {
-            OnCMFilter_Click(sender, (MB) tsMB.IndexOf(sender as ToolStripMenuItem));
+            OnCMFilter_Click(sender, (MB)tsMB.IndexOf(sender as ToolStripMenuItem));
         }
 
         private void tsCMSTP_Click(object sender, EventArgs e)
         {
-            OnMBEdit_Click(sender, (MB) (cmsTP.IndexOf(sender as ToolStripMenuItem)) + (int) MB.MBE_copy);
+            OnMBEdit_Click(sender, (MB)(cmsTP.IndexOf(sender as ToolStripMenuItem)) + (int)MB.MBE_copy);
         }
 
         private void tsCMSBW_Click(object sender, EventArgs e)
         {
-            OnMBResource_Click(sender, (MB) (cmsBW.IndexOf(sender as ToolStripMenuItem)) + (int) MB.MBR_add);
+            OnMBResource_Click(sender, (MB)(cmsBW.IndexOf(sender as ToolStripMenuItem)) + (int)MB.MBR_add);
         }
 
 
@@ -452,7 +452,7 @@ namespace S4PIDemoFE
             int i = dropdown.IndexOf(tss);
             int j = 0;
 
-            dropdown.Insert(++i, new ToolStripSeparator() {Name = prefix + j,});
+            dropdown.Insert(++i, new ToolStripSeparator() { Name = prefix + j, });
 
             foreach (var helper in helpers)
             {
@@ -493,7 +493,7 @@ namespace S4PIDemoFE
 
         private void tsHelper_Click(object sender, EventArgs e)
         {
-            OnHelperClick(sender, (int) ((sender as ToolStripMenuItem).Tag));
+            OnHelperClick(sender, (int)((sender as ToolStripMenuItem).Tag));
         }
 
         private void SetPreviewControlItems(ToolStripItemCollection dropdown, ToolStripItem tss, string prefix,
@@ -542,7 +542,7 @@ namespace S4PIDemoFE
 
                     ToolStripMenuItem tsmiMRUListEntry = new ToolStripMenuItem();
                     tsmiMRUListEntry.Name = "tsmiRecent" + i;
-                    tsmiMRUListEntry.ShortcutKeys = (Keys) (Keys.Control | ((Keys) (49 + i)));
+                    tsmiMRUListEntry.ShortcutKeys = (Keys)(Keys.Control | ((Keys)(49 + i)));
                     tsmiMRUListEntry.Text = string.Format("&{0}. {1}", i + 1, s);
                     tsmiMRUListEntry.Click += new EventHandler(tsMRU_Click);
                     mRUListToolStripMenuItem.DropDownItems.Insert(i, tsmiMRUListEntry);
@@ -602,7 +602,7 @@ namespace S4PIDemoFE
 
                     ToolStripMenuItem tsmiBookmarkEntry = new ToolStripMenuItem();
                     tsmiBookmarkEntry.Name = "tsmiBookmark" + i;
-                    tsmiBookmarkEntry.ShortcutKeys = (Keys) (Keys.Control | Keys.Shift | ((Keys) (49 + i)));
+                    tsmiBookmarkEntry.ShortcutKeys = (Keys)(Keys.Control | Keys.Shift | ((Keys)(49 + i)));
                     tsmiBookmarkEntry.Text = string.Format("&{0}. {1}", i + 1, s);
                     tsmiBookmarkEntry.Click += new EventHandler(tsBookmark_Click);
                     bookmarkedPackagesToolStripMenuItem.DropDownItems.Insert(i, tsmiBookmarkEntry);

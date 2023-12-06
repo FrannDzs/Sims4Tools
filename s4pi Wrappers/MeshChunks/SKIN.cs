@@ -44,7 +44,7 @@ namespace meshExpImp.ModelBlocks
             }
             public Bone this[UInt32 nameHash]
             {
-                get { return this.FirstOrDefault(x=>x.NameHash.Equals(nameHash)); }
+                get { return this.FirstOrDefault(x => x.NameHash.Equals(nameHash)); }
             }
 
         }
@@ -72,14 +72,14 @@ namespace meshExpImp.ModelBlocks
             public uint NameHash
             {
                 get { return mNameHash; }
-                set { if(mNameHash!=value){mNameHash = value; OnElementChanged();} }
+                set { if (mNameHash != value) { mNameHash = value; OnElementChanged(); } }
             }
 
             [ElementPriority(2)]
             public Matrix43 InverseBindPose
             {
                 get { return mInverseBindPose; }
-                set { if(mInverseBindPose!=value){mInverseBindPose = value; OnElementChanged();} }
+                set { if (mInverseBindPose != value) { mInverseBindPose = value; OnElementChanged(); } }
             }
 
             public override List<string> ContentFields
@@ -112,9 +112,9 @@ namespace meshExpImp.ModelBlocks
         private UInt32 mVersion;
         private BoneList mBones;
 
-        public SKIN(int apiVersion, EventHandler handler): this(apiVersion, handler, new BoneList(handler),0x00000001){}
+        public SKIN(int apiVersion, EventHandler handler) : this(apiVersion, handler, new BoneList(handler), 0x00000001) { }
         public SKIN(int apiVersion, EventHandler handler, SKIN basis) : this(apiVersion, handler, new BoneList(handler, basis.Bones), basis.Version) { }
-        public SKIN(int apiVersion, EventHandler handler, Stream s): base(apiVersion, handler, s){}
+        public SKIN(int apiVersion, EventHandler handler, Stream s) : base(apiVersion, handler, s) { }
         public SKIN(int apiVersion, EventHandler handler, BoneList bones, uint version) : base(apiVersion, handler, null)
         {
             mBones = bones == null ? null : new BoneList(handler, bones);
@@ -125,7 +125,7 @@ namespace meshExpImp.ModelBlocks
         public uint Version
         {
             get { return mVersion; }
-            set { if(mVersion!=value){mVersion = value; OnRCOLChanged(this, EventArgs.Empty);} }
+            set { if (mVersion != value) { mVersion = value; OnRCOLChanged(this, EventArgs.Empty); } }
         }
 
         [ElementPriority(2)]
@@ -149,8 +149,8 @@ namespace meshExpImp.ModelBlocks
             mBones = new BoneList(handler);
             int count = br.ReadInt32();
             uint[] names = new uint[count];
-            for (int i = 0; i < count; i++)names[i] = br.ReadUInt32();
-            for (int i = 0; i < count; i++)mBones.Add(new Bone(0, handler, names[i], new Matrix43(0, handler, s)));
+            for (int i = 0; i < count; i++) names[i] = br.ReadUInt32();
+            for (int i = 0; i < count; i++) mBones.Add(new Bone(0, handler, names[i], new Matrix43(0, handler, s)));
         }
 
         public override Stream UnParse()

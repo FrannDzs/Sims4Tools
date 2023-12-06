@@ -42,7 +42,7 @@ namespace s4pi.Interfaces
     /// <summary>
     /// Specify the Minumum version from which a field or method is supported
     /// </summary>
-    [AttributeUsage(AttributeTargets.All, AllowMultiple = false,  Inherited = true)]
+    [AttributeUsage(AttributeTargets.All, AllowMultiple = false, Inherited = true)]
     public class MinimumVersionAttribute : VersionAttribute
     {
         /// <summary>

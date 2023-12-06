@@ -177,7 +177,8 @@ namespace s4pi.GenericRCOLResource
             public UInt32 NodeType
             {
                 get { return type; }
-                set {
+                set
+                {
                     if (value == 0)
                         throw new InvalidDataException("Branch type must not be zero");
                     if (type != value)

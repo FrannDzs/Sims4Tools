@@ -21,7 +21,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using s4pi.Interfaces;
- 
+
 namespace CatalogResource
 {
     public class CFTRResource : AResource
@@ -88,7 +88,7 @@ namespace CatalogResource
         public ColorList Colors
         {
             get { return colors; }
-            set { if (!colors.Equals( value)) { colors = new ColorList(this.OnResourceChanged, value); this.OnResourceChanged(this, EventArgs.Empty); } }
+            set { if (!colors.Equals(value)) { colors = new ColorList(this.OnResourceChanged, value); this.OnResourceChanged(this, EventArgs.Empty); } }
         }
         [ElementPriority(8)]
         public uint Unk01

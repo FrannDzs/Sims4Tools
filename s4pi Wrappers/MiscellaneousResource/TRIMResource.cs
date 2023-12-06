@@ -225,7 +225,7 @@ namespace s4pi.Miscellaneous
             float v;
             float mappingMode;
 
-                        
+
             public TRIMpt4Entry(int apiVersion, EventHandler handler, TRIMpt4Entry other)
                 : this(apiVersion, handler, other.x, other.y, other.v, other.mappingMode)
             {
@@ -278,12 +278,12 @@ namespace s4pi.Miscellaneous
             {
                 get { return recommendedApiVersion; }
             }
- 
+
             public override List<string> ContentFields
             {
                 get { return GetContentFields(0, GetType()); }
             }
- 
+
             void Parse(Stream s)
             {
                 var br = new BinaryReader(s);
@@ -378,7 +378,7 @@ namespace s4pi.Miscellaneous
 
                 this.pt4entryList.UnParse(ms);
             }
-            if (this.materialSetKey== null) { this.materialSetKey = new TGIBlock(recommendedApiVersion, this.OnResourceChanged, TGIBlock.Order.TGI); }
+            if (this.materialSetKey == null) { this.materialSetKey = new TGIBlock(recommendedApiVersion, this.OnResourceChanged, TGIBlock.Order.TGI); }
             this.materialSetKey.UnParse(ms);
             w.Write(hasFootprint);
 
@@ -408,7 +408,7 @@ namespace s4pi.Miscellaneous
         [ElementPriority(4)]
         public TGIBlock MaterialSetKey
         {
-            get { return materialSetKey;  }
+            get { return materialSetKey; }
             set { materialSetKey = value; this.OnResourceChanged(this, EventArgs.Empty); }
         }
         [ElementPriority(5)]

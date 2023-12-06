@@ -61,7 +61,7 @@ namespace CASPartResource
         private uint unknown2;
         private uint unknown3;
         private OutfitBlockList outfitsList;
-                                                    //genetic info
+        //genetic info
         private ByteIndexList sculptReference2;
         private SliderReferenceList sliderReferencesFace2;
         private SliderReferenceList sliderReferencesBody2;
@@ -315,7 +315,7 @@ namespace CASPartResource
             private ulong outfitFlags;
             private ulong outfitCreated;
             private bool matchHair;
-          //  private DataBlobHandler unknownBlock;
+            //  private DataBlobHandler unknownBlock;
             private CaspReferenceList CasPartList;
 
             public OutfitReference(int apiVersion, EventHandler handler, CountedTGIBlockList tgiList, uint version) : base(apiVersion, handler) { this.tgiList = tgiList; this.version = version; }
@@ -330,15 +330,15 @@ namespace CASPartResource
                     this.outfitFlags = r.ReadUInt64();
                     this.outfitCreated = r.ReadUInt64();
                     this.matchHair = r.ReadBoolean();
-                  //  this.unknownBlock = new DataBlobHandler(recommendedApiVersion, handler, r.ReadBytes(25));
+                    //  this.unknownBlock = new DataBlobHandler(recommendedApiVersion, handler, r.ReadBytes(25));
                 }
                 else
                 {
                     this.outfitID = r.ReadUInt64();
                     this.outfitFlags = r.ReadUInt64();
-                  //  this.outfitCreated = r.ReadUInt64();
+                    //  this.outfitCreated = r.ReadUInt64();
                     this.matchHair = r.ReadBoolean();
-                  //  this.unknownBlock = new DataBlobHandler(recommendedApiVersion, handler, r.ReadBytes(17));
+                    //  this.unknownBlock = new DataBlobHandler(recommendedApiVersion, handler, r.ReadBytes(17));
                 }
                 this.CasPartList = new CaspReferenceList(handler, s, tgiList, version >= 28);
             }
@@ -362,14 +362,14 @@ namespace CASPartResource
                     w.Write(this.matchHair);
                     //  this.unknownBlock = new DataBlobHandler(recommendedApiVersion, handler, r.ReadBytes(17));
                 }
-              //  this.unknownBlock.UnParse(s);
+                //  this.unknownBlock.UnParse(s);
                 this.CasPartList.UnParse(s);
             }
 
 
             public bool Equals(OutfitReference other)
             {
-                return this.outfitID.Equals(other.outfitID) && this.outfitFlags.Equals(other.outfitFlags) && this.outfitCreated.Equals(other.outfitCreated) 
+                return this.outfitID.Equals(other.outfitID) && this.outfitFlags.Equals(other.outfitFlags) && this.outfitCreated.Equals(other.outfitCreated)
                     && this.matchHair.Equals(other.matchHair) && this.CasPartList.Equals(other.CasPartList);
             }
             const int recommendedApiVersion = 1;
@@ -414,7 +414,7 @@ namespace CASPartResource
             {
                 BinaryReader r = new BinaryReader(s);
                 this.index = r.ReadByte();
-                this.bodyType = (BodyType) r.ReadUInt32();
+                this.bodyType = (BodyType)r.ReadUInt32();
                 if (this.hasShift) this.colorShift = r.ReadUInt64();
             }
 
@@ -456,7 +456,7 @@ namespace CASPartResource
 
             public OutfitBlock(int apiVersion, EventHandler handler, CountedTGIBlockList tgiList, uint version) : base(apiVersion, handler) { this.tgiList = tgiList; this.version = version; }
             public OutfitBlock(int apiVersion, EventHandler handler, Stream s, CountedTGIBlockList tgiList, uint version) : base(apiVersion, handler) { this.tgiList = tgiList; this.version = version; Parse(s); }
-            
+
             protected void Parse(Stream s)
             {
                 BinaryReader r = new BinaryReader(s);
@@ -509,7 +509,7 @@ namespace CASPartResource
             }
         }
 
-        public class OutfitBlockList: DependentList<OutfitBlock>
+        public class OutfitBlockList : DependentList<OutfitBlock>
         {
             private CountedTGIBlockList tgiList;
             private uint version;
@@ -615,7 +615,7 @@ namespace CASPartResource
             protected override void WriteElement(Stream s, CoatOverlayReference element) { throw new NotImplementedException(); }
             #endregion
         }
-        
+
         public class CoatOverlayReference : AHandlerElement, IEquatable<CoatOverlayReference>
         {
             public CoatOverlayReference(int apiVersion, EventHandler handler) : base(apiVersion, handler) { }

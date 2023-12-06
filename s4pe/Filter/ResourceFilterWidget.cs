@@ -124,7 +124,7 @@ namespace S4PIDemoFE.Filter
                 if (values == null) return new List<KeyValuePair<string, Regex>>();
                 List<KeyValuePair<string, Regex>> f = new List<KeyValuePair<string, Regex>>();
                 foreach (string s in fields) if (values[s].Filter != null && !values[s].Filter.ToString().Equals("^.*$"))
-                    f.Add(new KeyValuePair<string, Regex>(s, values[s].Filter));
+                        f.Add(new KeyValuePair<string, Regex>(s, values[s].Filter));
                 return f;
             }
             set

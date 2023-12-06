@@ -65,11 +65,11 @@ namespace StblResource
         public override AHandlerElement Clone(EventHandler handler)
         {
             StringEntry clone = new StringEntry(this.RecommendedApiVersion, handler)
-                                {
-                                    keyHash = this.keyHash,
-                                    flags = this.flags,
-                                    stringValue = this.stringValue
-                                };
+            {
+                keyHash = this.keyHash,
+                flags = this.flags,
+                stringValue = this.stringValue
+            };
             clone.UpdateEntrySize();
 
             return clone;

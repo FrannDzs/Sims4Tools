@@ -21,7 +21,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using s4pi.Interfaces;
- 
+
 namespace CatalogResource
 {
     public class CFLRResource : AResource
@@ -90,7 +90,7 @@ namespace CatalogResource
         public CountedTGIBlockList MaterialList
         {
             get { return matdList; }
-            set { if (matdList != value) { matdList = new CountedTGIBlockList(this.OnResourceChanged,TGIBlock.Order.ITG, value); this.OnResourceChanged(this, EventArgs.Empty); } }
+            set { if (matdList != value) { matdList = new CountedTGIBlockList(this.OnResourceChanged, TGIBlock.Order.ITG, value); this.OnResourceChanged(this, EventArgs.Empty); } }
         }
         [ElementPriority(26)]
         public ColorList Colors

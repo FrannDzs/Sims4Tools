@@ -32,7 +32,7 @@ namespace CASPartResource
     {
         const int recommendedApiVersion = 1;
         public override int RecommendedApiVersion { get { return recommendedApiVersion; } }
-        
+
 
 
         static bool checking = s4pi.Settings.Settings.Checking;
@@ -213,7 +213,7 @@ namespace CASPartResource
 
         #region Content Fields
         [ElementPriority(0)]
-        public uint Version { get { return version; } set { if (value != version)version = value; OnResourceChanged(this, EventArgs.Empty); } }
+        public uint Version { get { return version; } set { if (value != version) version = value; OnResourceChanged(this, EventArgs.Empty); } }
         [ElementPriority(1)]
         public uint TGIoffset { get { return tgiOffset; } }
         [ElementPriority(2)]
@@ -287,8 +287,9 @@ namespace CASPartResource
         [ElementPriority(35), TGIBlockListContentField("TGIList")]
         public byte SpecularMapKey { get { return specularMapKey; } set { if (!value.Equals(specularMapKey)) specularMapKey = value; OnResourceChanged(this, EventArgs.Empty); } }
         [ElementPriority(36)]
-        public uint SharedUVMapSpace { 
-            get { if (this.version < 0x1B) { throw new InvalidOperationException("Version not supported"); } else { return this.sharedUVMapSpace; }}
+        public uint SharedUVMapSpace
+        {
+            get { if (this.version < 0x1B) { throw new InvalidOperationException("Version not supported"); } else { return this.sharedUVMapSpace; } }
             set { if (version < 0x1B) { throw new InvalidOperationException("Version not Supported"); } this.sharedUVMapSpace = value; }
         }
 

@@ -45,7 +45,7 @@ namespace CatalogResource
         private ulong swatchGrouping;
         private ColorList colors;
         private byte unk05;
-        
+
         #endregion Attributes =============================================
 
         #region Content Fields
@@ -164,7 +164,7 @@ namespace CatalogResource
             this.hash01 = br.ReadUInt32();
             this.hash02 = br.ReadUInt32();
             this.hash03 = br.ReadUInt32();
-            this.refList = new CSTR_references(kRecommendedApiVersion,this.OnResourceChanged,s);
+            this.refList = new CSTR_references(kRecommendedApiVersion, this.OnResourceChanged, s);
             this.unk01 = br.ReadByte();
             this.unk02 = br.ReadByte();
             this.unk03 = br.ReadByte();
@@ -294,7 +294,7 @@ namespace CatalogResource
             public CSTR_references(int apiVersion, EventHandler handler, TGIBlock modlRef01, TGIBlock modlRef02, TGIBlock modlRef03, TGIBlock unkRef01, TGIBlock wallRef, TGIBlock objRef)
                 : base(apiVersion, handler)
             {
-                this.modlRef01 = new TGIBlock(kRecommendedApiVersion,handler,TGIBlock.Order.ITG,modlRef01);
+                this.modlRef01 = new TGIBlock(kRecommendedApiVersion, handler, TGIBlock.Order.ITG, modlRef01);
                 this.modlRef02 = new TGIBlock(kRecommendedApiVersion, handler, TGIBlock.Order.ITG, modlRef02);
                 this.modlRef03 = new TGIBlock(kRecommendedApiVersion, handler, TGIBlock.Order.ITG, modlRef03);
                 this.unkRef01 = new TGIBlock(kRecommendedApiVersion, handler, TGIBlock.Order.ITG, unkRef01);

@@ -35,7 +35,7 @@ namespace System.Configuration
     {
         #region Template XML
         /* Define some static strings later used in our XML creation */
-        
+
         // XML Root node
         private const string XMLROOT = "configuration";
 
@@ -99,7 +99,7 @@ namespace System.Configuration
             }
         }
         #endregion
-        
+
         /// <summary>
         /// Initializes the provider.
         /// </summary>
@@ -343,8 +343,8 @@ namespace System.Configuration
                         case SettingsSerializeAs.Binary:
                         default:
                             throw new NotSupportedException();
-                        //retVal = "";
-                        //break;
+                            //retVal = "";
+                            //break;
                     }
                 }
                 else
@@ -378,7 +378,7 @@ namespace System.Configuration
                     case SettingsSerializeAs.Binary:
                     default:
                         throw new NotSupportedException();
-                    //break;
+                        //break;
                 }
 
             }
@@ -411,7 +411,7 @@ namespace System.Configuration
                     case SettingsSerializeAs.Binary:
                     default:
                         throw new NotSupportedException();
-                    //break;
+                        //break;
                 }
 
                 // Append this node to the application settings node (<Appname.Properties.Settings>)

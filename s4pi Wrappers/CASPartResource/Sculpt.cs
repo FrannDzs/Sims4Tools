@@ -170,9 +170,9 @@ namespace CASPartResource
                 get { return this.ValueBuilder; }
             }
 
-            public override List<string> ContentFields 
-            { 
-                get { return GetContentFields(requestedApiVersion, this.GetType()); } 
+            public override List<string> ContentFields
+            {
+                get { return GetContentFields(requestedApiVersion, this.GetType()); }
             }
 
             public bool Equals(ObjectData other)
@@ -183,15 +183,15 @@ namespace CASPartResource
             [ElementPriority(0)]
             public uint Position
             {
-                get { return this.position; } 
-                set { if (this.position != value) { this.OnElementChanged(); this.position = value; } } 
+                get { return this.position; }
+                set { if (this.position != value) { this.OnElementChanged(); this.position = value; } }
             }
 
             [ElementPriority(1)]
             public uint Length
             {
-                get { return this.length; } 
-                set { if (this.length != value) { this.OnElementChanged(); this.length = value; } } 
+                get { return this.length; }
+                set { if (this.length != value) { this.OnElementChanged(); this.length = value; } }
             }
         }
 

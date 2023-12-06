@@ -76,11 +76,11 @@ namespace s4pi.Extensions
         public static implicit operator TGIN(AResourceKey value)
         {
             TGIN res = new TGIN
-                       {
-                           ResType = value.ResourceType,
-                           ResGroup = value.ResourceGroup,
-                           ResInstance = value.Instance
-                       };
+            {
+                ResType = value.ResourceType,
+                ResGroup = value.ResourceGroup,
+                ResInstance = value.Instance
+            };
             return res;
         }
 

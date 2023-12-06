@@ -337,7 +337,7 @@ namespace CatalogResource
             }
         }
         protected virtual object GroupingID { get; set; }
-        
+
         #endregion
     }
 }

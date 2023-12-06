@@ -23,7 +23,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using DDSHeader = s4pi.ImageResource.RLEResource.RLEInfo; // need to be improved
-using s4pi.Interfaces; 
+using s4pi.Interfaces;
 
 namespace s4pi.ImageResource
 {
@@ -123,7 +123,7 @@ namespace s4pi.ImageResource
                     throw new Exception("Not supported format. Read " + header.pixelFormat.Fourcc.ToString());
             }
 
-            if(this.isShuffled)
+            if (this.isShuffled)
             {
                 input.Position = 0;
                 BinaryReader r = new BinaryReader(input);
@@ -143,22 +143,22 @@ namespace s4pi.ImageResource
                 this.isShuffled = true;
                 this.data = ms.ToArray();
             }
-            
-        }        
+
+        }
 
         private static void Shuffle(DDSHeader header, Stream input, Stream output)
         {
             BinaryWriter w = new BinaryWriter(output);
             BinaryReader r = new BinaryReader(input);
             input.Position = 128;
-            if(header.pixelFormat.Fourcc == FourCC.DST1)
+            if (header.pixelFormat.Fourcc == FourCC.DST1)
             {
-                using(MemoryStream block1 = new MemoryStream(), block2 = new MemoryStream())
+                using (MemoryStream block1 = new MemoryStream(), block2 = new MemoryStream())
                 {
                     BinaryWriter w1 = new BinaryWriter(block1), w2 = new BinaryWriter(block2);
                     int count = ((int)input.Length - 128) / 8;
 
-                    for(int i = 0; i < count; i++)
+                    for (int i = 0; i < count; i++)
                     {
                         w1.Write(r.ReadBytes(4));
                         w2.Write(r.ReadBytes(4));
@@ -168,13 +168,13 @@ namespace s4pi.ImageResource
                     w.Write(block2.ToArray());
                 }
             }
-            else if(header.pixelFormat.Fourcc == FourCC.DST3)
+            else if (header.pixelFormat.Fourcc == FourCC.DST3)
             {
                 throw new Exception("No sample yet");
             }
-            else if(header.pixelFormat.Fourcc == FourCC.DST5) // dst5
+            else if (header.pixelFormat.Fourcc == FourCC.DST5) // dst5
             {
-                using(MemoryStream ms0 = new MemoryStream(), ms1 = new MemoryStream(), ms2 = new MemoryStream(), ms3 = new MemoryStream())
+                using (MemoryStream ms0 = new MemoryStream(), ms1 = new MemoryStream(), ms2 = new MemoryStream(), ms3 = new MemoryStream())
                 {
                     BinaryWriter w0 = new BinaryWriter(ms0);
                     BinaryWriter w1 = new BinaryWriter(ms1);
@@ -196,7 +196,7 @@ namespace s4pi.ImageResource
                     w.Write(ms3.ToArray());
 
                 }
-                
+
             }
 
         }
@@ -245,7 +245,7 @@ namespace s4pi.ImageResource
 
                 throw new NotImplementedException("no samples");
             }
-            else if (header.pixelFormat.Fourcc ==  FourCC.DST5) // DST5
+            else if (header.pixelFormat.Fourcc == FourCC.DST5) // DST5
             {
                 header.pixelFormat.Fourcc = FourCC.DXT5;
                 w.Write(0x20534444);

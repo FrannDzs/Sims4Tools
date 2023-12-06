@@ -21,7 +21,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using s4pi.Interfaces;
- 
+
 namespace CatalogResource
 {
     public class CFLTResource : AResource
@@ -64,13 +64,13 @@ namespace CatalogResource
         public TGIBlock TRIMRef
         {
             get { return trimRef; }
-            set { if (!trimRef.Equals( value)) { trimRef = new TGIBlock(kRecommendedApiVersion, this.OnResourceChanged, TGIBlock.Order.ITG, value); this.OnResourceChanged(this, EventArgs.Empty); } }
+            set { if (!trimRef.Equals(value)) { trimRef = new TGIBlock(kRecommendedApiVersion, this.OnResourceChanged, TGIBlock.Order.ITG, value); this.OnResourceChanged(this, EventArgs.Empty); } }
         }
         [ElementPriority(4)]
         public uint MaterialVariant
         {
             get { return materialVariant; }
-            set { if (materialVariant != value) { materialVariant = value; this.OnResourceChanged(this, EventArgs.Empty); } } 
+            set { if (materialVariant != value) { materialVariant = value; this.OnResourceChanged(this, EventArgs.Empty); } }
         }
         [ElementPriority(5)]
         public TGIBlock MODLRef
@@ -88,7 +88,7 @@ namespace CatalogResource
         public ColorList Colors
         {
             get { return colors; }
-            set { if (!colors.Equals( value)) { colors = new ColorList(this.OnResourceChanged, value); this.OnResourceChanged(this, EventArgs.Empty); } }
+            set { if (!colors.Equals(value)) { colors = new ColorList(this.OnResourceChanged, value); this.OnResourceChanged(this, EventArgs.Empty); } }
         }
         [ElementPriority(8)]
         public uint Unk02

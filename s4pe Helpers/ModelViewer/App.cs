@@ -18,21 +18,21 @@ namespace s3piwrappers.ModelViewer
             }
             var app = new Application();
 
-//            try
-//            {
-//                var self = Process.GetCurrentProcess();
-//                var caller = self.GetParent();
-//                if (caller != null)
-//                {
-//                    caller.EnableRaisingEvents = true;
-//                    caller.Exited += (sender, eventArgs) => self.CloseMainWindow(); ;
-//                }
-//            }
-//            catch
-//            {
-//                MessageBox.Show(
-//                    "Unable to locate parent process.  If this was started through another program, you will have to close it manually.");
-//            }
+            //            try
+            //            {
+            //                var self = Process.GetCurrentProcess();
+            //                var caller = self.GetParent();
+            //                if (caller != null)
+            //                {
+            //                    caller.EnableRaisingEvents = true;
+            //                    caller.Exited += (sender, eventArgs) => self.CloseMainWindow(); ;
+            //                }
+            //            }
+            //            catch
+            //            {
+            //                MessageBox.Show(
+            //                    "Unable to locate parent process.  If this was started through another program, you will have to close it manually.");
+            //            }
             var win = new MainWindow(rcol);
             for (int i = 1; i < args.Length; i++)
             {

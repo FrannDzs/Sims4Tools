@@ -113,7 +113,7 @@ namespace TerrainMeshResource
             for (int i = 0; i < this.indices.Length; i++) { bw.Write(this.indices[i]); }
 
             this.passes.UnParse(ms);
-            
+
             bw.Flush();
             return ms;
         }
@@ -230,7 +230,8 @@ namespace TerrainMeshResource
 
             [ElementPriority(0)]
             public Int16 X
-            {   get { return this.x; }
+            {
+                get { return this.x; }
                 set { if (!value.Equals(this.x)) { this.x = value; this.OnElementChanged(); } }
             }
 

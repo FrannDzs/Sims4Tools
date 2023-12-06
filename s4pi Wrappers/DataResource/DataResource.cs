@@ -1210,9 +1210,9 @@ namespace s4pi.DataResource
             [ElementPriority(5)]
             public FieldDataTypeFlags DataType
             {
-                get 
+                get
                 {
-                    return this.dataType; 
+                    return this.dataType;
                 }
                 set
                 {

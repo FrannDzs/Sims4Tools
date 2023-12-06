@@ -41,7 +41,7 @@ namespace CatalogResource
         #endregion Attributes =============================================================
 
         #region Content Fields
-        
+
         [ElementPriority(0)]
         public string TypeOfResource
         {
@@ -103,12 +103,12 @@ namespace CatalogResource
             this.unk02 = br.ReadByte();
             if (s.Position < (s.Length))
             {
-                this.cblkEntries = new CBLKEntryList(this.OnResourceChanged, s); 
+                this.cblkEntries = new CBLKEntryList(this.OnResourceChanged, s);
                 hasCBLKEntries = true;
             }
-            else 
-            { 
-                hasCBLKEntries = false; 
+            else
+            {
+                hasCBLKEntries = false;
             }
         }
 
@@ -123,9 +123,9 @@ namespace CatalogResource
             bw.Write(this.unk02);
             if (hasCBLKEntries == true)
             {
-                if (this.cblkEntries == null) 
-                { 
-                    this.cblkEntries = new CBLKEntryList(this.OnResourceChanged); 
+                if (this.cblkEntries == null)
+                {
+                    this.cblkEntries = new CBLKEntryList(this.OnResourceChanged);
                 }
                 this.cblkEntries.UnParse(s);
             }
@@ -185,7 +185,7 @@ namespace CatalogResource
             byte byte01;
             byte byte02;
             byte byte03;
-            
+
             public override int RecommendedApiVersion
             {
                 get { return kRecommendedApiVersion; }
@@ -197,13 +197,13 @@ namespace CatalogResource
             public byte Byte01
             {
                 get { return byte01; }
-                set { if (byte01 != value) {byte01 = value; OnElementChanged(); }}
+                set { if (byte01 != value) { byte01 = value; OnElementChanged(); } }
             }
             [ElementPriority(1)]
             public byte Byte02
             {
                 get { return byte02; }
-                set { if (byte02 != value) {byte02 = value; OnElementChanged(); }}
+                set { if (byte02 != value) { byte02 = value; OnElementChanged(); } }
             }
             [ElementPriority(1)]
             public byte Byte03
@@ -277,7 +277,7 @@ namespace CatalogResource
 
             #endregion DataIO
 
-        
+
         }
 
         #endregion Subclasses =========================

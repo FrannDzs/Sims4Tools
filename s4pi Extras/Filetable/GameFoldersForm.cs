@@ -186,7 +186,7 @@ namespace s4pi.Filetable
                     }
                     else
                         if (ckbEnabled != null)
-                            ckbEnabled.Visible = false;
+                        ckbEnabled.Visible = false;
                     tbInstFolder.Text = this[game] == null ? "(not set)" : this[game];
                     tbInstFolder.BackColor = tbInstFolder.Text == "(not set)" ? SystemColors.ControlDark : SystemColors.Control;
                     btnEdit.Enabled = ckbEnabled == null || !ckbEnabled.Visible || ckbEnabled.Checked;

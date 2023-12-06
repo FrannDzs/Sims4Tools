@@ -632,7 +632,7 @@ namespace s4pi.GenericRCOLResource
             : base(apiVersion, handler, field) { _ParentTGIBlocks = ParentTGIBlocks; _RCOLTag = RCOLTag; }
 
         public ElementTextureRef(int apiVersion, EventHandler handler, DependentList<TGIBlock> ParentTGIBlocks = null, string RCOLTag = "MATD")
-            : this(apiVersion, handler, (FieldType)0, ParentTGIBlocks, RCOLTag) 
+            : this(apiVersion, handler, (FieldType)0, ParentTGIBlocks, RCOLTag)
         {
             if (_RCOLTag == "GEOM")
             {
@@ -655,7 +655,7 @@ namespace s4pi.GenericRCOLResource
             : this(apiVersion, handler, field, ParentTGIBlocks, RCOLTag) { Parse(s); }
 
         public ElementTextureRef(int apiVersion, EventHandler handler, ElementTextureRef basis, DependentList<TGIBlock> ParentTGIBlocks = null, string RCOLTag = null)
-            : this(apiVersion, handler, basis.field, ParentTGIBlocks ?? basis._ParentTGIBlocks, RCOLTag ?? basis._RCOLTag) 
+            : this(apiVersion, handler, basis.field, ParentTGIBlocks ?? basis._ParentTGIBlocks, RCOLTag ?? basis._RCOLTag)
         {
             if (_RCOLTag == "GEOM")
             {
@@ -815,10 +815,10 @@ namespace s4pi.GenericRCOLResource
             set { if (_RCOLTag != "GEOM") throw new InvalidOperationException("Use Data not Index except for GEOM"); if (index != value) { index = value; OnElementChanged(); } }
         }
         [ElementPriority(11)]
-        public IResourceKey Key 
+        public IResourceKey Key
         {
             get { if (_RCOLTag == "GEOM") throw new InvalidOperationException("Use Index not Key for GEOM"); return key; }
-            set { if (_RCOLTag == "GEOM") throw new InvalidOperationException("Use Index not Key for GEOM"); if (!key.Equals(value)) { key = new TGIBlock(0, handler, "ITG", value); OnElementChanged(); } } 
+            set { if (_RCOLTag == "GEOM") throw new InvalidOperationException("Use Index not Key for GEOM"); if (!key.Equals(value)) { key = new TGIBlock(0, handler, "ITG", value); OnElementChanged(); } }
         }
         #endregion
     }

@@ -126,7 +126,7 @@ namespace s4pi.Miscellaneous
             w.Write(uint01);
             w.Write(uintlong02);
             w.Write(uint03);
-            if (this.myself== null)
+            if (this.myself == null)
             {
                 this.myself = new TGIBlock(recommendedApiVersion, this.OnResourceChanged, TGIBlock.Order.ITG);
             }
@@ -172,7 +172,7 @@ namespace s4pi.Miscellaneous
         [ElementPriority(5)]
         public TGIBlock SelfReference
         {
-            get { return myself;  }
+            get { return myself; }
             set { myself = value; this.OnResourceChanged(this, EventArgs.Empty); }
         }
         [ElementPriority(6)]

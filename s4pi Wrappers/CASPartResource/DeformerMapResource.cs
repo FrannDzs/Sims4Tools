@@ -33,7 +33,7 @@ namespace CASPartResource
     {
         const int recommendedApiVersion = 1;
         public override int RecommendedApiVersion { get { return recommendedApiVersion; } }
-        
+
         static bool checking = s4pi.Settings.Settings.Checking;
 
         private uint version;
@@ -72,17 +72,17 @@ namespace CASPartResource
 
         private ScanLine[] scanLines;
 
-      //  public Bitmap SkinImage { get
-      //      {
-      //          if (this.maxCol > 0) return (Bitmap)Bitmap.FromStream(this.ToBitMap(OutputType.Skin));
-      //          else return new Bitmap(1, 1); ;
-      //      }
-      //  }
+        //  public Bitmap SkinImage { get
+        //      {
+        //          if (this.maxCol > 0) return (Bitmap)Bitmap.FromStream(this.ToBitMap(OutputType.Skin));
+        //          else return new Bitmap(1, 1); ;
+        //      }
+        //  }
 
-      //  public string Value { get { return ValueBuilder; } }
+        //  public string Value { get { return ValueBuilder; } }
 
         public DeformerMapResource(int APIversion, Stream s) : base(APIversion, s) { if (stream == null) { stream = UnParse(); OnResourceChanged(this, EventArgs.Empty); } stream.Position = 0; Parse(stream); }
-        
+
         #region Data I/O
         void Parse(Stream s)
         {
@@ -225,7 +225,7 @@ namespace CASPartResource
 
             #region Content Fields
             [ElementPriority(0)]
-            public UInt16  ScanLineDataSize { get { return this.scanLineDataSize; } }
+            public UInt16 ScanLineDataSize { get { return this.scanLineDataSize; } }
             [ElementPriority(1)]
             public CompressionType Compression { get { return this.isCompressed; } }
             [ElementPriority(2)]
@@ -257,7 +257,8 @@ namespace CASPartResource
                         res.Remove("DataPosIndexes");
                         res.Remove("RLEArrayOfPixels");
                     }
-                    else if (this.isCompressed == CompressionType.RLE)                {
+                    else if (this.isCompressed == CompressionType.RLE)
+                    {
                         res.Remove("UncompressedPixels");
                     }
                     else if (this.isCompressed == CompressionType.NoData)
@@ -289,7 +290,7 @@ namespace CASPartResource
                     this.robeChannel = (RobeChannel)r.ReadByte();
                 }
 
-                if (isCompressed == CompressionType.None) 
+                if (isCompressed == CompressionType.None)
                 {
                     if (robeChannel == RobeChannel.ROBECHANNEL_PRESENT)
                     {
@@ -300,7 +301,7 @@ namespace CASPartResource
                         this.uncompressedPixels = r.ReadBytes(this.width * 3);
                     }
                 }
-                else if (isCompressed == CompressionType.RLE) 
+                else if (isCompressed == CompressionType.RLE)
                 {
                     this.numIndexes = r.ReadByte();
                     this.pixelPosIndexes = new UInt16[numIndexes];
@@ -335,8 +336,8 @@ namespace CASPartResource
 
             public bool Equals(ScanLine other)
             {
-                if (! (this.scanLineDataSize == other.scanLineDataSize && 
-                    this.isCompressed == other.isCompressed && 
+                if (!(this.scanLineDataSize == other.scanLineDataSize &&
+                    this.isCompressed == other.isCompressed &&
                     this.robeChannel == other.robeChannel)) return false;
                 if (this.isCompressed == CompressionType.RLE)
                 {
@@ -350,7 +351,7 @@ namespace CASPartResource
                     return (this.uncompressedPixels != null ? this.uncompressedPixels : new byte[0]).SequenceEqual((other.uncompressedPixels != null ? other.uncompressedPixels : new byte[0]));
                 }
             }
-        }        
+        }
         #endregion
 
         #region Conversion
@@ -558,7 +559,7 @@ namespace CASPartResource
             {
                 for (int j = 0; j < width * 3; j++)
                 {
-                    w.Write(type == OutputType.Robe? pixelArrayRobe[sourcePosition++] : pixelArraySkinTight[sourcePosition++]);
+                    w.Write(type == OutputType.Robe ? pixelArrayRobe[sourcePosition++] : pixelArraySkinTight[sourcePosition++]);
                 }
 
                 for (int j = 0; j < padding; j++)
@@ -631,7 +632,7 @@ namespace CASPartResource
                 }
                 return res;
             }
-        } 
+        }
         #endregion
 
     }

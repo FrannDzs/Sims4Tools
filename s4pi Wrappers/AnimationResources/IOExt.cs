@@ -64,7 +64,7 @@ namespace s4pi.Animation
         {
             var padding = length - s.Length;
             bw.Write(Encoding.ASCII.GetBytes(s));
-            for(var i =0; i<padding; i++)
+            for (var i = 0; i < padding; i++)
                 bw.Write((byte)0);
 
         }

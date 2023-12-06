@@ -118,7 +118,8 @@ namespace s4pi.GenericRCOLResource
                 , LightSourceTypeFactory.create(APIversion, handler,
                     LightSourceType.Unknown,
                     new GeneralLightSourceType(0, null, new float[] { 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, }))
-                ) { }
+                )
+            { }
             public LightSource(int APIversion, EventHandler handler, LightSource basis)
                 : this(APIversion, handler
                 , basis.lightSourceType
@@ -126,7 +127,8 @@ namespace s4pi.GenericRCOLResource
                 , basis.color
                 , basis.intensity
                 , basis.lightSourceData
-                ) { }
+                )
+            { }
             public LightSource(int APIversion, EventHandler handler
                 , LightSourceType lightSourceType
                 , Vertex transform
@@ -417,21 +419,24 @@ namespace s4pi.GenericRCOLResource
                     , lightSourceData.ElementAt(3)
                     , lightSourceData.ElementAt(4)
                     , lightSourceData.Skip(5)
-                    ) { }
+                    )
+                { }
                 public SpotLightSourceType(int APIversion, EventHandler handler)
                     : this(APIversion, handler
                     , new Vertex(APIversion, handler, 0f, 0f, 0f)
                     , 0f
                     , 0f
                     , new float[] { 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, }
-                    ) { }
+                    )
+                { }
                 public SpotLightSourceType(int APIversion, EventHandler handler, SpotLightSourceType basis)
                     : this(APIversion, handler
                     , basis.location
                     , basis.falloffAngle
                     , basis.blurScale
                     , basis.unusedLightSourceData
-                    ) { }
+                    )
+                { }
                 public SpotLightSourceType(int APIversion, EventHandler handler
                     , Vertex location
                     , Single falloffAngle
@@ -517,7 +522,8 @@ namespace s4pi.GenericRCOLResource
                     , lightSourceData.ElementAt(5)
                     , new RGB(APIversion, handler, lightSourceData.ElementAt(6), lightSourceData.ElementAt(7), lightSourceData.ElementAt(8))
                     , lightSourceData.Skip(9)
-                    ) { }
+                    )
+                { }
                 public LampShadeLightSourceType(int APIversion, EventHandler handler)
                     : this(APIversion, handler
                     , new Vertex(APIversion, handler, 0f, 0f, 0f)
@@ -526,7 +532,8 @@ namespace s4pi.GenericRCOLResource
                     , 0f
                     , new RGB(APIversion, handler, 0f, 0f, 0f)
                     , new float[] { 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, }
-                    ) { }
+                    )
+                { }
                 public LampShadeLightSourceType(int APIversion, EventHandler handler, LampShadeLightSourceType basis)
                     : this(APIversion, handler
                     , basis.location
@@ -535,7 +542,8 @@ namespace s4pi.GenericRCOLResource
                     , basis.bottomAngle
                     , basis.shadeColor
                     , basis.unusedLightSourceData
-                    ) { }
+                    )
+                { }
                 public LampShadeLightSourceType(int APIversion, EventHandler handler
                     , Vertex location
                     , Single falloffAngle
@@ -629,21 +637,24 @@ namespace s4pi.GenericRCOLResource
                     , lightSourceData.ElementAt(3)
                     , lightSourceData.ElementAt(4)
                     , lightSourceData.Skip(5)
-                    ) { }
+                    )
+                { }
                 public TubeLightSourceType(int APIversion, EventHandler handler)
                     : this(APIversion, handler
                     , new Vertex(APIversion, handler, 0f, 0f, 0f)
                     , 0f
                     , 0f
                     , new float[] { 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, }
-                    ) { }
+                    )
+                { }
                 public TubeLightSourceType(int APIversion, EventHandler handler, TubeLightSourceType basis)
                     : this(APIversion, handler
                     , basis.location
                     , basis.tubeLength
                     , basis.blurScale
                     , basis.unusedLightSourceData
-                    ) { }
+                    )
+                { }
                 public TubeLightSourceType(int APIversion, EventHandler handler
                     , Vertex location
                     , Single tubeLength
@@ -731,7 +742,8 @@ namespace s4pi.GenericRCOLResource
                     , lightSourceData.ElementAt(8)
                     , lightSourceData.ElementAt(9)
                     , lightSourceData.Skip(10)
-                    ) { }
+                    )
+                { }
                 public SquareWindowLightSourceType(int APIversion, EventHandler handler)
                     : this(APIversion, handler
                     , new Vertex(APIversion, handler, 0f, 0f, 0f)
@@ -741,7 +753,8 @@ namespace s4pi.GenericRCOLResource
                     , 0f
                     , 0f
                     , new float[] { 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, }
-                    ) { }
+                    )
+                { }
                 public SquareWindowLightSourceType(int APIversion, EventHandler handler, SquareWindowLightSourceType basis)
                     : this(APIversion, handler
                     , basis.location
@@ -751,7 +764,8 @@ namespace s4pi.GenericRCOLResource
                     , basis.falloffAngle
                     , basis.windowTopBottomAngle
                     , basis.unusedLightSourceData
-                    ) { }
+                    )
+                { }
                 public SquareWindowLightSourceType(int APIversion, EventHandler handler
                     , Vertex location
                     , Vertex right
@@ -851,21 +865,24 @@ namespace s4pi.GenericRCOLResource
                     , new Vertex(APIversion, handler, lightSourceData.ElementAt(3), lightSourceData.ElementAt(4), lightSourceData.ElementAt(5))
                     , lightSourceData.ElementAt(6)
                     , lightSourceData.Skip(7)
-                    ) { }
+                    )
+                { }
                 public CircularWindowLightSourceType(int APIversion, EventHandler handler)
                     : this(APIversion, handler
                     , new Vertex(APIversion, handler, 0f, 0f, 0f)
                     , new Vertex(APIversion, handler, 0f, 0f, 0f)
                     , 0f
                     , new float[] { 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, }
-                    ) { }
+                    )
+                { }
                 public CircularWindowLightSourceType(int APIversion, EventHandler handler, CircularWindowLightSourceType basis)
                     : this(APIversion, handler
                     , basis.location
                     , basis.right
                     , basis.radius
                     , basis.unusedLightSourceData
-                    ) { }
+                    )
+                { }
                 public CircularWindowLightSourceType(int APIversion, EventHandler handler
                     , Vertex location
                     , Vertex right
@@ -1017,7 +1034,8 @@ namespace s4pi.GenericRCOLResource
             #region Constructors
             public Occluder(int APIversion, EventHandler handler)
                 : this(APIversion, handler, Occluder.OccluderType.Disc,
-                    new Vertex(0, null, 0f, 0f, 0f), new Vertex(0, null, 0f, 0f, 0f), new Vertex(0, null, 0f, 0f, 0f), new Vertex(0, null, 0f, 0f, 0f), 0f) { }
+                    new Vertex(0, null, 0f, 0f, 0f), new Vertex(0, null, 0f, 0f, 0f), new Vertex(0, null, 0f, 0f, 0f), new Vertex(0, null, 0f, 0f, 0f), 0f)
+            { }
             public Occluder(int APIversion, EventHandler handler, Stream s) : base(APIversion, handler) { Parse(s); }
             public Occluder(int APIversion, EventHandler handler, Occluder basis)
                 : this(APIversion, handler, basis.occluderType, basis.origin, basis.normal, basis.xAxis, basis.yAxis, basis.pairOffset) { }

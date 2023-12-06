@@ -187,7 +187,7 @@ namespace CatalogResource
             #region Attributes
             MainWallHeight matdLabel;
             TGIBlock matdRef;
-            
+
             public override int RecommendedApiVersion
             {
                 get { return kRecommendedApiVersion; }
@@ -275,7 +275,7 @@ namespace CatalogResource
             }
 
             #endregion subclasses
-        
+
         }
 
         public class WallImgGroupList : DependentList<WallImgGroupEntry>

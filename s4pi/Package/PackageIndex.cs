@@ -98,7 +98,7 @@ namespace s4pi.Package
             {
                 r = new BinaryReader(this[0].Stream);
             }
-            
+
             r.BaseStream.Position = 4;
             w.Write(indextype);
             if ((indextype & 0x01) != 0) w.Write(r.ReadUInt32()); else r.BaseStream.Position += 4;
@@ -131,8 +131,9 @@ namespace s4pi.Package
         /// <returns>Matching entry</returns>
         public IResourceIndexEntry this[uint type, uint group, ulong instance]
         {
-            get {
-                foreach(IResourceIndexEntry rie in this)
+            get
+            {
+                foreach (IResourceIndexEntry rie in this)
                 {
                     if (rie.ResourceType != type) continue;
                     if (rie.ResourceGroup != group) continue;

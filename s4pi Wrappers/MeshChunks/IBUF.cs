@@ -53,7 +53,7 @@ namespace meshExpImp.ModelBlocks
         public int AddIndices(Int32[] indices)
         {
             int starts = mBuffer.Length;
-            Int32[] newBuffer = new int[indices.Length+mBuffer.Length];
+            Int32[] newBuffer = new int[indices.Length + mBuffer.Length];
             Array.Copy(mBuffer, 0, newBuffer, 0, mBuffer.Length);
             Array.Copy(indices, 0, newBuffer, 0, indices.Length);
             mBuffer = newBuffer;
@@ -187,7 +187,7 @@ namespace meshExpImp.ModelBlocks
             mDisplayListUsage = br.ReadUInt32();
 
             bool is32Bit = (mFlags & FormatFlags.Uses32BitIndices) != 0;
-            mBuffer = new Int32[(s.Length-s.Position) / (is32Bit ? 4 : 2)];
+            mBuffer = new Int32[(s.Length - s.Position) / (is32Bit ? 4 : 2)];
             Int32 last = 0;
             for (int i = 0; i < mBuffer.Length; i++)
             {
@@ -222,7 +222,7 @@ namespace meshExpImp.ModelBlocks
             bw.Write(mVersion);
             bw.Write((UInt32)mFlags);
             bw.Write(mDisplayListUsage);
-            
+
             bool isDifferenced = (mFlags & FormatFlags.DifferencedIndices) != 0;
             Int32 last = 0;
             for (int i = 0; i < mBuffer.Length; i++)

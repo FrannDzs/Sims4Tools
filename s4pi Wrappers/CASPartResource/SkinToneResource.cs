@@ -233,7 +233,7 @@ namespace CASPartResource
             }
 
             [ElementPriority(0)]
-            public ulong TextureReference 
+            public ulong TextureReference
             {
                 get { return this.textureReference; }
                 set { if (this.textureReference != value) { this.OnElementChanged(); this.textureReference = value; } }
@@ -724,7 +724,7 @@ namespace CASPartResource
     {
         public SkinToneResourceHandler()
         {
-            this.Add(typeof (SkinToneResource), new List<string>(new string[] { "0x0354796A", }));
+            this.Add(typeof(SkinToneResource), new List<string>(new string[] { "0x0354796A", }));
         }
     }
 }

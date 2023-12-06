@@ -128,7 +128,7 @@ namespace s3piwrappers.ModelViewer
                         {
                             byte[] buffer = new byte[fs.Length];
                             fs.Read(buffer, 0, buffer.Length);
-                            memstream.Write(buffer,0, buffer.Length);
+                            memstream.Write(buffer, 0, buffer.Length);
                         }
                         bmp.BeginInit();
                         bmp.StreamSource = memstream;
@@ -169,14 +169,14 @@ namespace s3piwrappers.ModelViewer
 
 
             mCheckerBrush = new ImageBrush
-                {
-                    Stretch = Stretch.Fill,
-                    TileMode = TileMode.Tile,
-                    ViewboxUnits = BrushMappingMode.RelativeToBoundingBox,
-                    ViewportUnits = BrushMappingMode.Absolute
-                };
+            {
+                Stretch = Stretch.Fill,
+                TileMode = TileMode.Tile,
+                ViewboxUnits = BrushMappingMode.RelativeToBoundingBox,
+                ViewportUnits = BrushMappingMode.Absolute
+            };
 
-            mCheckerBrush.ImageSource = new BitmapImage(new Uri(Path.Combine(Path.GetDirectoryName(typeof (MainWindow).Assembly.Location), "checkers.png")));
+            mCheckerBrush.ImageSource = new BitmapImage(new Uri(Path.Combine(Path.GetDirectoryName(typeof(MainWindow).Assembly.Location), "checkers.png")));
             mCheckerMaterial = new DiffuseMaterial(mCheckerBrush);
 
 
@@ -184,17 +184,17 @@ namespace s3piwrappers.ModelViewer
             mGlassMaterial.Children.Add(new SpecularMaterial(Brushes.White, 100d));
 
             var shadowBrush = new ImageBrush
-                {
-                    Stretch = Stretch.Fill,
-                    TileMode = TileMode.Tile,
-                    ViewboxUnits = BrushMappingMode.RelativeToBoundingBox,
-                    ViewportUnits = BrushMappingMode.Absolute,
-                    Transform = new ScaleTransform(1, 1)
-                };
+            {
+                Stretch = Stretch.Fill,
+                TileMode = TileMode.Tile,
+                ViewboxUnits = BrushMappingMode.RelativeToBoundingBox,
+                ViewportUnits = BrushMappingMode.Absolute,
+                Transform = new ScaleTransform(1, 1)
+            };
 
             try
             {
-                shadowBrush.ImageSource = new BitmapImage(new Uri(Path.Combine(Path.GetDirectoryName(typeof (MainWindow).Assembly.Location), "dropShadow.png")));
+                shadowBrush.ImageSource = new BitmapImage(new Uri(Path.Combine(Path.GetDirectoryName(typeof(MainWindow).Assembly.Location), "dropShadow.png")));
             }
             catch (Exception e)
             {
@@ -236,7 +236,7 @@ Rotate:
         private static Dictionary<uint, string> LoadDictionary(string name)
         {
             var dict = new Dictionary<uint, string>();
-            string geostatePath = Path.Combine(Path.GetDirectoryName(typeof (App).Assembly.Location), name + ".txt");
+            string geostatePath = Path.Combine(Path.GetDirectoryName(typeof(App).Assembly.Location), name + ".txt");
             if (File.Exists(geostatePath))
             {
                 using (var sr = new StreamReader(File.OpenRead(geostatePath)))
@@ -329,7 +329,7 @@ Rotate:
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show( String.Format("Unable to load mesh id 0x{0:X8}",m.Name));
+                        MessageBox.Show(String.Format("Unable to load mesh id 0x{0:X8}", m.Name));
                     }
                 }
             }
@@ -344,24 +344,24 @@ Rotate:
                 {
                     var v = new Vertex();
 
-                    var pos = (GEOM.PositionElement) vd.Vertex.FirstOrDefault(e => e is GEOM.PositionElement);
+                    var pos = (GEOM.PositionElement)vd.Vertex.FirstOrDefault(e => e is GEOM.PositionElement);
                     if (pos != null)
                     {
-                        v.Position = new[] {pos.X, pos.Y, pos.Z};
+                        v.Position = new[] { pos.X, pos.Y, pos.Z };
                     }
 
 
-                    var norm = (GEOM.NormalElement) vd.Vertex.FirstOrDefault(e => e is GEOM.NormalElement);
+                    var norm = (GEOM.NormalElement)vd.Vertex.FirstOrDefault(e => e is GEOM.NormalElement);
                     if (norm != null)
                     {
-                        v.Normal = new[] {norm.X, norm.Y, norm.Z};
+                        v.Normal = new[] { norm.X, norm.Y, norm.Z };
                     }
 
 
-                    var uv = (GEOM.UVElement) vd.Vertex.FirstOrDefault(e => e is GEOM.UVElement);
+                    var uv = (GEOM.UVElement)vd.Vertex.FirstOrDefault(e => e is GEOM.UVElement);
                     if (uv != null)
                     {
-                        v.UV = new[] {new[] {uv.U, uv.V}};
+                        v.UV = new[] { new[] { uv.U, uv.V } };
                     }
                     verts.Add(v);
                 }
@@ -414,7 +414,7 @@ Rotate:
 
                 if (material is MATD)
                 {
-                    var matd = (MATD) material;
+                    var matd = (MATD)material;
                     return matd;
                 }
             }
@@ -434,7 +434,7 @@ Rotate:
         private static float[] GetUvScales(MATD matd)
         {
             var param = GetMATDParam<ElementFloat3>(matd, FieldType.UVScales);
-            return param != null ? new[] {param.Data0, param.Data1, param.Data2} : new[] {1f/short.MaxValue, 1f/short.MaxValue, 1f/short.MaxValue};
+            return param != null ? new[] { param.Data0, param.Data1, param.Data2 } : new[] { 1f / short.MaxValue, 1f / short.MaxValue, 1f / short.MaxValue };
         }
 
         private static GeometryModel3D DrawModel(Vertex[] verts, Int32[] indices, Material material)
@@ -461,7 +461,7 @@ Rotate:
             SceneMesh m;
             if (e.AddedItems.Count > 0)
             {
-                m = (SceneMesh) e.AddedItems[0];
+                m = (SceneMesh)e.AddedItems[0];
                 mSelectedMesh = m;
             }
             else
@@ -493,40 +493,40 @@ Rotate:
                 Material meshMaterial = null;
                 switch (mDrawMode)
                 {
-                case "Solid":
-                    meshMaterial = mSelectedMesh == sceneMesh ? mSelectedMaterial : mNonSelectedMaterial;
-                    break;
-                case "Textured":
-                    switch (sceneMesh.Shader)
-                    {
-                    case ShaderType.GlassForFences:
-                    case ShaderType.GlassForObjects:
-                    case ShaderType.GlassForObjectsTranslucent:
-                    case ShaderType.GlassForPortals:
-                    case ShaderType.GlassForRabbitHoles:
-                        meshMaterial = mGlassMaterial;
+                    case "Solid":
+                        meshMaterial = mSelectedMesh == sceneMesh ? mSelectedMaterial : mNonSelectedMaterial;
                         break;
-                    case ShaderType.ShadowMap:
-                    case ShaderType.DropShadow:
-                        meshMaterial = mShadowMapMaterial;
+                    case "Textured":
+                        switch (sceneMesh.Shader)
+                        {
+                            case ShaderType.GlassForFences:
+                            case ShaderType.GlassForObjects:
+                            case ShaderType.GlassForObjectsTranslucent:
+                            case ShaderType.GlassForPortals:
+                            case ShaderType.GlassForRabbitHoles:
+                                meshMaterial = mGlassMaterial;
+                                break;
+                            case ShaderType.ShadowMap:
+                            case ShaderType.DropShadow:
+                                meshMaterial = mShadowMapMaterial;
+                                break;
+                            default:
+                                meshMaterial = mTexturedMaterial;
+                                break;
+                        }
                         break;
-                    default:
-                        meshMaterial = mTexturedMaterial;
+                    case "UV":
+                        switch (sceneMesh.Shader)
+                        {
+                            case ShaderType.ShadowMap:
+                            case ShaderType.DropShadow:
+                                meshMaterial = mShadowMapMaterial;
+                                break;
+                            default:
+                                meshMaterial = mCheckerMaterial;
+                                break;
+                        }
                         break;
-                    }
-                    break;
-                case "UV":
-                    switch (sceneMesh.Shader)
-                    {
-                    case ShaderType.ShadowMap:
-                    case ShaderType.DropShadow:
-                        meshMaterial = mShadowMapMaterial;
-                        break;
-                    default:
-                        meshMaterial = mCheckerMaterial;
-                        break;
-                    }
-                    break;
                 }
                 if (sceneMesh.SelectedState != null && sceneMesh.SelectedState.Model != null)
                 {
@@ -551,7 +551,7 @@ Rotate:
         {
             if (e.AddedItems.Count > 0)
             {
-                var s = (SceneGeostate) e.AddedItems[0];
+                var s = (SceneGeostate)e.AddedItems[0];
                 mSelectedMesh.SelectedState = s;
             }
             UpdateMaterials();
@@ -561,7 +561,7 @@ Rotate:
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
-            var rb = (RadioButton) sender;
+            var rb = (RadioButton)sender;
             mDrawMode = rb.Content.ToString();
             UpdateMaterials();
         }

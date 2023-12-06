@@ -29,136 +29,136 @@ using System.Xml.Serialization;
 
 namespace s4pi.Resource.Commons.CatalogTags
 {
-	/// <summary>
-	/// Registry class that manages known catalog categories and tags.
-	/// </summary>
-	public class CatalogTagRegistry
-	{
-		private const string CatalogTuningFileName = "S4_03B33DDF_00000000_D89CB9186B79ACB7.xml";
+    /// <summary>
+    /// Registry class that manages known catalog categories and tags.
+    /// </summary>
+    public class CatalogTagRegistry
+    {
+        private const string CatalogTuningFileName = "S4_03B33DDF_00000000_D89CB9186B79ACB7.xml";
 
-		private static Dictionary<uint, Tag> tags;
-		private static Dictionary<uint, Tag> categories;
+        private static Dictionary<uint, Tag> tags;
+        private static Dictionary<uint, Tag> categories;
 
-		static CatalogTagRegistry()
-		{
-			ParseCategories();
-		}
+        static CatalogTagRegistry()
+        {
+            ParseCategories();
+        }
 
-		private static void ParseCategories()
-		{
-			string executingPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-			if (string.IsNullOrEmpty(executingPath))
-			{
-				throw new FileNotFoundException(string.Format("'{0}' not found in S4PE directory '{1}'.", CatalogTuningFileName, executingPath));
-			}
-			string resourcePath = Path.Combine(executingPath, CatalogTuningFileName);
-			using (var stream = File.OpenRead(resourcePath))
-			{
-				var serializer = new XmlSerializer(typeof (TagDocument));
-				var document = (TagDocument)serializer.Deserialize(stream);
+        private static void ParseCategories()
+        {
+            string executingPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            if (string.IsNullOrEmpty(executingPath))
+            {
+                throw new FileNotFoundException(string.Format("'{0}' not found in S4PE directory '{1}'.", CatalogTuningFileName, executingPath));
+            }
+            string resourcePath = Path.Combine(executingPath, CatalogTuningFileName);
+            using (var stream = File.OpenRead(resourcePath))
+            {
+                var serializer = new XmlSerializer(typeof(TagDocument));
+                var document = (TagDocument)serializer.Deserialize(stream);
 
-				var categoryListing = document.Listings.First(t => t.Name == "TagCategory");
-				var tagsListing = document.Listings.First(t => t.Name == "Tag");
+                var categoryListing = document.Listings.First(t => t.Name == "TagCategory");
+                var tagsListing = document.Listings.First(t => t.Name == "Tag");
 
-				categories = categoryListing.Elements.ToDictionary(t => t.Index, t => t);
-				tags = tagsListing.Elements.ToDictionary(t => t.Index, t => t);
-			}
-		}
+                categories = categoryListing.Elements.ToDictionary(t => t.Index, t => t);
+                tags = tagsListing.Elements.ToDictionary(t => t.Index, t => t);
+            }
+        }
 
-		/// <summary>
-		/// Fetches the matching tag for the specified <paramref name="index"/>.
-		/// </summary>
-		/// <returns>A <see cref="Tag"/> instance containing the matching value, or a default if no match was found.</returns>
-		public static Tag FetchTag(uint index)
-		{
-			return GetTagOrDefault(tags, index);
-		}
+        /// <summary>
+        /// Fetches the matching tag for the specified <paramref name="index"/>.
+        /// </summary>
+        /// <returns>A <see cref="Tag"/> instance containing the matching value, or a default if no match was found.</returns>
+        public static Tag FetchTag(uint index)
+        {
+            return GetTagOrDefault(tags, index);
+        }
 
-		/// <summary>
-		/// Fetches the matching category for the specified <paramref name="index"/>.
-		/// </summary>
-		/// <returns>A <see cref="Tag"/> instance containing the matching value, or a default if no match was found.</returns>
-		public static Tag FetchCategory(uint index)
-		{
-			return GetTagOrDefault(categories, index);
-		}
+        /// <summary>
+        /// Fetches the matching category for the specified <paramref name="index"/>.
+        /// </summary>
+        /// <returns>A <see cref="Tag"/> instance containing the matching value, or a default if no match was found.</returns>
+        public static Tag FetchCategory(uint index)
+        {
+            return GetTagOrDefault(categories, index);
+        }
 
-		private static Tag GetTagOrDefault(IDictionary<uint, Tag> dictionary, uint index)
-		{
-			Tag tag;
-			if (dictionary.TryGetValue(index, out tag))
-			{
-				return tag;
-			}
-			return new Tag { Index = index };
-		}
+        private static Tag GetTagOrDefault(IDictionary<uint, Tag> dictionary, uint index)
+        {
+            Tag tag;
+            if (dictionary.TryGetValue(index, out tag))
+            {
+                return tag;
+            }
+            return new Tag { Index = index };
+        }
 
-		/// <summary>
-		/// Returns a collection of all known <see cref="Tag"/>s.
-		/// </summary>
-		public static IEnumerable<Tag> AllTags()
-		{
-			return tags.Values;
-		}
+        /// <summary>
+        /// Returns a collection of all known <see cref="Tag"/>s.
+        /// </summary>
+        public static IEnumerable<Tag> AllTags()
+        {
+            return tags.Values;
+        }
 
-		/// <summary>
-		/// Returns a collection of all known category <see cref="Tag"/>s.
-		/// </summary>
-		public static IEnumerable<Tag> AllCategories()
-		{
-			return categories.Values;
-		}
+        /// <summary>
+        /// Returns a collection of all known category <see cref="Tag"/>s.
+        /// </summary>
+        public static IEnumerable<Tag> AllCategories()
+        {
+            return categories.Values;
+        }
 
-		/// <summary>
-		/// Returns a collection of all know category <see cref="Tag"/>s and additional 
-		/// dummy <see cref="Tag"/>s for tags that have no matching categories.
-		/// </summary>
-		public static IEnumerable<Tag> AllCategoriesWithDummiesForUnpairedTags()
-		{
-			var knownCategories = AllCategories().ToList();
+        /// <summary>
+        /// Returns a collection of all know category <see cref="Tag"/>s and additional 
+        /// dummy <see cref="Tag"/>s for tags that have no matching categories.
+        /// </summary>
+        public static IEnumerable<Tag> AllCategoriesWithDummiesForUnpairedTags()
+        {
+            var knownCategories = AllCategories().ToList();
 
-			foreach (Tag tag in AllTags())
-			{
-				int index = tag.Value.IndexOf('_');
-				if (index != -1)
-				{
-					string prefix = tag.Value.Substring(0, index);
-					if (!knownCategories.Any(c => c.Value.Equals(prefix, StringComparison.OrdinalIgnoreCase)))
-					{
-						knownCategories.Add(new Tag { Index = uint.MaxValue, Value = prefix });
-					}
-				}
-			}
+            foreach (Tag tag in AllTags())
+            {
+                int index = tag.Value.IndexOf('_');
+                if (index != -1)
+                {
+                    string prefix = tag.Value.Substring(0, index);
+                    if (!knownCategories.Any(c => c.Value.Equals(prefix, StringComparison.OrdinalIgnoreCase)))
+                    {
+                        knownCategories.Add(new Tag { Index = uint.MaxValue, Value = prefix });
+                    }
+                }
+            }
 
-			return knownCategories;
-		}
+            return knownCategories;
+        }
 
-		/// <summary>
-		/// Gets the matching category for the specified <see cref="Tag"/>. Will return a dummy if no match was found.
-		/// </summary>
-		public static Tag GetCategoryFor(Tag tag)
-		{
-			int index = tag.Value.IndexOf('_');
-			string prefix = string.Empty;
-			if (index != -1)
-			{
-				prefix = tag.Value.Substring(0, index);
-			}
+        /// <summary>
+        /// Gets the matching category for the specified <see cref="Tag"/>. Will return a dummy if no match was found.
+        /// </summary>
+        public static Tag GetCategoryFor(Tag tag)
+        {
+            int index = tag.Value.IndexOf('_');
+            string prefix = string.Empty;
+            if (index != -1)
+            {
+                prefix = tag.Value.Substring(0, index);
+            }
 
-			var category = categories.Values.FirstOrDefault(t => t.Value.Equals(prefix, StringComparison.OrdinalIgnoreCase));
+            var category = categories.Values.FirstOrDefault(t => t.Value.Equals(prefix, StringComparison.OrdinalIgnoreCase));
 
-			return category ?? new Tag { Index = uint.MaxValue, Value = prefix };
-		}
+            return category ?? new Tag { Index = uint.MaxValue, Value = prefix };
+        }
 
-		/// <summary>
-		/// Returns a collection of all known <see cref="Tag"/> instances that match the
-		/// given <paramref name="category"/>.
-		/// </summary>
-		public static IEnumerable<Tag> FetchTagsForCategory(string category)
-		{
-			string prefix = category + "_";
+        /// <summary>
+        /// Returns a collection of all known <see cref="Tag"/> instances that match the
+        /// given <paramref name="category"/>.
+        /// </summary>
+        public static IEnumerable<Tag> FetchTagsForCategory(string category)
+        {
+            string prefix = category + "_";
 
-			return tags.Values.Where(t => t.Value.StartsWith(prefix, StringComparison.OrdinalIgnoreCase));
-		}
-	}
+            return tags.Values.Where(t => t.Value.StartsWith(prefix, StringComparison.OrdinalIgnoreCase));
+        }
+    }
 }

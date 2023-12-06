@@ -52,7 +52,7 @@ namespace System.Windows.Forms
         public bool Valid { get { return valid; } private set { if (valid != value) { valid = value; OnValidChanged(this, EventArgs.Empty); } } }
 
         public event EventHandler ValidChanged;
-        protected void OnValidChanged(object sender, EventArgs e) { if (ValidChanged != null)ValidChanged(sender, e); }
+        protected void OnValidChanged(object sender, EventArgs e) { if (ValidChanged != null) ValidChanged(sender, e); }
 
         public uint Value
         {

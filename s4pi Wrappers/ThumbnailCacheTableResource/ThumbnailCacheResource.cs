@@ -175,10 +175,12 @@ namespace ThumbnailCacheResource
             #region Constructors
             public Thumbnail(int apiVersion, EventHandler handler)
                 : this(apiVersion, handler,
-                ThumbnailType.OBJECT, ThumbnailSize.SMALL, 0, 0, 0, new ThumbnailDataList(null, ThumbnailType.OBJECT), new TGIBlock(apiVersion, null), false) { }
+                ThumbnailType.OBJECT, ThumbnailSize.SMALL, 0, 0, 0, new ThumbnailDataList(null, ThumbnailType.OBJECT), new TGIBlock(apiVersion, null), false)
+            { }
             public Thumbnail(int apiVersion, EventHandler handler, Thumbnail basis)
                 : this(apiVersion, handler,
-                basis.type, basis.size, basis.versionType, basis.resourceID, basis.index, basis.data, basis.resourceKey, basis.isAlias) { }
+                basis.type, basis.size, basis.versionType, basis.resourceID, basis.index, basis.data, basis.resourceKey, basis.isAlias)
+            { }
             public Thumbnail(int apiVersion, EventHandler handler,
                 ThumbnailType type, ThumbnailSize size, UInt32 versionType, UInt64 resourceID, UInt32 index, IEnumerable<ThumbnailData> data, TGIBlock resourceKey, Boolean isAlias)
                 : base(apiVersion, handler)
@@ -1017,10 +1019,12 @@ namespace ThumbnailCacheResource
             #region Constructors
             public ThumbnailDataModelObject(int apiVersion, EventHandler handler)
                 : this(apiVersion, handler,
-                0, new ModelDataList(null), new ModelInfoDict(null)) { }
+                0, new ModelDataList(null), new ModelInfoDict(null))
+            { }
             public ThumbnailDataModelObject(int apiVersion, EventHandler handler, ThumbnailDataModelObject basis)
                 : this(apiVersion, handler,
-                basis.flags, basis.data, basis.info) { }
+                basis.flags, basis.data, basis.info)
+            { }
             public ThumbnailDataModelObject(int apiVersion, EventHandler handler,
                 ModelInfoValueFlag flags, IEnumerable<ModelData> data, IDictionary<ModelInfoValueFlag, ModelInfoValue> info)
                 : base(apiVersion, handler, 0)
@@ -1039,7 +1043,7 @@ namespace ThumbnailCacheResource
                     this.flags |= ModelInfoValueFlag.hasModelIndex19; // arbitrary flag just to make it consistent, rather than throw away 'info' value
                 else if (flagsHasModelIndex != 0 && infoHasModelIndex == 0) // we have an inconsistent state
                     this.flags &= (ModelInfoValueFlag)~(UInt32)0x003C0000; // clear all the flags as we have no 'info' value
-                
+
                 // Moving on... We can just clear the remaining flags for which we may have 'info' values and set them again if we have
                 this.flags &= (ModelInfoValueFlag)~(UInt32)0xC3000000;
                 this.flags |= this.info.Flags & (ModelInfoValueFlag)~(UInt32)0x003C0000;

@@ -61,7 +61,8 @@ namespace s4pi.ImageResource
             get { return 8 * 4; }
         }
 
-        public PixelFormat() {
+        public PixelFormat()
+        {
             this.RGBBitCount = 32;
             this.redBitMask = 0x00FF0000;
             this.greenBitMask = 0x0000FF00;
@@ -122,7 +123,7 @@ namespace s4pi.ImageResource
             //this.pixelFormatFlag = (PixelFormatFlags)r.ReadUInt32();
             //if ((this.pixelFormatFlag & PixelFormatFlags.FourCC) != PixelFormatFlags.FourCC) throw new InvalidDataException("Bad pixel format flag");
             uint pixelFormatFlag = r.ReadUInt32();
-            if (!Enum.IsDefined(typeof(PixelFormatFlags), pixelFormatFlag)) throw new InvalidDataException("Bad pixel format flag"); else this.pixelFormatFlag = (PixelFormatFlags) pixelFormatFlag;
+            if (!Enum.IsDefined(typeof(PixelFormatFlags), pixelFormatFlag)) throw new InvalidDataException("Bad pixel format flag"); else this.pixelFormatFlag = (PixelFormatFlags)pixelFormatFlag;
             uint fourCC = r.ReadUInt32();
             if (!Enum.IsDefined(typeof(FourCC), fourCC)) throw new InvalidDataException(string.Format("Unexpected data, read 0x{0:X8}", fourCC)); else this.fourcc = (FourCC)fourCC;
             this.RGBBitCount = r.ReadUInt32();

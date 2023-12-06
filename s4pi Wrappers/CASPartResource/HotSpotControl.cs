@@ -132,7 +132,7 @@ namespace CASPartResource
         public uint Unknown4 { get { return this.unknown4; } set { if (!this.unknown4.Equals(value)) { OnResourceChanged(this, EventArgs.Empty); this.unknown4 = value; } } }
         [ElementPriority(11)]
         public SliderList SliderDescription { get { return this.sliderDescriptions; } set { if (!this.sliderDescriptions.Equals(value)) { OnResourceChanged(this, EventArgs.Empty); this.sliderDescriptions = value; } } }
-        
+
         public string Value { get { return ValueBuilder; } }
 
         public override List<string> ContentFields
@@ -169,9 +169,10 @@ namespace CASPartResource
             public SliderDesc(int apiVersion, EventHandler handler) : base(apiVersion, handler) { }
             public SliderDesc(int apiVersion, EventHandler handler, Stream s) : base(apiVersion, handler) { Parse(s); }
             public SliderDesc(int apiVersion, EventHandler handler, SliderDesc basis)
-                : this(apiVersion, handler, basis.angle, basis.flip, basis.unknown7, 
-                basis.simModifierLeft, basis.simModifierRight, basis.simModifierUp, basis.simModifierDown) { }
-            public SliderDesc(int apiVersion, EventHandler handler, ViewAngle angle, bool flip, float[] unknown7, 
+                : this(apiVersion, handler, basis.angle, basis.flip, basis.unknown7,
+                basis.simModifierLeft, basis.simModifierRight, basis.simModifierUp, basis.simModifierDown)
+            { }
+            public SliderDesc(int apiVersion, EventHandler handler, ViewAngle angle, bool flip, float[] unknown7,
                 ulong simModifierLeft, ulong simModifierRight, ulong simModifierUp, ulong simModifierDown)
                 : base(apiVersion, handler)
             {
@@ -219,14 +220,17 @@ namespace CASPartResource
             #region IEquatable<Vector>
             public bool Equals(SliderDesc other)
             {
-                return this.angle == other.angle && this.flip == other.flip && this.unknown7.SequenceEqual(other.unknown7) && 
+                return this.angle == other.angle && this.flip == other.flip && this.unknown7.SequenceEqual(other.unknown7) &&
                     this.simModifierLeft == other.simModifierLeft && this.simModifierRight == other.simModifierRight && this.simModifierUp == other.simModifierUp && this.simModifierDown == other.simModifierDown;
             }
 
             public override bool Equals(object obj) { return obj is SliderDesc && Equals(obj as SliderDesc); }
 
-            public override int GetHashCode() { return this.angle.GetHashCode() + this.flip.GetHashCode() + this.unknown7.GetHashCode() + 
-                this.simModifierLeft.GetHashCode() + this.simModifierRight.GetHashCode() + this.simModifierUp.GetHashCode() + this.simModifierDown.GetHashCode(); }
+            public override int GetHashCode()
+            {
+                return this.angle.GetHashCode() + this.flip.GetHashCode() + this.unknown7.GetHashCode() +
+this.simModifierLeft.GetHashCode() + this.simModifierRight.GetHashCode() + this.simModifierUp.GetHashCode() + this.simModifierDown.GetHashCode();
+            }
             #endregion
 
             [ElementPriority(10)]
@@ -254,7 +258,7 @@ namespace CASPartResource
             public SliderList(EventHandler handler, IEnumerable<SliderDesc> le) : base(handler, le) { }
             #endregion
 
-         //   protected override int ReadCount(Stream s) { return base.ReadCount(s) / 3; }
+            //   protected override int ReadCount(Stream s) { return base.ReadCount(s) / 3; }
             protected override SliderDesc CreateElement(Stream s) { return new SliderDesc(0, elementHandler, s); }
             //  protected override void WriteCount(Stream s, int count) { base.WriteCount(s, (int)(count * 3)); }
             protected override void WriteElement(Stream s, SliderDesc element) { element.UnParse(s); }
@@ -271,12 +275,12 @@ namespace CASPartResource
         public enum ViewAngle : byte
         {
             None = 0,
-            Front = 1<<0,
-            Threequarter_right = 1<<1,
-            Threequarter_left = 1<<2,
-            Profile_right = 1<<3,
-            Profile_left = 1<<4,
-            Back = 1<<5,
+            Front = 1 << 0,
+            Threequarter_right = 1 << 1,
+            Threequarter_left = 1 << 2,
+            Profile_right = 1 << 3,
+            Profile_left = 1 << 4,
+            Back = 1 << 5,
             Unknown = 1 << 6
         }
 

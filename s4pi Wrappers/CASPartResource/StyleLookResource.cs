@@ -61,7 +61,7 @@ namespace CASPartResource
         private byte unknown8;
 
         public StyleLookResource(int APIversion, Stream s) : base(APIversion, s) { if (stream == null || stream.Length == 0) { stream = UnParse(); OnResourceChanged(this, EventArgs.Empty); } stream.Position = 0; Parse(stream); }
-        
+
         #region Data I/O
         void Parse(Stream s)
         {

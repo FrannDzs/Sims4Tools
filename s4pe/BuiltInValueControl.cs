@@ -396,7 +396,7 @@ namespace S4PIDemoFE
                     };
 
                     var tbox = control as RichTextBox;
-                    if(wrapper != null)
+                    if (wrapper != null)
                     {
                         var value = dType.GetProperties().FirstOrDefault(p => p.Name == "WrapperValue").GetValue(wrapper, null);
                         tbox.Text = value.ToString();
@@ -445,7 +445,7 @@ namespace S4PIDemoFE
             0xC1ED6D35,
             0xCD9DE247,
             0xE18CAEE2,
-            0xE254AE6E 
+            0xE254AE6E
         };
 
         PictureBox pb = new PictureBox();
@@ -457,7 +457,7 @@ namespace S4PIDemoFE
                 return;
             ThumbnailResource r = new ThumbnailResource(1, s);
             pb.Image = r.Image;
-          //  pb.Image = new Bitmap(r.ToImageStream());
+            //  pb.Image = new Bitmap(r.ToImageStream());
         }
 
         public override bool IsAvailable
@@ -479,7 +479,7 @@ namespace S4PIDemoFE
     class LRLEControl : ABuiltInValueControl
     {
         static uint[] resourceTypes = new uint[] {
-            0x2BC04EDF 
+            0x2BC04EDF
         };
 
         PictureBox pb = new PictureBox();
@@ -586,7 +586,7 @@ namespace S4PIDemoFE
             Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top,
             ReadOnly = true,
         };
- 
+
         public HexControl(Stream s)
             : base(s)
         {

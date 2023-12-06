@@ -121,15 +121,17 @@ namespace s4pi.GenericRCOLResource
                 , 0f, 0f
                 , 0
                 , 0
-                ) { }
+                )
+            { }
             public LotInfoElement(int APIversion, EventHandler handler, LotInfoElement basis)
                 : this(APIversion, handler
                 , basis.position
                 , basis.rotY
-                , basis.sizeX , basis.sizeY
+                , basis.sizeX, basis.sizeY
                 , basis.worldId
                 , basis.lotId
-                ) { }
+                )
+            { }
             public LotInfoElement(int APIversion, EventHandler handler
                 , Vertex position
                 , Single rotY

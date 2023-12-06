@@ -38,30 +38,30 @@ namespace DDSHelper
         [STAThread]
         static void Main(string[] args)
         {
-           if(args.Contains("/import"))
-           {
-               List<string> largs = new List<string>(args);
-               largs.Remove("/import");
-               s4pi.Helpers.RunHelper.Run(typeof(Import), largs.ToArray());
-           }
-           else if(args.Contains("/export"))
-           {
-               using (FileStream fs = new FileStream(args[1], FileMode.Open))
-               {
-                   using (SaveFileDialog save = new SaveFileDialog() { Filter = "DDS Image|*.dds", FileName = Path.GetFileName(args[1]), Title = "Export to DDS" })
-                   {
-                       if (save.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                       {
-                           using (FileStream fs2 = new FileStream(save.FileName, FileMode.Create))
-                           {
-                               DSTResource dst = new DSTResource(1, fs);
-                               dst.ToDDS().CopyTo(fs2);
-                              // fs.CopyTo(fs2);
-                           }
-                       }
-                   }
-               }
-           }
+            if (args.Contains("/import"))
+            {
+                List<string> largs = new List<string>(args);
+                largs.Remove("/import");
+                s4pi.Helpers.RunHelper.Run(typeof(Import), largs.ToArray());
+            }
+            else if (args.Contains("/export"))
+            {
+                using (FileStream fs = new FileStream(args[1], FileMode.Open))
+                {
+                    using (SaveFileDialog save = new SaveFileDialog() { Filter = "DDS Image|*.dds", FileName = Path.GetFileName(args[1]), Title = "Export to DDS" })
+                    {
+                        if (save.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                        {
+                            using (FileStream fs2 = new FileStream(save.FileName, FileMode.Create))
+                            {
+                                DSTResource dst = new DSTResource(1, fs);
+                                dst.ToDDS().CopyTo(fs2);
+                                // fs.CopyTo(fs2);
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

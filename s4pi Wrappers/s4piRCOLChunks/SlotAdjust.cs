@@ -109,7 +109,8 @@ namespace s4pi.GenericRCOLResource
             public Adjustment(int apiVersion, EventHandler handler, Stream s) : base(apiVersion, handler) { Parse(s); }
             public Adjustment(int apiVersion, EventHandler handler, Adjustment basis)
                 : this(apiVersion, handler,
-                basis.slotName, basis.offsetX, basis.offsetY, basis.offsetZ, basis.scaleX, basis.scaleY, basis.scaleZ, basis.quatX, basis.quatY, basis.quatZ, basis.quatW) { }
+                basis.slotName, basis.offsetX, basis.offsetY, basis.offsetZ, basis.scaleX, basis.scaleY, basis.scaleZ, basis.quatX, basis.quatY, basis.quatZ, basis.quatW)
+            { }
             public Adjustment(int apiVersion, EventHandler handler,
                 uint slotName, float offsetX, float offsetY, float offsetZ, float scaleX, float scaleY, float scaleZ, float quatX, float quatY, float quatZ, float quatW)
                 : base(apiVersion, handler)
@@ -261,7 +262,7 @@ namespace s4pi.GenericRCOLResource
         public uint Version { get { return version; } set { if (version != value) { version = value; OnRCOLChanged(this, EventArgs.Empty); } } }
         [ElementPriority(12)]
         public AdjustmentList Adjustments { get { return adjustments; } set { if (adjustments != value) { adjustments = value == null ? null : new AdjustmentList(handler, value); OnRCOLChanged(this, EventArgs.Empty); } } }
-        
+
         public string Value { get { return ValueBuilder; } }
         #endregion
     }

@@ -51,13 +51,13 @@ namespace s4pi.GenericRCOLResource
             this.matdList200 = basis.matdList200 == null ? null : new Type200EntryList(OnRCOLChanged, basis.matdList200);
             this.matdList300 = basis.matdList300 == null ? null : new Type300EntryList(OnRCOLChanged, basis.matdList300);
         }
-      //  public MTST(int APIversion, EventHandler handler, uint nameHash, GenericRCOLResource.ChunkReference index, IEnumerable<Type300Entry> list)
-      //      : base(APIversion, handler, null)
-      //  {
-      //      this.nameHash = nameHash;
-      //      this.index = new GenericRCOLResource.ChunkReference(requestedApiVersion, handler, index);
-      //      this.matdList200 = list == null ? null : new Type200EntryList(OnRCOLChanged, list);
-      //  }
+        //  public MTST(int APIversion, EventHandler handler, uint nameHash, GenericRCOLResource.ChunkReference index, IEnumerable<Type300Entry> list)
+        //      : base(APIversion, handler, null)
+        //  {
+        //      this.nameHash = nameHash;
+        //      this.index = new GenericRCOLResource.ChunkReference(requestedApiVersion, handler, index);
+        //      this.matdList200 = list == null ? null : new Type200EntryList(OnRCOLChanged, list);
+        //  }
         #endregion
 
         #region ARCOLBlock
@@ -127,8 +127,8 @@ namespace s4pi.GenericRCOLResource
 
             #region Constructors
             public Type300Entry(int apiVersion, EventHandler handler)
-                : base(apiVersion, handler) {}
- 
+                : base(apiVersion, handler) { }
+
             public Type300Entry(int apiVersion, EventHandler handler, Stream s)
                 : base(apiVersion, handler)
             {
@@ -146,21 +146,21 @@ namespace s4pi.GenericRCOLResource
             #endregion
 
             #region Data I/O
-            void Parse(Stream s) 
-            { 
-                BinaryReader r = new BinaryReader(s); 
-                matdIndex = new GenericRCOLResource.ChunkReference(requestedApiVersion, handler, s); 
-                materialState = (State)r.ReadUInt32(); 
-                materialVariant = r.ReadUInt32(); 
+            void Parse(Stream s)
+            {
+                BinaryReader r = new BinaryReader(s);
+                matdIndex = new GenericRCOLResource.ChunkReference(requestedApiVersion, handler, s);
+                materialState = (State)r.ReadUInt32();
+                materialVariant = r.ReadUInt32();
             }
 
-            internal void UnParse(Stream s) 
-            { 
+            internal void UnParse(Stream s)
+            {
                 BinaryWriter w = new BinaryWriter(s);
                 if (this.matdIndex == null)
                     this.matdIndex = new GenericRCOLResource.ChunkReference(requestedApiVersion, handler, 0U);
-                matdIndex.UnParse(s); 
-                w.Write((uint)materialState); 
+                matdIndex.UnParse(s);
+                w.Write((uint)materialState);
                 w.Write(materialVariant);
             }
             #endregion

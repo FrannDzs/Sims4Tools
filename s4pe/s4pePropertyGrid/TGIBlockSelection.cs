@@ -62,7 +62,7 @@ namespace S4PIDemoFE
 
         private void tgiBlockCombo1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 27 || e.KeyChar==13)
+            if (e.KeyChar == 27 || e.KeyChar == 13)
             {
                 e.Handled = true;
                 edSvc.CloseDropDown();
