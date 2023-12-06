@@ -37,30 +37,30 @@ namespace LRLEPNGHelper
         [STAThread]
         static void Main(string[] args)
         {
-           if (args.Contains("/import"))
-           {
-               MessageBox.Show("Hi");
-               List<string> largs = new List<string>(args);
-               largs.Remove("/import");
-               s4pi.Helpers.RunHelper.Run(typeof(LRLEPNGHelper.Import), largs.ToArray());
-           }
-           else if (args.Contains("/export"))
-           {
-               using (FileStream fs = new FileStream(args[1], FileMode.Open))
-               {
-                   using (SaveFileDialog save = new SaveFileDialog() { Filter = "PNG|*.png", FileName = Path.GetFileName(args[1]), Title = "Export to PNG" })
-                   {
-                       if (save.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                       {
-                           using (FileStream fs2 = new FileStream(save.FileName, FileMode.Create))
-                           {
-                               LRLEResource r = new LRLEResource(1, fs);
-                               r.ToImageStream().CopyTo(fs2);
-                           }
-                       }
-                   }
-               }
-           }
+            if (args.Contains("/import"))
+            {
+                MessageBox.Show("Hi");
+                List<string> largs = new List<string>(args);
+                largs.Remove("/import");
+                s4pi.Helpers.RunHelper.Run(typeof(LRLEPNGHelper.Import), largs.ToArray());
+            }
+            else if (args.Contains("/export"))
+            {
+                using (FileStream fs = new FileStream(args[1], FileMode.Open))
+                {
+                    using (SaveFileDialog save = new SaveFileDialog() { Filter = "PNG|*.png", FileName = Path.GetFileName(args[1]), Title = "Export to PNG" })
+                    {
+                        if (save.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                        {
+                            using (FileStream fs2 = new FileStream(save.FileName, FileMode.Create))
+                            {
+                                LRLEResource r = new LRLEResource(1, fs);
+                                r.ToImageStream().CopyTo(fs2);
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

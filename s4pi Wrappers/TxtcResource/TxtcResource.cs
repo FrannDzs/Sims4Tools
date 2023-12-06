@@ -105,7 +105,8 @@ namespace TxtcResource
             public ContentType(int apiVersion, EventHandler handler, ContentType basis)
                 : this(apiVersion, handler,
                 basis.version, basis.superBlocks, basis.patternSize, basis.dataType, basis.unknown3, basis.unknown4, basis.entries, basis.tgiBlocks
-                ) { }
+                )
+            { }
             public ContentType(int apiVersion, EventHandler handler,
                 uint version, SuperBlockList superBlocks, PatternSizeType patternSize, DataTypeFlags dataType, byte unknown3, byte unknown4, EntryBlockList entries, CountedTGIBlockList tgiBlocks
                 )

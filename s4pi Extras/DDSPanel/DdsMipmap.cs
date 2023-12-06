@@ -55,7 +55,7 @@ namespace System.Drawing
             return (uint)n;
         }
 
-        public static Size nextMipmapSize(DdsFile currentMipmap) 
+        public static Size nextMipmapSize(DdsFile currentMipmap)
         {
             return nextMipmapSize(currentMipmap.Size.Width, currentMipmap.Size.Height);
         }
@@ -74,52 +74,52 @@ namespace System.Drawing
             return mip;
         }
 
-     /*   public static DdsFile nextMipmap(DdsFile mainTexture, int width, int height)
-        {
-            Size nextSize = nextMipmapSize(width, height);
+        /*   public static DdsFile nextMipmap(DdsFile mainTexture, int width, int height)
+           {
+               Size nextSize = nextMipmapSize(width, height);
 
-            Bitmap main = new Bitmap(mainTexture.Image);
-            Rectangle rect1 = new Rectangle(0, 0, main.Width, main.Height);
-            System.Drawing.Imaging.BitmapData bmpData1 = main.LockBits(rect1, System.Drawing.Imaging.ImageLockMode.ReadWrite,
-                main.PixelFormat);
-            IntPtr ptr1;
-            if (bmpData1.Stride > 0) ptr1 = bmpData1.Scan0;
-            else ptr1 = bmpData1.Scan0 + bmpData1.Stride * (main.Height - 1);
-            int bytes1 = Math.Abs(bmpData1.Stride) * main.Height;
-            byte[] argbValues1 = new byte[bytes1];
-            System.Runtime.InteropServices.Marshal.Copy(ptr1, argbValues1, 0, bytes1);
+               Bitmap main = new Bitmap(mainTexture.Image);
+               Rectangle rect1 = new Rectangle(0, 0, main.Width, main.Height);
+               System.Drawing.Imaging.BitmapData bmpData1 = main.LockBits(rect1, System.Drawing.Imaging.ImageLockMode.ReadWrite,
+                   main.PixelFormat);
+               IntPtr ptr1;
+               if (bmpData1.Stride > 0) ptr1 = bmpData1.Scan0;
+               else ptr1 = bmpData1.Scan0 + bmpData1.Stride * (main.Height - 1);
+               int bytes1 = Math.Abs(bmpData1.Stride) * main.Height;
+               byte[] argbValues1 = new byte[bytes1];
+               System.Runtime.InteropServices.Marshal.Copy(ptr1, argbValues1, 0, bytes1);
 
-            Bitmap mip = new Bitmap(nextSize.Width, nextSize.Height);
-            Rectangle rect2 = new Rectangle(0, 0, mip.Width, mip.Height);
-            System.Drawing.Imaging.BitmapData bmpData2 = mip.LockBits(rect2, System.Drawing.Imaging.ImageLockMode.ReadWrite,
-                main.PixelFormat);
-            IntPtr ptr2;
-            if (bmpData2.Stride > 0) ptr2 = bmpData2.Scan0;
-            else ptr2 = bmpData2.Scan0 + bmpData2.Stride * (mip.Height - 1);
-            int bytes2 = Math.Abs(bmpData2.Stride) * mip.Height;
-            byte[] argbValues2 = new byte[bytes2];
-            System.Runtime.InteropServices.Marshal.Copy(ptr2, argbValues2, 0, bytes2);
+               Bitmap mip = new Bitmap(nextSize.Width, nextSize.Height);
+               Rectangle rect2 = new Rectangle(0, 0, mip.Width, mip.Height);
+               System.Drawing.Imaging.BitmapData bmpData2 = mip.LockBits(rect2, System.Drawing.Imaging.ImageLockMode.ReadWrite,
+                   main.PixelFormat);
+               IntPtr ptr2;
+               if (bmpData2.Stride > 0) ptr2 = bmpData2.Scan0;
+               else ptr2 = bmpData2.Scan0 + bmpData2.Stride * (mip.Height - 1);
+               int bytes2 = Math.Abs(bmpData2.Stride) * mip.Height;
+               byte[] argbValues2 = new byte[bytes2];
+               System.Runtime.InteropServices.Marshal.Copy(ptr2, argbValues2, 0, bytes2);
 
-            for (int l = 0; l < main.Height; l += 2)
-            {
-                for (int c = 0; c < main.Width; c += 2)
-                {
-                    for (int i = 0; i < 4; i++)
-                    {
-                        int ind = (l * bmpData1.Stride) + (c * 8) + i;      //index of upper left pixel in block of four
-                        byte pixel = (byte)(((argbValues1[ind] + argbValues1[ind + 4] + argbValues1[ind + bmpData1.Stride] + argbValues1[ind + bmpData1.Stride + 4]) / 4f) + 0.5f);
-                        int ind2 = ((l / 2) * bmpData2.Stride) + (c / 2);
-                        argbValues2[ind2] = pixel;
-                    }
-                }
-            }
-            main.UnlockBits(bmpData1);
-            System.Runtime.InteropServices.Marshal.Copy(argbValues2, 0, ptr2, bytes2);
-            main.UnlockBits(bmpData2);
+               for (int l = 0; l < main.Height; l += 2)
+               {
+                   for (int c = 0; c < main.Width; c += 2)
+                   {
+                       for (int i = 0; i < 4; i++)
+                       {
+                           int ind = (l * bmpData1.Stride) + (c * 8) + i;      //index of upper left pixel in block of four
+                           byte pixel = (byte)(((argbValues1[ind] + argbValues1[ind + 4] + argbValues1[ind + bmpData1.Stride] + argbValues1[ind + bmpData1.Stride + 4]) / 4f) + 0.5f);
+                           int ind2 = ((l / 2) * bmpData2.Stride) + (c / 2);
+                           argbValues2[ind2] = pixel;
+                       }
+                   }
+               }
+               main.UnlockBits(bmpData1);
+               System.Runtime.InteropServices.Marshal.Copy(argbValues2, 0, ptr2, bytes2);
+               main.UnlockBits(bmpData2);
 
-            DdsFile dds = new DdsFile();
-            dds.CreateImage(mip, false);
-            return dds;
-        } */
+               DdsFile dds = new DdsFile();
+               dds.CreateImage(mip, false);
+               return dds;
+           } */
     }
 }

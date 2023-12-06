@@ -39,7 +39,7 @@ namespace meshExpImp.ModelBlocks
         #endregion
 
         #region Constructors
-        public MLOD(int apiVersion, EventHandler handler, MLOD basis) : this(apiVersion, handler, basis.Version, new MeshList(handler,basis, basis.mMeshes)) { }
+        public MLOD(int apiVersion, EventHandler handler, MLOD basis) : this(apiVersion, handler, basis.Version, new MeshList(handler, basis, basis.mMeshes)) { }
         public MLOD(int apiVersion, EventHandler handler) : base(apiVersion, handler, null) { }
         public MLOD(int apiVersion, EventHandler handler, Stream s) : base(apiVersion, handler, s) { }
         public MLOD(int apiVersion, EventHandler handler, uint version, MeshList meshes)
@@ -243,7 +243,7 @@ namespace meshExpImp.ModelBlocks
             private GenericRCOLResource.ChunkReference mMeshMaterialIndex;
             private GeometryStateList mGeometryStates;
             private UInt32 mParentBoneName;
-            private Vector4 mMirrorPlane; 
+            private Vector4 mMirrorPlane;
             private UInt32 mSortOrderHint;
             private BoundingBox[] mBoundingBoxBones;
             #endregion
@@ -276,7 +276,8 @@ namespace meshExpImp.ModelBlocks
                 basis.mJointReferences, basis.mGeometryStates, basis.mMeshMaterialIndex,
                 basis.mParentBoneName, basis.mMirrorPlane,
                 basis.mSortOrderHint, basis.mBoundingBoxBones
-                ) { }
+                )
+            { }
             public Mesh(int apiVersion, EventHandler handler, MLOD owner,
                 uint name,
                 GenericRCOLResource.ChunkReference materialIndex, GenericRCOLResource.ChunkReference vertexFormatIndex,

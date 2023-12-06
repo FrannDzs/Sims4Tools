@@ -107,8 +107,8 @@ namespace ScriptResource
             MemoryStream ms = new MemoryStream();
             BinaryWriter bw = new BinaryWriter(ms);
             bw.Write(version);
-			if (version > 1)
-			{
+            if (version > 1)
+            {
                 bw.Write(gameVersion.Length);
                 bw.Write(System.Text.Encoding.Unicode.GetBytes(gameVersion));
             }

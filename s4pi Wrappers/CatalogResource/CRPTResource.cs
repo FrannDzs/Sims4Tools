@@ -21,7 +21,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using s4pi.Interfaces;
- 
+
 namespace CatalogResource
 {
     public class CRPTResource : AResource
@@ -111,7 +111,7 @@ namespace CatalogResource
             this.version = br.ReadUInt32();
             this.commonA = new CatalogCommon(kRecommendedApiVersion, this.OnResourceChanged, s);
             this.unk01 = br.ReadUInt32();
-            this.matdRef = new TGIBlock(kRecommendedApiVersion, this.OnResourceChanged, TGIBlock.Order.ITG,s);
+            this.matdRef = new TGIBlock(kRecommendedApiVersion, this.OnResourceChanged, TGIBlock.Order.ITG, s);
             this.floorRef = new TGIBlock(kRecommendedApiVersion, this.OnResourceChanged, TGIBlock.Order.ITG, s);
             this.unkIID01 = br.ReadUInt64();
             this.colors = new ColorList(this.OnResourceChanged, s);

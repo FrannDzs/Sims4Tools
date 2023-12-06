@@ -122,7 +122,7 @@ namespace WorldDescriptionResource
 
             bw.Write(descriptorIconFileNameHash);//           <format=hex>
             bw.Write(descriptorSelectedIconFileNameHash);//   <format=hex>
-            
+
             bw.Flush();
             return ms;
         }

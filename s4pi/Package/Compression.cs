@@ -203,7 +203,7 @@ namespace s4pi.Package
         {
             using (MemoryStream result = new MemoryStream())
             {
-                if(uncompressed.Length == 0)
+                if (uncompressed.Length == 0)
                 {
                     res = null;
                     return false;
@@ -229,7 +229,7 @@ namespace s4pi.Package
                     return false;
                 }
 
-                
+
             }
         }
     }

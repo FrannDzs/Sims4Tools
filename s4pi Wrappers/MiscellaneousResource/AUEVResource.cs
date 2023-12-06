@@ -59,7 +59,7 @@ namespace s4pi.Miscellaneous
 
             groupCount = r.ReadInt32();
             content = new string[groupCount * 3];
-            for(int i =  0; i < groupCount * 3; i++)
+            for (int i = 0; i < groupCount * 3; i++)
             {
                 content[i] = System.Text.ASCIIEncoding.ASCII.GetString(r.ReadBytes(r.ReadInt32() - 1));
                 r.ReadByte();
@@ -80,7 +80,7 @@ namespace s4pi.Miscellaneous
 
             w.Write(groupCount);
 
-            foreach(string str in content)
+            foreach (string str in content)
             {
                 w.Write(str.Length);
                 w.Write(System.Text.ASCIIEncoding.ASCII.GetBytes(str));
@@ -108,7 +108,7 @@ namespace s4pi.Miscellaneous
                 sb.AppendFormat("Version: 0x{0:X8}\n", version);
                 sb.AppendFormat("Group Count:0x{0:X8}\n", groupCount);
                 sb.AppendLine("-".PadLeft(20, '-'));
-                for (int i = 0; i < groupCount * 3; i ++)
+                for (int i = 0; i < groupCount * 3; i++)
                 {
                     if (i % 3 == 0 && i != 0) sb.AppendLine();
                     sb.AppendFormat("[0x{0:X2}]: {1}\n", i, content[i]);

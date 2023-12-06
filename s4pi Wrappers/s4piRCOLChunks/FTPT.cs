@@ -200,7 +200,7 @@ namespace s4pi.GenericRCOLResource
             public float Height { get { return height; } set { if (height != value) { height = value; OnElementChanged(); } } }
 
             public virtual string Value { get { return ValueBuilder; } }
-           // public string Value { get { return String.Format("[NameHash: 0x{0}] [Height: {1}]", nameHash.ToString("X8"), height); } }
+            // public string Value { get { return String.Format("[NameHash: 0x{0}] [Height: {1}]", nameHash.ToString("X8"), height); } }
             #endregion
         }
         public class PolygonHeightOverrideList : DependentList<PolygonHeightOverride>
@@ -397,10 +397,11 @@ namespace s4pi.GenericRCOLResource
                 basis.name, basis.priority, basis.areaTypeFlags, basis.pointList,
                 basis.intersectionObjectType, basis.allowIntersectionTypes, basis.surfaceTypeFlags, basis.surfaceAttributeFlags,
                 basis.deprecatedLevelOffset,
-                basis.boundingBox3D) { }
+                basis.boundingBox3D)
+            { }
             public Area(int apiVersion, EventHandler handler, uint version,
                 uint name, byte priority, FootprintPolyFlags areaTypeFlags, IEnumerable<PolygonPoint> closedPolygon,
-                IntersectionFlags intersectionObjectType, IntersectionFlags allowIntersectionTypes, 
+                IntersectionFlags intersectionObjectType, IntersectionFlags allowIntersectionTypes,
                 SurfaceTypeFlags surfaceTypeFlags, SurfaceAttribute surfaceAttributeFlags,
                 byte deprecatedLevelOffset, BoundingBox boundingBox3D)
                 : base(apiVersion, handler)
@@ -603,7 +604,7 @@ namespace s4pi.GenericRCOLResource
         [ElementPriority(11)]
         public uint Version { get { return version; } set { if (version != value) { version = value; footprintAreas.ParentVersion = version; slotAreas.ParentVersion = version; OnRCOLChanged(this, EventArgs.Empty); } } }
         [ElementPriority(12)]
-        public TGIBlock TemplateKey { get { return new TGIBlock(1, null, type, group, instance); } set { if (new TGIBlock(1, null, type, group, instance) != value) { type = value.ResourceType; group = value.ResourceGroup; instance = value.Instance ; OnRCOLChanged(this, EventArgs.Empty); } } }
+        public TGIBlock TemplateKey { get { return new TGIBlock(1, null, type, group, instance); } set { if (new TGIBlock(1, null, type, group, instance) != value) { type = value.ResourceType; group = value.ResourceGroup; instance = value.Instance; OnRCOLChanged(this, EventArgs.Empty); } } }
         [ElementPriority(13)]
         public PolygonHeightOverrideList MinimumHeightOverrides { get { return minHeightOverrides; } set { if (minHeightOverrides != value) { minHeightOverrides = value == null ? null : new PolygonHeightOverrideList(OnRCOLChanged, value); OnRCOLChanged(this, EventArgs.Empty); } } }
         [ElementPriority(14)]
@@ -618,7 +619,7 @@ namespace s4pi.GenericRCOLResource
         public float MinHeight { get { return minHeight; } set { if (minHeight != value) { minHeight = value; OnRCOLChanged(this, EventArgs.Empty); } } }
 
         public String Value { get { return ValueBuilder; } }
-        public override List<string> ContentFields 
+        public override List<string> ContentFields
         {
             get
             {

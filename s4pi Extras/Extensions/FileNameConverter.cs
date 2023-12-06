@@ -34,16 +34,16 @@ namespace s4pi.Extensions
     public static class FileNameConverter
     {
         private static readonly IDictionary<string, string> resourceMap = new Dictionary<string, string>
-		{
-			{ "trayitem", "0x2a8a5e22" },
-			{ "blueprint", "0x3924de26" },
-			{ "bpi", "0xd33c281e" },
-			{ "householdbinary", "0xb3c438f0" },
-			{ "hhi", "0x3bd45407" },
-			{ "sgi", "0x56278554" },
-			{ "room", "0x370efd6e" },
-			{ "rmi", "0x00de5ac5" }
-		};
+        {
+            { "trayitem", "0x2a8a5e22" },
+            { "blueprint", "0x3924de26" },
+            { "bpi", "0xd33c281e" },
+            { "householdbinary", "0xb3c438f0" },
+            { "hhi", "0x3bd45407" },
+            { "sgi", "0x56278554" },
+            { "room", "0x370efd6e" },
+            { "rmi", "0x00de5ac5" }
+        };
 
         /// <summary>
         /// Returns a value indicating whether the given <paramref name="path"/> is

@@ -3,9 +3,9 @@
     using System.Xml.Serialization;
 
     [XmlRoot("M")]
-	public class TagDocument
-	{
-		[XmlElement("C", ElementName = "C")]
-		public TagListing[] Listings { get; set; }
-	}
+    public class TagDocument
+    {
+        [XmlElement("C", ElementName = "C")]
+        public TagListing[] Listings { get; set; }
+    }
 }

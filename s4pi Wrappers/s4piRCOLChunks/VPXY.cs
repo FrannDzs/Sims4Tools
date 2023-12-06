@@ -46,7 +46,8 @@ namespace s4pi.GenericRCOLResource
         public VPXY(int apiVersion, EventHandler handler, VPXY basis)
             : this(apiVersion, handler,
             basis.version, basis.entryList, basis.tc02, basis.bounds, basis.unused, basis.modular, basis.ftptIndex,
-            basis.tgiBlockList) { }
+            basis.tgiBlockList)
+        { }
         public VPXY(int apiVersion, EventHandler handler,
             uint version, IEnumerable<Entry> entryList, byte tc02, BoundingBox bounds, byte[] unused, byte modular, int ftptIndex,
             IEnumerable<TGIBlock> tgiBlockList)
@@ -175,7 +176,7 @@ namespace s4pi.GenericRCOLResource
             /// <summary>
             /// The list of available field names on this API object
             /// </summary>
-            public override List<string> ContentFields { get { List<string> res = GetContentFields(requestedApiVersion, this.GetType()); res.Remove("ParentTGIBlocks"); return res;  } }
+            public override List<string> ContentFields { get { List<string> res = GetContentFields(requestedApiVersion, this.GetType()); res.Remove("ParentTGIBlocks"); return res; } }
             #endregion
 
             #region IEquatable<Entry> Members

@@ -46,7 +46,7 @@ namespace meshExpImp.ModelBlocks
             public SwizzleCmd Command
             {
                 get { return mCommand; }
-                set { if (mCommand != value) { if(mCommand!=value){mCommand = value; OnElementChanged();} } }
+                set { if (mCommand != value) { if (mCommand != value) { mCommand = value; OnElementChanged(); } } }
             }
 
             private SwizzleCmd mCommand;
@@ -153,16 +153,16 @@ namespace meshExpImp.ModelBlocks
                 mByteOffset = byteOffset;
                 mSwizzles = swizzles == null ? null : new SwizzleList(handler, swizzles);
             }
-            public static SegmentInfo FromMesh(MLOD.Mesh mesh,VRTF vrtf)
+            public static SegmentInfo FromMesh(MLOD.Mesh mesh, VRTF vrtf)
             {
                 var segment = new SegmentInfo(0, null);
                 segment.VertexSize = vrtf.Stride;
                 segment.VertexCount = mesh.VertexCount;
                 segment.ByteOffset = mesh.StreamOffset;
-                
-                foreach(var layout in vrtf.Layouts)
+
+                foreach (var layout in vrtf.Layouts)
                 {
-                    switch(layout.Format)
+                    switch (layout.Format)
                     {
                         case VRTF.ElementFormat.Float1:
                         case VRTF.ElementFormat.UByte4:
@@ -305,7 +305,7 @@ namespace meshExpImp.ModelBlocks
             foreach (var mesh in mlod.Meshes)
             {
                 var vrtf = (VRTF)GenericRCOLResource.ChunkReference.GetBlock(container, mesh.VertexFormatIndex);
-                vbsi.Segments.Add(SegmentInfo.FromMesh(mesh,vrtf));
+                vbsi.Segments.Add(SegmentInfo.FromMesh(mesh, vrtf));
             }
             return vbsi;
         }

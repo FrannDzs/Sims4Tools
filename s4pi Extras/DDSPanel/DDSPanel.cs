@@ -1026,7 +1026,7 @@ namespace System.Windows.Forms
 
             // Prevent scaling to zero pixels, thus allowing distortion.
             return new Size((int)Math.Max(1, Math.Round(from.Width * scale - 0.5, MidpointRounding.AwayFromZero)),
-                (int)Math.Max(1,Math.Round(from.Height * scale - 0.5, MidpointRounding.AwayFromZero)));
+                (int)Math.Max(1, Math.Round(from.Height * scale - 0.5, MidpointRounding.AwayFromZero)));
         }
 
         private static Size Max(Size left, Size right)

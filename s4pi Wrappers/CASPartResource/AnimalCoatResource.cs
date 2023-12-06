@@ -134,7 +134,7 @@ namespace CASPartResource
             protected override void WriteElement(Stream s, CoatOverlayReference element) { throw new NotImplementedException(); }
             #endregion
         }
-        
+
         public class CoatOverlayReference : AHandlerElement, IEquatable<CoatOverlayReference>
         {
             public CoatOverlayReference(int apiVersion, EventHandler handler) : base(apiVersion, handler) { }

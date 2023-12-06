@@ -100,13 +100,13 @@ namespace s4pi.GenericRCOLResource
                 containerOffsets = new SlotOffsetList(handler);
             else
                 containerOffsets = new SlotOffsetList(handler, s);
-            
+
             effects = new PartList(handler, s, nEffects);
             if (nEffects == 0)
                 effectOffsets = new SlotOffsetList(handler);
             else
                 effectOffsets = new SlotOffsetList(handler, s);
-            
+
             inverseKineticsTargets = new PartList(handler, s, nInverseKineticsTargets);
             if (nInverseKineticsTargets == 0)
                 inverseKineticsTargetOffsets = new SlotOffsetList(handler);
@@ -303,10 +303,10 @@ namespace s4pi.GenericRCOLResource
             {
                 return obj as MatrixRow != null ? this.Equals(obj as MatrixRow) : false;
             }
-           // public override int GetHashCode()
-           // {
-           //     return rot1.GetHashCode() ^ rot2.GetHashCode() ^ rot3.GetHashCode() ^ pos.GetHashCode(); 
-           // }
+            // public override int GetHashCode()
+            // {
+            //     return rot1.GetHashCode() ^ rot2.GetHashCode() ^ rot3.GetHashCode() ^ pos.GetHashCode(); 
+            // }
             public override int GetHashCode()
             {
                 return rot1.GetHashCode() ^ rot2.GetHashCode() ^ rot3.GetHashCode();
@@ -322,7 +322,7 @@ namespace s4pi.GenericRCOLResource
             public float Rot3 { get { return rot3; } set { if (rot3 != value) { rot3 = value; OnElementChanged(); } } }
             [ElementPriority(4)]
 
-           // public virtual string Value { get { return String.Format("Rot1: {0}; Rot2: {1}; Rot3: {2}; Pos: {3}", rot1, rot2, rot3, pos); } }
+            // public virtual string Value { get { return String.Format("Rot1: {0}; Rot2: {1}; Rot3: {2}; Pos: {3}", rot1, rot2, rot3, pos); } }
             public virtual string Value { get { return String.Format(" {0}; {1}; {2};", rot1, rot2, rot3); } }
             #endregion
         }
@@ -389,7 +389,7 @@ namespace s4pi.GenericRCOLResource
             public float Y { get { return y; } set { if (y != value) { y = value; OnElementChanged(); } } }
             [ElementPriority(3)]
             public float Z { get { return z; } set { if (z != value) { z = value; OnElementChanged(); } } }
-           // [ElementPriority(4)]
+            // [ElementPriority(4)]
 
             public virtual string Value { get { return String.Format("X: {0}; Y: {1}; Z: {2};", x, y, z); } }
             #endregion
@@ -522,8 +522,8 @@ namespace s4pi.GenericRCOLResource
                     }
                     coords[i] = new Vector3(0, elementHandler, tmp[0], tmp[1], tmp[2]);
                 }
-              //  for (int i = 0; i < count; i++) this.Add(new Part(0, elementHandler, slotNames[i], boneNames[i],
-              //      new Vector3(0, elementHandler, s), new Vector3(0, elementHandler, s), new Vector3(0, elementHandler, s)));
+                //  for (int i = 0; i < count; i++) this.Add(new Part(0, elementHandler, slotNames[i], boneNames[i],
+                //      new Vector3(0, elementHandler, s), new Vector3(0, elementHandler, s), new Vector3(0, elementHandler, s)));
                 for (int i = 0; i < count; i++) this.Add(new Part(0, elementHandler, slotNames[i], boneNames[i],
                     matrix[i], coords[i]));
             }
@@ -596,15 +596,16 @@ namespace s4pi.GenericRCOLResource
         }
         public class SlottedPart : Part, IEquatable<SlottedPart>
         {
-           // SlotPlacement slotPlacementFlags;
+            // SlotPlacement slotPlacementFlags;
 
-            byte slotSize;  
-            ulong slotTypeSet; 
-            bool slotDirectionLocked; 
+            byte slotSize;
+            ulong slotTypeSet;
+            bool slotDirectionLocked;
             uint slotLegacyHash;
 
             public SlottedPart(int apiVersion, EventHandler handler) : base(apiVersion, handler) { }
-            public SlottedPart(int apiVersion, EventHandler handler, SlottedPart basis) : base(apiVersion, handler, basis) {
+            public SlottedPart(int apiVersion, EventHandler handler, SlottedPart basis) : base(apiVersion, handler, basis)
+            {
                 this.slotSize = basis.slotSize; this.slotTypeSet = basis.slotTypeSet; this.slotDirectionLocked = basis.slotDirectionLocked; this.slotLegacyHash = basis.slotLegacyHash;
             }
             public SlottedPart(int apiVersion, EventHandler handler, uint slotName, uint boneName,
@@ -614,7 +615,7 @@ namespace s4pi.GenericRCOLResource
             {
                 this.slotSize = slotSize; this.slotTypeSet = slotTypeSet; this.slotDirectionLocked = slotDirectionLocked; this.slotLegacyHash = slotLegacyHash;
             }
-            
+
             public bool Equals(SlottedPart other) { return ((Part)this).Equals((Part)other); }
             public override bool Equals(object obj)
             {
@@ -622,7 +623,7 @@ namespace s4pi.GenericRCOLResource
             }
             public override int GetHashCode()
             {
-               // return base.GetHashCode() ^ slotPlacementFlags.GetHashCode();
+                // return base.GetHashCode() ^ slotPlacementFlags.GetHashCode();
                 return base.GetHashCode();
             }
 
@@ -655,7 +656,7 @@ namespace s4pi.GenericRCOLResource
                 BinaryReader r = new BinaryReader(s);
                 for (int i = 0; i < slotNames.Length; i++) slotNames[i] = r.ReadUInt32();
                 for (int i = 0; i < boneNames.Length; i++) boneNames[i] = r.ReadUInt32();
-                for (int i = 0; i < count; i++) slotSize[i] = r.ReadByte(); 
+                for (int i = 0; i < count; i++) slotSize[i] = r.ReadByte();
                 for (int i = 0; i < count; i++) slotTypeSet[i] = r.ReadUInt64();
                 for (int i = 0; i < count; i++) slotDirectionLocked[i] = r.ReadBoolean();
                 for (int i = 0; i < count; i++) slotLegacyHash[i] = r.ReadUInt32();
@@ -682,7 +683,7 @@ namespace s4pi.GenericRCOLResource
                 BinaryWriter w = new BinaryWriter(s);
                 for (int i = 0; i < Count; i++) w.Write(this[i].PointSlotNameHash);
                 for (int i = 0; i < Count; i++) w.Write(this[i].TargetBoneNameHash);
-              //  for (int i = 0; i < Count; i++) w.Write((uint)this[i].SlotPlacementFlags);
+                //  for (int i = 0; i < Count; i++) w.Write((uint)this[i].SlotPlacementFlags);
                 for (int i = 0; i < Count; i++) w.Write(this[i].SlotSize);
                 for (int i = 0; i < Count; i++) w.Write(this[i].SlotTypeSet);
                 for (int i = 0; i < Count; i++) w.Write(this[i].SlotDirectionLocked);

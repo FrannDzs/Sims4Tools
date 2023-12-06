@@ -279,7 +279,7 @@ namespace s4pi.Animation
                 WritePadding(s);
             }
             actorOffset = s.Position;
-            bw.WriteZString( mActorName);
+            bw.WriteZString(mActorName);
             WritePadding(s);
 
             eventOffset = s.Position;
@@ -305,7 +305,7 @@ namespace s4pi.Animation
             return s;
         }
 
-        
+
 
         #region Nested type: ClipEndSection
 
@@ -1440,8 +1440,8 @@ namespace s4pi.Animation
             {
                 var bw = new BinaryWriter(s);
                 bw.Write(mIndex);
-                bw.WriteZString( mTargetNamespace, 0x23, 512);
-                bw.WriteZString( mTargetName, 0x23, 512);
+                bw.WriteZString(mTargetNamespace, 0x23, 512);
+                bw.WriteZString(mTargetName, 0x23, 512);
             }
 
             public override AHandlerElement Clone(EventHandler handler)

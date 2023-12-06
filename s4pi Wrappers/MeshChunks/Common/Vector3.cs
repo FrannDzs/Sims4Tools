@@ -27,11 +27,11 @@ namespace meshExpImp.ModelBlocks
     {
         protected float mZ;
         public Vector3(int apiVersion, EventHandler handler, float x, float y, float z)
-            : base(apiVersion, handler,x,y)
+            : base(apiVersion, handler, x, y)
         {
             mZ = z;
         }
-        public Vector3(int apiVersion, EventHandler handler,Stream s) : base(apiVersion, handler,s) { }
+        public Vector3(int apiVersion, EventHandler handler, Stream s) : base(apiVersion, handler, s) { }
 
         public Vector3(int apiVersion, EventHandler handler) : base(apiVersion, handler) { }
         public Vector3(int apiVersion, EventHandler handler, Vector3 basis) : this(apiVersion, handler, basis.X, basis.Y, basis.Z) { }

@@ -67,7 +67,8 @@ namespace meshExpImp.ModelBlocks
             basis.version, basis.shader, basis.mtnf, basis.mergeGroup, basis.sortOrder,
             basis.vertexFormats, basis.vertexData,
             basis.faces, basis.skinIndex, basis.uvStitchList, basis.seamStitchList, basis.slotrayIntersectionList, basis.boneHashes,
-            basis.tgiBlockList) { }
+            basis.tgiBlockList)
+        { }
         public GEOM(int apiVersion, EventHandler handler,
             uint version, ShaderType shader, MTNF mtnf, uint mergeGroup, uint sortOrder,
             IEnumerable<VertexFormat> vertexFormats, IEnumerable<VertexDataElement> vertexData,
@@ -146,8 +147,8 @@ namespace meshExpImp.ModelBlocks
                     throw new InvalidDataException(String.Format("Expected number of sub meshes to be 1, read {0}, at 0x{1:X8}", numSubMeshes, s.Position));
 
             byte facePointSize = r.ReadByte();
-           // if (checking) if (facePointSize != 2)
-           //         throw new InvalidDataException(String.Format("Expected face point size to be 2, read {0}, at 0x{1:X8}", facePointSize, s.Position));
+            // if (checking) if (facePointSize != 2)
+            //         throw new InvalidDataException(String.Format("Expected face point size to be 2, read {0}, at 0x{1:X8}", facePointSize, s.Position));
 
             faces = new FaceList(handler, s);
             if (version == 0x00000005)
@@ -742,44 +743,44 @@ namespace meshExpImp.ModelBlocks
 
             public override void Add() { throw new NotImplementedException(); }
 
-          /*  public VertexElement this[UsageType usage]
-            {
-                get
-                {
-                    if (!ParentVertexFormats.Exists(x => x.Usage.Equals(usage)))
-                        throw new IndexOutOfRangeException();
-                    switch (usage)
-                    {
-                        case UsageType.Position: return this.Find(x => x is PositionElement);
-                        case UsageType.Normal: return this.Find(x => x is NormalElement);
-                        case UsageType.UV: return this.Find(x => x is UVElement);
-                        case UsageType.BoneAssignment: return this.Find(x => x is BoneAssignmentElement);
-                        case UsageType.Weights:
-                            switch (this)
-                            {
-                                case 0x00000005: return this.Find(x => x is WeightsElement); 
-                                case 0x0000000C:
-                                case 0x0000000D: return this.Find(x => x is WeightBytesElement);
-                            }
-                            break;
-                        case UsageType.TangentNormal: return this.Find(x => x is TangentNormalElement);
-                        case UsageType.Color: return this.Find(x => x is ColorElement);
-                        case UsageType.VertexID: return this.Find(x => x is VertexIDElement);
-                    }
-                    throw new ArgumentException();
-                }
-                set
-                {
-                    VertexElement vtx = this[usage];
-                    if (vtx != null && vtx.Equals(value)) return;
+            /*  public VertexElement this[UsageType usage]
+              {
+                  get
+                  {
+                      if (!ParentVertexFormats.Exists(x => x.Usage.Equals(usage)))
+                          throw new IndexOutOfRangeException();
+                      switch (usage)
+                      {
+                          case UsageType.Position: return this.Find(x => x is PositionElement);
+                          case UsageType.Normal: return this.Find(x => x is NormalElement);
+                          case UsageType.UV: return this.Find(x => x is UVElement);
+                          case UsageType.BoneAssignment: return this.Find(x => x is BoneAssignmentElement);
+                          case UsageType.Weights:
+                              switch (this)
+                              {
+                                  case 0x00000005: return this.Find(x => x is WeightsElement); 
+                                  case 0x0000000C:
+                                  case 0x0000000D: return this.Find(x => x is WeightBytesElement);
+                              }
+                              break;
+                          case UsageType.TangentNormal: return this.Find(x => x is TangentNormalElement);
+                          case UsageType.Color: return this.Find(x => x is ColorElement);
+                          case UsageType.VertexID: return this.Find(x => x is VertexIDElement);
+                      }
+                      throw new ArgumentException();
+                  }
+                  set
+                  {
+                      VertexElement vtx = this[usage];
+                      if (vtx != null && vtx.Equals(value)) return;
 
-                    int index = this.IndexOf(vtx);
-                    if (value.GetType().Equals(vtx.GetType()))
-                        this[index] = vtx.Clone(handler) as VertexElement;
-                    else
-                        throw new ArgumentException();
-                }
-            } */
+                      int index = this.IndexOf(vtx);
+                      if (value.GetType().Equals(vtx.GetType()))
+                          this[index] = vtx.Clone(handler) as VertexElement;
+                      else
+                          throw new ArgumentException();
+                  }
+              } */
         }
         public class VertexDataElement : AHandlerElement, IEquatable<VertexDataElement>
         {
@@ -1159,8 +1160,9 @@ namespace meshExpImp.ModelBlocks
                 : this(apiVersion, handler, basis.slotIndex,
                 basis.indices, basis.coordinates,
                 basis.distance, basis.offsetFromIntersectionOS,
-                basis.slotAveragePosOS, 
-                basis.transformToLS, basis.pivotBoneIdx, basis.pivotBoneHash, basis.parentVersion) { }
+                basis.slotAveragePosOS,
+                basis.transformToLS, basis.pivotBoneIdx, basis.pivotBoneHash, basis.parentVersion)
+            { }
             public SlotrayIntersection(int apiVersion, EventHandler handler, uint slotIndex,
                 ushort[] indices, float[] coordinates,
                 float distance, Vector3 offsetFromIntersectionOS,
@@ -1264,8 +1266,11 @@ namespace meshExpImp.ModelBlocks
 
             public override bool Equals(object obj) { return obj is SlotrayIntersection && Equals(obj as SlotrayIntersection); }
 
-            public override int GetHashCode() { return slotIndex.GetHashCode() ^ indices.GetHashCode() ^ coordinates.GetHashCode() ^ distance.GetHashCode() ^
-                offsetFromIntersectionOS.GetHashCode() ^ slotAveragePosOS.GetHashCode() ^ transformToLS.GetHashCode() ^ pivotBoneIdx.GetHashCode() ^ pivotBoneHash.GetHashCode(); }
+            public override int GetHashCode()
+            {
+                return slotIndex.GetHashCode() ^ indices.GetHashCode() ^ coordinates.GetHashCode() ^ distance.GetHashCode() ^
+offsetFromIntersectionOS.GetHashCode() ^ slotAveragePosOS.GetHashCode() ^ transformToLS.GetHashCode() ^ pivotBoneIdx.GetHashCode() ^ pivotBoneHash.GetHashCode();
+            }
             #endregion
             [ElementPriority(1)]
             public uint SlotIndex { get { return slotIndex; } set { if (slotIndex != value) { slotIndex = value; OnElementChanged(); } } }
@@ -1307,7 +1312,7 @@ namespace meshExpImp.ModelBlocks
                     }
                     return res;
                 }
-            } 
+            }
         }
         public class SlotrayIntersectionList : DependentList<SlotrayIntersection>
         {
@@ -1315,7 +1320,7 @@ namespace meshExpImp.ModelBlocks
             #region Constructors
             public SlotrayIntersectionList(EventHandler handler, uint version) : base(handler) { this.parentVersion = version; }
             public SlotrayIntersectionList(EventHandler handler, uint version, Stream s) : base(null) { this.parentVersion = version; elementHandler = handler; Parse(s); this.handler = handler; }
-            public SlotrayIntersectionList(EventHandler handler, uint version, IEnumerable<SlotrayIntersection> le) 
+            public SlotrayIntersectionList(EventHandler handler, uint version, IEnumerable<SlotrayIntersection> le)
             : base(null)
             {
                 elementHandler = handler;

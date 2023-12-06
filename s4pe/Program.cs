@@ -45,7 +45,8 @@ namespace S4PIDemoFE
 
         static void UpdateConfiguration()
         {
-            if( Properties.Settings.Default.UpgradeRequired ) {
+            if (Properties.Settings.Default.UpgradeRequired)
+            {
                 // Bulk migrate settings from previous version
                 try
                 {

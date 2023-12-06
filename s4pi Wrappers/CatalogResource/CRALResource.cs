@@ -38,7 +38,7 @@ namespace CatalogResource
         private ulong swatchGrouping;
         private uint unk02;
         private ColorList colors;
-        
+
         #endregion
 
         #region Content Fields
@@ -104,7 +104,7 @@ namespace CatalogResource
             var br = new BinaryReader(s);
             this.version = br.ReadUInt32();
             this.commonA = new CatalogCommon(kRecommendedApiVersion, this.OnResourceChanged, s);
-            this.refList = new Gp8references(kRecommendedApiVersion,this.OnResourceChanged,s);
+            this.refList = new Gp8references(kRecommendedApiVersion, this.OnResourceChanged, s);
             this.materialVariant = br.ReadUInt32();
             this.swatchGrouping = br.ReadUInt64();
             this.unk02 = br.ReadUInt32();

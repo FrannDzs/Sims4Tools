@@ -38,7 +38,7 @@ namespace s4pi.Animation
         F1PaletteList f1Palette;
         S3ChannelList channels;
 
-        public S3CLIP(int apiVersion, EventHandler handler) : base(apiVersion, handler) 
+        public S3CLIP(int apiVersion, EventHandler handler) : base(apiVersion, handler)
         {
             this.formatToken = new char[8];
             this.f1Palette = new F1PaletteList(handler);
@@ -215,19 +215,19 @@ namespace s4pi.Animation
             get { return GetContentFields(requestedApiVersion, GetType()); }
         }
         public string Value { get { return ValueBuilder; } }
-      //  public string Value
-      //  {
-      //      get
-      //      {
-      //          string tmp = this.channelDataOffset.ToString() + ", " + this.nameOffset.ToString() + ", " +
-      //              this.sourceAssetNameOffset.ToString() + ", " + this.f1PaletteDataOffset.ToString() + Environment.NewLine;
-      //          for (int i = 0; i < this.channels.Length; i++)
-      //          {
-      //              tmp += this.channels[i].DataOffset.ToString() + Environment.NewLine;
-      //          }
-      //          return tmp;
-      //      }
-      //  }
+        //  public string Value
+        //  {
+        //      get
+        //      {
+        //          string tmp = this.channelDataOffset.ToString() + ", " + this.nameOffset.ToString() + ", " +
+        //              this.sourceAssetNameOffset.ToString() + ", " + this.f1PaletteDataOffset.ToString() + Environment.NewLine;
+        //          for (int i = 0; i < this.channels.Length; i++)
+        //          {
+        //              tmp += this.channels[i].DataOffset.ToString() + Environment.NewLine;
+        //          }
+        //          return tmp;
+        //      }
+        //  }
 
         #region sub-types
         public class F1PaletteList : DependentList<F1Palette>
@@ -372,9 +372,9 @@ namespace s4pi.Animation
             }
 
         }
-        
+
         public class S3Channel : AHandlerElement, IEquatable<S3Channel>
-        {            
+        {
             public S3Channel(int apiVersion, EventHandler handler)
                 : base(apiVersion, handler)
             {
@@ -587,7 +587,7 @@ namespace s4pi.Animation
                 }
             }
         }
-        
+
         public class Frame : AHandlerElement, IEquatable<Frame>
         {
             public Frame(int apiVersion, EventHandler handler, uint width, uint count)

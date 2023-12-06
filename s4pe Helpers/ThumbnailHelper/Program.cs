@@ -37,29 +37,29 @@ namespace ThumbnailHelper
         [STAThread]
         static void Main(string[] args)
         {
-           if(args.Contains("/import"))
-           {
-               List<string> largs = new List<string>(args);
-               largs.Remove("/import");
-               s4pi.Helpers.RunHelper.Run(typeof(Import), largs.ToArray());
-           }
-           else if (args.Contains("/export"))
-           {
-               using (FileStream fs = new FileStream(args[1], FileMode.Open))
-               {
-                   using (SaveFileDialog save = new SaveFileDialog() { Filter = "PNG|*.png", FileName = Path.GetFileNameWithoutExtension(args[1]), Title = "Export to PNG" })
-                   {
-                       if (save.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                       {
-                           using (FileStream fs2 = new FileStream(save.FileName, FileMode.Create))
-                           {
-                               ThumbnailResource t = new ThumbnailResource(1, fs);
-                               t.ToImageStream().CopyTo(fs2);
-                           }
-                       }
-                   }
-               }
-           }
+            if (args.Contains("/import"))
+            {
+                List<string> largs = new List<string>(args);
+                largs.Remove("/import");
+                s4pi.Helpers.RunHelper.Run(typeof(Import), largs.ToArray());
+            }
+            else if (args.Contains("/export"))
+            {
+                using (FileStream fs = new FileStream(args[1], FileMode.Open))
+                {
+                    using (SaveFileDialog save = new SaveFileDialog() { Filter = "PNG|*.png", FileName = Path.GetFileNameWithoutExtension(args[1]), Title = "Export to PNG" })
+                    {
+                        if (save.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                        {
+                            using (FileStream fs2 = new FileStream(save.FileName, FileMode.Create))
+                            {
+                                ThumbnailResource t = new ThumbnailResource(1, fs);
+                                t.ToImageStream().CopyTo(fs2);
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

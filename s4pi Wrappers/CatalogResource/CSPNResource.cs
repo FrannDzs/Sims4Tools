@@ -113,7 +113,7 @@ namespace CatalogResource
         public Gp7references ReferenceList
         {
             get { return refList; }
-            set { if (refList != value) { refList = new Gp7references(kRecommendedApiVersion,this.OnResourceChanged, value); this.OnResourceChanged(this, EventArgs.Empty); } }
+            set { if (refList != value) { refList = new Gp7references(kRecommendedApiVersion, this.OnResourceChanged, value); this.OnResourceChanged(this, EventArgs.Empty); } }
         }
         [ElementPriority(14)]
         public uint MaterialVariant
@@ -214,12 +214,12 @@ namespace CatalogResource
         public CSPNResource(int APIversion, Stream s)
             : base(APIversion, s)
         {
-            if (s == null || s.Length == 0) 
+            if (s == null || s.Length == 0)
             {
-                s = UnParse(); 
-                OnResourceChanged(this, EventArgs.Empty); 
-            } 
-            s.Position = 0; 
+                s = UnParse();
+                OnResourceChanged(this, EventArgs.Empty);
+            }
+            s.Position = 0;
             this.Parse(s);
         }
 

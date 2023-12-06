@@ -27,7 +27,7 @@ namespace System.Drawing
     {
         public static byte[] CompressImage(byte[] pixelInput, int width, int height, Dds.DdsFormat format)
         {
-           // byte[] blocks = new byte[(width * height) / (format == Dds.DdsFormat.ATI1 ? 2 : 1)];
+            // byte[] blocks = new byte[(width * height) / (format == Dds.DdsFormat.ATI1 ? 2 : 1)];
             List<byte> blocks = new List<byte>();
 
             byte[] red = new byte[width * height];

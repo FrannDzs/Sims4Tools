@@ -82,8 +82,8 @@ namespace RegionDescriptionResource
             BinaryReader br = new BinaryReader(s);
 
             version = br.ReadUInt32();
-          //  if (checking) if (version != 9)
-          //          throw new InvalidDataException(String.Format("{0}: unsupported 'version'.  Read '0x{1:X8}', supported: '0x00000009'", this.GetType().Name, version));
+            //  if (checking) if (version != 9)
+            //          throw new InvalidDataException(String.Format("{0}: unsupported 'version'.  Read '0x{1:X8}', supported: '0x00000009'", this.GetType().Name, version));
 
             regionNameKey = br.ReadUInt32();//                <format=hex>
             regionDescriptionKey = br.ReadUInt32();//         <format=hex>
@@ -163,7 +163,7 @@ namespace RegionDescriptionResource
                 bw.Write(count);
                 for (int i = 0; i < count; i++) bw.Write(hholdDescInstance[i]);
             }
-            
+
             bw.Flush();
             return ms;
         }

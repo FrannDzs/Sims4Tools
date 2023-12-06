@@ -64,7 +64,7 @@ namespace CASPartResource
         private ulong partSetInstance;
         private uint partSetBodyType;
         private float chanceForRandom;
-        private FlagList flagList; 
+        private FlagList flagList;
 
         public CASPreset(int APIversion, Stream s) : base(APIversion, s)
         {

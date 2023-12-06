@@ -55,7 +55,7 @@ namespace CASPartResource
 
 
         public GEOMListResource(int APIversion, Stream s) : base(APIversion, s) { if (stream == null) { stream = UnParse(); OnResourceChanged(this, EventArgs.Empty); } stream.Position = 0; Parse(stream); }
-        
+
         #region Data I/O
         private void Parse(Stream s)
         {
@@ -115,7 +115,7 @@ namespace CASPartResource
             w.Write(this.objectLength);
             w.Write(this.objectVersion);
             this.referenceBlockList.UnParse(ms);
-            
+
             ms.Position = 0;
             return ms;
         }
@@ -133,7 +133,7 @@ namespace CASPartResource
 
             public ReferenceBlock(int apiVersion, EventHandler handler) : base(apiVersion, handler) { this.UnParse(new MemoryStream()); }
 
-            public ReferenceBlock(int apiVersion, EventHandler handler, Stream s) :base(apiVersion, handler)
+            public ReferenceBlock(int apiVersion, EventHandler handler, Stream s) : base(apiVersion, handler)
             {
                 BinaryReader r = new BinaryReader(s);
                 this.region = (CASPartRegion)r.ReadUInt32();
@@ -143,7 +143,7 @@ namespace CASPartResource
                 int count = r.ReadInt32();
 
                 this.tgiList = new TGIBlockList(null);
-                for(int i = 0; i < count; i++)
+                for (int i = 0; i < count; i++)
                 {
                     this.tgiList.Add(new TGIBlock(recommendedApiVersion, null, "ITG", s));
                 }
@@ -174,7 +174,7 @@ namespace CASPartResource
             public string Value { get { return ValueBuilder; } }
         }
 
-        public class ReferenceBlockList :DependentList<ReferenceBlock>
+        public class ReferenceBlockList : DependentList<ReferenceBlock>
         {
             #region Constructor
             public ReferenceBlockList(EventHandler handler, Stream s) : base(handler, s) { }
@@ -187,7 +187,7 @@ namespace CASPartResource
                     uint tmp = 4;
                     foreach (var Block in this)
                     {
-                        tmp += (uint) (13 + (Block.tgiList.Count * 16));
+                        tmp += (uint)(13 + (Block.tgiList.Count * 16));
                     }
                     return tmp;
                 }
@@ -198,7 +198,7 @@ namespace CASPartResource
             {
                 BinaryReader r = new BinaryReader(s);
                 int count = r.ReadInt32();
-                for(int i  = 0; i < count; i++)
+                for (int i = 0; i < count; i++)
                 {
                     base.Add(new ReferenceBlock(recommendedApiVersion, handler, s));
                 }
@@ -208,7 +208,7 @@ namespace CASPartResource
             {
                 BinaryWriter w = new BinaryWriter(s);
                 w.Write(base.Count);
-                foreach(var block in this)
+                foreach (var block in this)
                 {
                     block.UnParse(s);
                 }

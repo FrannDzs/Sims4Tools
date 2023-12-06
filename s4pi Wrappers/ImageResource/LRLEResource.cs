@@ -36,7 +36,7 @@ using System.Diagnostics;
 namespace s4pi.ImageResource
 {
     public class LRLEResource : AResource
-    {        
+    {
         const int recommendedApiVersion = 1;
         public override int RecommendedApiVersion { get { return recommendedApiVersion; } }
         public override List<string> ContentFields { get { return GetContentFields(requestedApiVersion, this.GetType()); } }
@@ -51,12 +51,14 @@ namespace s4pi.ImageResource
 
         public ushort Width { get { return this.width; } }
         public ushort Height { get { return this.height; } }
-        public byte[] RawData { 
-            get {
+        public byte[] RawData
+        {
+            get
+            {
                 MemoryStream m = new MemoryStream();
                 this.UnParse().CopyTo(m);
                 return m.ToArray();
-            } 
+            }
         }
 
         public LRLEResource(int APIversion, Stream s) : base(APIversion, s) { Parse(s); }
@@ -173,9 +175,10 @@ namespace s4pi.ImageResource
         }
 
         private Bitmap image;
-        public Bitmap Image {
-            get { if (image == null) { return new Bitmap(1, 1); } else { return this.image; }; } 
-           // set { if (value != null) { this.image = value; } } 
+        public Bitmap Image
+        {
+            get { if (image == null) { return new Bitmap(1, 1); } else { return this.image; }; }
+            // set { if (value != null) { this.image = value; } } 
         }
 
         public void CreateFromImage(Bitmap image)

@@ -153,7 +153,7 @@ namespace meshExpImp.ModelBlocks
             // Apply a normal delta to this vertex. It follows the position delta if both
             // are present.
             FlagNorDelta = 2,
-            FlagAll      = 3,
+            FlagAll = 3,
             PackIndexScale = 4,
         };
         const byte packIndexShift = 2;
@@ -232,7 +232,7 @@ namespace meshExpImp.ModelBlocks
 
             protected override int ReadCount(Stream s) { return base.ReadCount(s) / 3; }
             protected override LOD CreateElement(Stream s) { return new LOD(0, elementHandler, s); }
-          //  protected override void WriteCount(Stream s, int count) { base.WriteCount(s, (int)(count * 3)); }
+            //  protected override void WriteCount(Stream s, int count) { base.WriteCount(s, (int)(count * 3)); }
             protected override void WriteElement(Stream s, LOD element) { element.UnParse(s); }
         }
 
@@ -279,7 +279,7 @@ namespace meshExpImp.ModelBlocks
             internal void UnParse(Stream s)
             {
                 BinaryWriter w = new BinaryWriter(s);
-                short tmp = (short)((offset << packIndexShift) + (positionDelta ? (short)BlendMapFlags.FlagPosDelta : 0) + 
+                short tmp = (short)((offset << packIndexShift) + (positionDelta ? (short)BlendMapFlags.FlagPosDelta : 0) +
                     (normalDelta ? (short)BlendMapFlags.FlagNorDelta : 0));
                 w.Write(tmp);
             }
@@ -298,8 +298,11 @@ namespace meshExpImp.ModelBlocks
 
             public override bool Equals(object obj) { return obj is Blend && Equals(obj as Blend); }
 
-            public override int GetHashCode() { return ((offset << packIndexShift) + (positionDelta ? (short)BlendMapFlags.FlagPosDelta : 0) + 
-                    (normalDelta ? (short)BlendMapFlags.FlagNorDelta : 0)).GetHashCode(); }
+            public override int GetHashCode()
+            {
+                return ((offset << packIndexShift) + (positionDelta ? (short)BlendMapFlags.FlagPosDelta : 0) +
+(normalDelta ? (short)BlendMapFlags.FlagNorDelta : 0)).GetHashCode();
+            }
             #endregion
 
             [ElementPriority(1)]
@@ -307,7 +310,7 @@ namespace meshExpImp.ModelBlocks
             public bool HasNormalDelta { get { return normalDelta; } set { if (normalDelta != value) { normalDelta = value; OnElementChanged(); } } }
             public short Offset { get { return offset; } set { if (offset != value) { offset = value; OnElementChanged(); } } }
 
-          //  public string Value { get { return string.Join("; ", ValueBuilder.Split('\n')); } }
+            //  public string Value { get { return string.Join("; ", ValueBuilder.Split('\n')); } }
             public string Value { get { return ValueBuilder + " (offset: " + offset.ToString("+#;-#;0") + ", index: 0x" + index.ToString("X3") + ")"; } }
         }
 
@@ -419,9 +422,15 @@ namespace meshExpImp.ModelBlocks
             [ElementPriority(1)]
             public ushort[] VectorSet { get { return vector; } set { if (vector != value) { vector = value; OnElementChanged(); } } }
 
-         //   public string Value { get { return string.Join("; ", ValueBuilder.Split('\n')); } }
-            public string Value { get { return ValueBuilder + " (" + translatedVector[0].ToString() + ", " +
-                                                    translatedVector[1].ToString() + ", " + translatedVector[2].ToString() + ")"; } }
+            //   public string Value { get { return string.Join("; ", ValueBuilder.Split('\n')); } }
+            public string Value
+            {
+                get
+                {
+                    return ValueBuilder + " (" + translatedVector[0].ToString() + ", " +
+                                translatedVector[1].ToString() + ", " + translatedVector[2].ToString() + ")";
+                }
+            }
         }
         public class VectorList : DependentList<Vector>
         {

@@ -68,7 +68,7 @@ namespace CASPartResource
         private BodyType bodyType;
         private BodySubType bodySubType;            // cmar - changed from unused with V 0x25
         private AgeGenderFlags ageGender;
-        private Species species;                     
+        private Species species;
         short packID;                               // cmar - added V 0x25
         PackFlag packFlags;                         // cmar - added V 0x25
         byte[] reserved2;                           // cmar - added V 0x25, nine bytes, set to 0
@@ -143,7 +143,7 @@ namespace CASPartResource
             if (this.version >= 39) parmFlags2 = (ParmFlag2)r.ReadByte();
             this.excludePartFlags = (ExcludePartFlag)r.ReadUInt64();
             if (this.version >= 41) this.excludePartFlags2 = (ExcludePartFlag2)r.ReadUInt64();
-            if (this.version >= 36) this.excludeModifierRegionFlags = (ExcludeModifierRegion) r.ReadUInt64();
+            if (this.version >= 36) this.excludeModifierRegionFlags = (ExcludeModifierRegion)r.ReadUInt64();
             else this.excludeModifierRegionFlags = (ExcludeModifierRegion)r.ReadUInt32();
 
             if (this.version >= 37)
@@ -425,10 +425,10 @@ namespace CASPartResource
 
             public OpacitySettings(int apiVersion, EventHandler handler)
                 : base(apiVersion, handler)
-		    {
+            {
                 this.minimum = .2f;
                 this.increment = .05f;
-		    }
+            }
 
             public OpacitySettings(int apiVersion, EventHandler handler, float minimum, float increment)
                 : base(apiVersion, handler)
@@ -438,10 +438,10 @@ namespace CASPartResource
             }
 
             public OpacitySettings(int apiVersion, EventHandler handler, Stream s)
-			: base(apiVersion, handler)
-		    {
-			    this.Parse(s);
-		    }
+            : base(apiVersion, handler)
+            {
+                this.Parse(s);
+            }
 
             public void Parse(Stream s)
             {
@@ -525,11 +525,11 @@ namespace CASPartResource
 
             public SliderSettings(int apiVersion, EventHandler handler)
                 : base(apiVersion, handler)
-		    {
+            {
                 this.minimum = -.5f;
                 this.maximum = .5f;
                 this.increment = .05f;
-		    }
+            }
 
             public SliderSettings(int apiVersion, EventHandler handler, float minimum, float maximum, float increment)
                 : base(apiVersion, handler)
@@ -540,10 +540,10 @@ namespace CASPartResource
             }
 
             public SliderSettings(int apiVersion, EventHandler handler, Stream s)
-			: base(apiVersion, handler)
-		    {
-			    this.Parse(s);
-		    }
+            : base(apiVersion, handler)
+            {
+                this.Parse(s);
+            }
 
             public void Parse(Stream s)
             {

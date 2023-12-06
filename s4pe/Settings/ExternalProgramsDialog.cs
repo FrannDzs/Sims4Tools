@@ -105,7 +105,8 @@ namespace S4PIDemoFE.Settings
                         res.Add(hc.cb.Name.Substring(2));
                 return res.ToArray();
             }
-            set {
+            set
+            {
                 foreach (var hc in lhc) hc.cb.Checked = false;
                 foreach (string id in value)
                     foreach (var hc in lhc)
@@ -136,7 +137,7 @@ namespace S4PIDemoFE.Settings
         public string UserHexEditor { get { return tbUserHexEditor.Text; } set { tbUserHexEditor.Text = value; } }
 
         public bool HexEditorIgnoreTS { get { return ckbHexEditorTS.Checked; } set { ckbHexEditorTS.Checked = value; } }
-        
+
         public bool HexEditorWantsQuotes { get { return ckbHexQuotes.Checked; } set { ckbHexQuotes.Checked = value; } }
 
         private void ckbUserHexEditor_CheckedChanged(object sender, EventArgs e) { ckbHexQuotes.Enabled = ckbHexEditorTS.Enabled = btnHexEditorBrowse.Enabled = ckbUserHexEditor.Checked; }

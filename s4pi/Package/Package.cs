@@ -495,9 +495,9 @@ namespace s4pi.Package
         /// <param name="disposing">Set to true if the package is going to be released</param>
         protected void Dispose(bool disposing)
         {
-            if(!disposed)
+            if (!disposed)
             {
-                if(disposing)
+                if (disposing)
                 {
                     if (packageStream != null) { try { packageStream.Close(); } catch { } packageStream = null; }
                     header = null;
@@ -569,7 +569,7 @@ namespace s4pi.Package
 
                 byte[] comp = ie.Compressed != 0 ? Compression.CompressStream(chunk) : chunk;
                 //if (comp.Length < chunk.Length)
-                    chunk = comp;
+                chunk = comp;
                 //cgm
                 //else
                 //    ie.Compressed = 0x0000;
@@ -660,8 +660,8 @@ namespace s4pi.Package
 
             byte[] data = null;
             if (rc.Filesize == 1 && rc.Memsize == 0xFFFFFFFF) return null;//{ data = new byte[0]; }
-                //cgm
-            //else if (rc.Filesize == rc.Memsize)
+                                                                          //cgm
+                                                                          //else if (rc.Filesize == rc.Memsize)
             else if (rie.OriginalCompression == 0x0000)
             {
                 data = (new BinaryReader(packageStream)).ReadBytes((int)rc.Filesize);

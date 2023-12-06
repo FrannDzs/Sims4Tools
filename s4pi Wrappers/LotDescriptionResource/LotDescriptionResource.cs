@@ -134,7 +134,7 @@ namespace LotDescriptionResource
             cameraTarget.UnParse(ms);
 
             bw.Write(lotRequirementsVenue);
-            
+
             bw.Flush();
             return ms;
         }

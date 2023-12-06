@@ -145,7 +145,7 @@ namespace NameMapResource
 
         public void CopyTo(KeyValuePair<ulong, string>[] array, int arrayIndex)
         {
-            foreach (KeyValuePair<ulong, string> kvp in data) array[arrayIndex++] = new KeyValuePair<ulong,string>(kvp.Key, kvp.Value);
+            foreach (KeyValuePair<ulong, string> kvp in data) array[arrayIndex++] = new KeyValuePair<ulong, string>(kvp.Key, kvp.Value);
         }
 
         public int Count { get { return data.Count; } }

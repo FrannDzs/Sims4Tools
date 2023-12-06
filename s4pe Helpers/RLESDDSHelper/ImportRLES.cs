@@ -66,9 +66,9 @@ namespace RLESDDSHelper
                     Environment.ExitCode = 0;
                 }
             }
-            
+
             this.Close();
         }
-        
+
     }
 }

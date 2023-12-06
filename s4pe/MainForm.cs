@@ -51,7 +51,7 @@ namespace S4PIDemoFE
     public partial class MainForm : Form
     {
         private static readonly List<string> fields = AApiVersionedFields.GetContentFields(0,
-            typeof (AResourceIndexEntry));
+            typeof(AResourceIndexEntry));
 
         private static readonly List<string> unwantedFields = new List<string>(new[] { "Stream" });
 
@@ -147,7 +147,7 @@ namespace S4PIDemoFE
         private void MainForm_LoadFormSettings()
         {
             FormWindowState s =
-                Enum.IsDefined(typeof (FormWindowState), Properties.Settings.Default.FormWindowState)
+                Enum.IsDefined(typeof(FormWindowState), Properties.Settings.Default.FormWindowState)
                     ? (FormWindowState)Properties.Settings.Default.FormWindowState
                     : FormWindowState.Minimized;
 
@@ -1114,20 +1114,20 @@ namespace S4PIDemoFE
             tgin.ResName = this.resourceName;
 
             SaveFileDialog sfd = new SaveFileDialog
-                                 {
-                                     DefaultExt = this.pnAuto.Controls[0] is RichTextBox ? ".txt" : ".hex",
-                                     AddExtension = true,
-                                     CheckPathExists = true,
-                                     FileName = tgin + (this.pnAuto.Controls[0] is RichTextBox ? ".txt" : ".hex"),
-                                     Filter =
+            {
+                DefaultExt = this.pnAuto.Controls[0] is RichTextBox ? ".txt" : ".hex",
+                AddExtension = true,
+                CheckPathExists = true,
+                FileName = tgin + (this.pnAuto.Controls[0] is RichTextBox ? ".txt" : ".hex"),
+                Filter =
                                          this.pnAuto.Controls[0] is RichTextBox
                                              ? "Text documents (*.txt*)|*.txt|All files (*.*)|*.*"
                                              : "Hex dumps (*.hex)|*.hex|All files (*.*)|*.*",
-                                     FilterIndex = 1,
-                                     OverwritePrompt = true,
-                                     Title = @"Save preview content",
-                                     ValidateNames = true
-                                 };
+                FilterIndex = 1,
+                OverwritePrompt = true,
+                Title = @"Save preview content",
+                ValidateNames = true
+            };
             DialogResult dr = sfd.ShowDialog();
             if (dr != DialogResult.OK)
             {
@@ -1225,14 +1225,14 @@ namespace S4PIDemoFE
             File.SetAttributes(filename, FileAttributes.ReadOnly | FileAttributes.Temporary);
 
             Process p = new Process
-                        {
-                            StartInfo =
+            {
+                StartInfo =
                             {
                                 FileName = command,
                                 Arguments = filename,
                                 UseShellExecute = false
                             }
-                        };
+            };
 
             p.Exited += this.p_Exited;
             p.EnableRaisingEvents = true;
@@ -1495,11 +1495,11 @@ namespace S4PIDemoFE
                 if (this.browserWidget1.SelectedResources.Count == 1)
                 {
                     MyDataFormat d = new MyDataFormat
-                                     {
-                                         tgin =
+                    {
+                        tgin =
                                              this.browserWidget1.SelectedResource as
                                              AResourceIndexEntry
-                                     };
+                    };
                     d.tgin.ResName = this.resourceName;
                     d.data =
                         WrapperDealer.GetResource(0, this.CurrentPackage, this.browserWidget1.SelectedResource, true)
@@ -1518,7 +1518,7 @@ namespace S4PIDemoFE
                         MyDataFormat d = new MyDataFormat { tgin = rie as AResourceIndexEntry };
                         d.tgin.ResName = this.browserWidget1.ResourceName(rie);
                         d.data = WrapperDealer.GetResource(0, this.CurrentPackage, rie, true).AsBytes;
-                            //Don't need wrapper
+                        //Don't need wrapper
                         l.Add(d);
                     }
 
@@ -1591,9 +1591,9 @@ namespace S4PIDemoFE
             ResourceDetails ir = new ResourceDetails(!string.IsNullOrEmpty(this.resourceName),
                 false,
                 this.browserWidget1.SelectedResource)
-                                 {
-                                     Compress = this.browserWidget1.SelectedResource.Compressed != 0
-                                 };
+            {
+                Compress = this.browserWidget1.SelectedResource.Compressed != 0
+            };
             if (ir.UseName)
             {
                 ir.ResourceName = this.resourceName;
@@ -1751,7 +1751,7 @@ namespace S4PIDemoFE
             }
 
             IResource rres = WrapperDealer.CreateNewResource(0, "*");
-            ConstructorInfo ci = rres.GetType().GetConstructor(new[] { typeof (int), typeof (Stream) });
+            ConstructorInfo ci = rres.GetType().GetConstructor(new[] { typeof(int), typeof(Stream) });
             return (IResource)ci.Invoke(new object[] { 0, ms });
         }
 
@@ -2157,11 +2157,11 @@ namespace S4PIDemoFE
         private void ToolsSearch()
         {
             SearchForm searchForm = new SearchForm
-                                    {
-                                        Width = this.Width * 4 / 5,
-                                        Height = this.Height * 4 / 5,
-                                        CurrentPackage = this.CurrentPackage
-                                    };
+            {
+                Width = this.Width * 4 / 5,
+                Height = this.Height * 4 / 5,
+                CurrentPackage = this.CurrentPackage
+            };
             searchForm.Go += this.searchForm_Go;
             searchForm.Show();
         }
@@ -2482,8 +2482,8 @@ namespace S4PIDemoFE
                                "Special thanks to Peter L Jones, without whose work this program wouldn't exist.\n";
             CopyableMessageBox.Show(string.Format(
                 "{0}\n" +
-               // "Front-end Distribution: {1}\n" +
-              //  "Library Distribution: {2}"
+                // "Front-end Distribution: {1}\n" +
+                //  "Library Distribution: {2}"
                 "Version: {1}\n"
                 ,
                 copyright
@@ -2696,7 +2696,7 @@ namespace S4PIDemoFE
             }
 
             bool selectedItems = this.resource != null || this.browserWidget1.SelectedResources.Count > 0;
-                // one or more
+            // one or more
             this.menuBarWidget.Enable(MenuBarWidget.MB.MBR_exportResources, selectedItems);
             this.menuBarWidget.Enable(MenuBarWidget.MB.MBR_exportToPackage, selectedItems);
             //menuBarWidget1.Enable(MenuBarWidget.MB.MBE_cut, resource != null);
@@ -2719,7 +2719,7 @@ namespace S4PIDemoFE
             }
 
             Type t = AApiVersionedFields.GetContentFieldTypes(0, this.resource.GetType())["Value"];
-            if (typeof (string).IsAssignableFrom(t))
+            if (typeof(string).IsAssignableFrom(t))
             {
                 return true;
             }

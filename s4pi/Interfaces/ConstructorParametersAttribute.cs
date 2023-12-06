@@ -37,6 +37,6 @@ namespace s3pi.Interfaces
         /// Specify the constructor parameters for a descendant of an abstract class
         /// </summary>
         /// <param name="parameters">The constructor parameters</param>
-        public ConstructorParametersAttribute(object[] parameters) { this.parameters = parameters;}
+        public ConstructorParametersAttribute(object[] parameters) { this.parameters = parameters; }
     }
 }

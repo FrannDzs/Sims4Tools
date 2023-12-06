@@ -233,7 +233,7 @@ namespace StblResource
     {
         public StblResourceHandler()
         {
-            this.Add(typeof (StblResource), new List<string>(new[] { "0x220557DA", }));
+            this.Add(typeof(StblResource), new List<string>(new[] { "0x220557DA", }));
         }
     }
 }

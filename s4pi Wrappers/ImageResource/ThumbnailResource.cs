@@ -34,18 +34,18 @@ using System.Diagnostics;
 namespace s4pi.ImageResource
 {
     public class ThumbnailResource : AResource
-    {        
+    {
         const int recommendedApiVersion = 1;
         public override int RecommendedApiVersion { get { return recommendedApiVersion; } }
         public override List<string> ContentFields { get { return GetContentFields(requestedApiVersion, this.GetType()); } }
 
         private byte[] rawData;
 
-        public ThumbnailResource(int APIversion, Stream s) : base(APIversion, s)  { Parse(s); }
+        public ThumbnailResource(int APIversion, Stream s) : base(APIversion, s) { Parse(s); }
 
         private void Parse(Stream s)
         {
-            if (s == null || s.Length ==0)
+            if (s == null || s.Length == 0)
             {
                 this.rawData = new byte[0];
                 this.image = new Bitmap(1, 1); // empty image
@@ -184,9 +184,11 @@ namespace s4pi.ImageResource
         }
 
         private Bitmap image;
-        public Bitmap Image {
-            get { if (image == null) { return new Bitmap(1, 1); } else { return this.image; }; } 
-            set { if (value != null) { this.image = value; this.rawData = null; } } }
+        public Bitmap Image
+        {
+            get { if (image == null) { return new Bitmap(1, 1); } else { return this.image; }; }
+            set { if (value != null) { this.image = value; this.rawData = null; } }
+        }
 
 
         protected internal unsafe Bitmap ComputeAlpha(Bitmap source, out Bitmap alpha)
@@ -234,7 +236,7 @@ namespace s4pi.ImageResource
                 source.UnlockBits(sourceBitmapData);
                 return img;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Debug.WriteLine(ex.ToString());
                 return new Bitmap(new MemoryStream(this.rawData));

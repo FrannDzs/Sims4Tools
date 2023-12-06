@@ -232,7 +232,7 @@ namespace CASPartResource
 
             #region Content Fields
             [ElementPriority(1)]
-            public MatrixRow Right { get { return right; } set { if (!right.Equals(value)) { right =new MatrixRow(requestedApiVersion, handler, value); OnElementChanged(); } } }
+            public MatrixRow Right { get { return right; } set { if (!right.Equals(value)) { right = new MatrixRow(requestedApiVersion, handler, value); OnElementChanged(); } } }
             [ElementPriority(2)]
             public MatrixRow Up { get { return up; } set { if (!up.Equals(value)) { up = new MatrixRow(requestedApiVersion, handler, value); OnElementChanged(); } } }
             [ElementPriority(3)]

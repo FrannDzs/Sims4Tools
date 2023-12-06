@@ -121,7 +121,7 @@ namespace CatalogResource
         public Gp7references ReferenceList
         {
             get { return refList; }
-            set { if (refList != value) { refList = new Gp7references(kRecommendedApiVersion,this.OnResourceChanged, value); this.OnResourceChanged(this, EventArgs.Empty); } }
+            set { if (refList != value) { refList = new Gp7references(kRecommendedApiVersion, this.OnResourceChanged, value); this.OnResourceChanged(this, EventArgs.Empty); } }
         }
         [ElementPriority(14)]
         public byte Unk01
@@ -151,7 +151,7 @@ namespace CatalogResource
         public TGIBlock Slot
         {
             get { return slot; }
-            set { if (slot != value) { slot = new TGIBlock(kRecommendedApiVersion,this.OnResourceChanged, TGIBlock.Order.ITG, value.ResourceType,value.ResourceGroup,value.Instance); this.OnResourceChanged(this, EventArgs.Empty); } }
+            set { if (slot != value) { slot = new TGIBlock(kRecommendedApiVersion, this.OnResourceChanged, TGIBlock.Order.ITG, value.ResourceType, value.ResourceGroup, value.Instance); this.OnResourceChanged(this, EventArgs.Empty); } }
         }
         [ElementPriority(19)]
         public WhateverList UnkList01
@@ -291,12 +291,12 @@ namespace CatalogResource
         public CFENResource(int APIversion, Stream s)
             : base(APIversion, s)
         {
-            if (s == null || s.Length == 0) 
+            if (s == null || s.Length == 0)
             {
-                s = UnParse(); 
-                OnResourceChanged(this, EventArgs.Empty); 
-            } 
-            s.Position = 0; 
+                s = UnParse();
+                OnResourceChanged(this, EventArgs.Empty);
+            }
+            s.Position = 0;
             this.Parse(s);
         }
 

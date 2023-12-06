@@ -48,7 +48,7 @@ namespace CASPartResource
         private TGIBlock deformerMapNormalKey { get; set; }
         private BoneEntryLIst boneEntryList { get; set; }
 
-        
+
         public SimModifierResource(int APIversion, Stream s) : base(APIversion, s) { if (stream == null) { stream = UnParse(); OnResourceChanged(this, EventArgs.Empty); } stream.Position = 0; Parse(stream); }
 
         #region Data I/O
@@ -175,7 +175,7 @@ namespace CASPartResource
             public string Value { get { return ValueBuilder; } }
         }
 
-        public class BoneEntryLIst:DependentList<BoneEntry>
+        public class BoneEntryLIst : DependentList<BoneEntry>
         {
             public BoneEntryLIst(EventHandler handler) : base(handler) { }
             public BoneEntryLIst(EventHandler handler, Stream s) : base(handler) { Parse(s); }
@@ -200,7 +200,7 @@ namespace CASPartResource
             #endregion
         }
 
-        public class BoneEntry: AHandlerElement, IEquatable<BoneEntry>
+        public class BoneEntry : AHandlerElement, IEquatable<BoneEntry>
         {
             public uint boneHash { get; set; }
             public float multiplier { get; set; }
@@ -279,7 +279,7 @@ namespace CASPartResource
                 }
                 return res;
             }
-        } 
+        }
         #endregion
     }
 

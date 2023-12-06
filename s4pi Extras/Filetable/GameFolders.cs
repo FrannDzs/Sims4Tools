@@ -193,7 +193,7 @@ namespace s4pi.Filetable
         /// or <c>null</c> if none found.</returns>
         public static Game byRGVersion(int value) { return Games.Where(x => x.RGVersion == value).FirstOrDefault(); }
 
-        private static Dictionary<Game, string> installDirs = new Dictionary<Game,string>();
+        private static Dictionary<Game, string> installDirs = new Dictionary<Game, string>();
         /// <summary>
         /// A semi-colon delimited string of game name / install folder pairs, internally delimited by an equals sign.
         /// </summary>

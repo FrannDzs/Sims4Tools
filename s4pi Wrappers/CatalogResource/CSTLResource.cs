@@ -43,7 +43,7 @@ namespace CatalogResource
         private uint unk04;
         private byte unk05;
         private ulong unkIID01;
-        
+
         #endregion Attributes =============================================
 
         #region Content Fields

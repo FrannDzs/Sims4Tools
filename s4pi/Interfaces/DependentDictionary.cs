@@ -50,53 +50,53 @@ namespace s4pi.Interfaces
         /// <remarks>Work around for dictionary event handler triggering during stream constructor and other places.</remarks>
         protected EventHandler elementHandler;
 
-		#region Constructors
+        #region Constructors
 
-		/// <summary>
+        /// <summary>
         ///     Initializes a new instance of the <see cref="DependentDictionary{TKey, TValue}" /> class
-		///     that is empty.
-		/// </summary>
-		/// <param name="handler">The <see cref="EventHandler" /> to call on changes to the list or its elements.</param>
-		protected DependentDictionary(EventHandler handler) : base(handler) { }
+        ///     that is empty.
+        /// </summary>
+        /// <param name="handler">The <see cref="EventHandler" /> to call on changes to the list or its elements.</param>
+        protected DependentDictionary(EventHandler handler) : base(handler) { }
 
-		/// <summary>
+        /// <summary>
         ///     Initializes a new instance of the <see cref="DependentDictionary{TKey, TValue}" /> class
         ///     filled with the content of <paramref name="dictionary" />.
-		/// </summary>
-		/// <param name="handler">The <see cref="EventHandler" /> to call on changes to the list or its elements.</param>
+        /// </summary>
+        /// <param name="handler">The <see cref="EventHandler" /> to call on changes to the list or its elements.</param>
         /// <param name="dictionary">The initial content of the dictionary.</param>
-		/// <remarks>
+        /// <remarks>
         ///     Calls <c>this.Add(...)</c> to ensure a fresh instance is created, rather than passing <paramref name="dictionary" />
-		///     to the base constructor.
-		/// </remarks>
+        ///     to the base constructor.
+        /// </remarks>
         protected DependentDictionary(EventHandler handler, IDictionary<TKey, TValue> dictionary)
-			: base(null)
-		{
-			this.elementHandler = handler;
+            : base(null)
+        {
+            this.elementHandler = handler;
             foreach (KeyValuePair<TKey, TValue> kv in dictionary)
             {
                 this.Add(kv.Key, (TValue)kv.Value.Clone(null));
             }
-			this.handler = handler;
-		}
+            this.handler = handler;
+        }
 
-		// Add stream-based constructors and support
-		/// <summary>
-		///     Initializes a new instance of the <see cref="DependentList{T}" /> class
-		///     filled from <see cref="System.IO.Stream" /> <paramref name="s" />.
-		/// </summary>
-		/// <param name="handler">The <see cref="EventHandler" /> to call on changes to the list or its elements.</param>
-		/// <param name="s">The <see cref="System.IO.Stream" /> to read for the initial content of the list.</param>
-		/// <exception cref="System.InvalidOperationException">Thrown when list size exceeded.</exception>
+        // Add stream-based constructors and support
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="DependentList{T}" /> class
+        ///     filled from <see cref="System.IO.Stream" /> <paramref name="s" />.
+        /// </summary>
+        /// <param name="handler">The <see cref="EventHandler" /> to call on changes to the list or its elements.</param>
+        /// <param name="s">The <see cref="System.IO.Stream" /> to read for the initial content of the list.</param>
+        /// <exception cref="System.InvalidOperationException">Thrown when list size exceeded.</exception>
         protected DependentDictionary(EventHandler handler, Stream s)
-			: base(null)
-		{
-			this.elementHandler = handler;
-			this.Parse(s);
-			this.handler = handler;
-		}
+            : base(null)
+        {
+            this.elementHandler = handler;
+            this.Parse(s);
+            this.handler = handler;
+        }
 
-		#endregion
+        #endregion
 
         #region Data I/O
 
@@ -302,7 +302,7 @@ namespace s4pi.Interfaces
                 handler = h;
             }
         }
-    
+
     }
 
     /// <summary>

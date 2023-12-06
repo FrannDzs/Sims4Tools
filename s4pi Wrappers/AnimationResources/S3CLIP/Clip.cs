@@ -213,7 +213,7 @@ namespace s4pi.Animation.S3CLIP
             var test = curveDataInfos.Where(x => x.Type != CurveType.Position && x.Type != CurveType.Orientation).ToArray();
             for (int i = 0; i < curveDataInfos.Count; i++)
             {
-                    CurveDataInfo curveDataInfo = curveDataInfos[i];
+                CurveDataInfo curveDataInfo = curveDataInfos[i];
                 try
                 {
 
@@ -319,7 +319,7 @@ namespace s4pi.Animation.S3CLIP
             }
 
             animNameOffset = (uint)s.Position;
-            bw.WriteZString( AnimName);
+            bw.WriteZString(AnimName);
             srcNameOffset = (uint)s.Position;
             bw.WriteZString(SrcName);
 

@@ -193,7 +193,7 @@ namespace s4pi.Animation
         {
             var s = new MemoryStream();
             var bw = new BinaryWriter(s);
-            bw.Write((uint) FOURCC(Tag));
+            bw.Write((uint)FOURCC(Tag));
             bw.Write(mVersion);
             if (mVersion < 0x201)
             {

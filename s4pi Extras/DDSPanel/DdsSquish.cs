@@ -24,7 +24,7 @@ using System.Runtime.InteropServices;
 
 namespace System.Drawing
 {
-	internal sealed class DdsSquish
+    internal sealed class DdsSquish
     {
         #region SquishFlags
         [Flags]
@@ -303,16 +303,16 @@ namespace System.Drawing
         /// The <paramref name="flags"/> parameter should specify either <c>kDxt1</c>, <c>kDxt3</c> or <c>kDxt5</c> compression, 
         /// however, DXT1 will be used by default if none is specified. All other flags are ignored.</remarks>
         public static byte[] DecompressImage(byte[] blocks, int width, int height, SquishFlags flags)
-		{
-			// Allocate room for decompressed output
-			byte[]	pixelOutput	= new byte[ width * height * 4 ];
+        {
+            // Allocate room for decompressed output
+            byte[] pixelOutput = new byte[width * height * 4];
 
-			// Invoke squish::DecompressImage() with the required parameters
+            // Invoke squish::DecompressImage() with the required parameters
             SquishDecompressImage(pixelOutput, width, height, blocks, flags);
 
-			// Return our pixel data to caller..
-			return pixelOutput;
-		}
+            // Return our pixel data to caller..
+            return pixelOutput;
+        }
 
         private static bool Is64Bit() { return (Marshal.SizeOf(IntPtr.Zero) == 8); }
 

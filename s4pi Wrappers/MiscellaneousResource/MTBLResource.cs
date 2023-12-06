@@ -47,30 +47,30 @@ namespace s4pi.Miscellaneous
 
         public class MTBLEntryList : DependentList<MTBLEntry>
         {
-                public MTBLEntryList(EventHandler handler, long maxSize = -1)
-                    : base(handler, maxSize)
-                {
-                }
+            public MTBLEntryList(EventHandler handler, long maxSize = -1)
+                : base(handler, maxSize)
+            {
+            }
 
-                public MTBLEntryList(EventHandler handler, IEnumerable<MTBLEntry> ilt, long maxSize = -1)
-                    : base(handler, ilt, maxSize)
-                {
-                }
+            public MTBLEntryList(EventHandler handler, IEnumerable<MTBLEntry> ilt, long maxSize = -1)
+                : base(handler, ilt, maxSize)
+            {
+            }
 
-                public MTBLEntryList(EventHandler handler, Stream s, long maxSize = -1)
-                    : base(handler, s, maxSize)
-                {
-                }
+            public MTBLEntryList(EventHandler handler, Stream s, long maxSize = -1)
+                : base(handler, s, maxSize)
+            {
+            }
 
-                protected override MTBLEntry CreateElement(Stream s)
-                {
-                    return new MTBLEntry(recommendedApiVersion, this.elementHandler, s);
-                }
+            protected override MTBLEntry CreateElement(Stream s)
+            {
+                return new MTBLEntry(recommendedApiVersion, this.elementHandler, s);
+            }
 
-                protected override void WriteElement(Stream s, MTBLEntry element)
-                {
-                    element.UnParse(s);
-                }
+            protected override void WriteElement(Stream s, MTBLEntry element)
+            {
+                element.UnParse(s);
+            }
 
         }
 
@@ -221,12 +221,12 @@ namespace s4pi.Miscellaneous
             {
                 get { return recommendedApiVersion; }
             }
- 
+
             public override List<string> ContentFields
             {
                 get { return GetContentFields(0, GetType()); }
             }
- 
+
             void Parse(Stream s)
             {
                 var br = new BinaryReader(s);
@@ -270,7 +270,7 @@ namespace s4pi.Miscellaneous
             }
             public bool Equals(MTBLEntry other)
             {
-                return this.modelIID == other.modelIID 
+                return this.modelIID == other.modelIID
                     && this.baseFileNameHash == other.baseFileNameHash
                     && this.widthAndMappingFlags == other.widthAndMappingFlags
                     && this.minimumWallHeight == other.minimumWallHeight
@@ -300,7 +300,7 @@ namespace s4pi.Miscellaneous
                         FOURCC("MTBL"), magic, s.Position));
 
             version = r.ReadUInt32();
-            this.EntryList= new MTBLEntryList(this.OnResourceChanged, s);
+            this.EntryList = new MTBLEntryList(this.OnResourceChanged, s);
         }
 
         protected override Stream UnParse()

@@ -67,7 +67,8 @@ namespace s4pi.Animation
         }
 
         [ElementPriority(0)]
-        public UInt32 Version {
+        public UInt32 Version
+        {
             get { return this.version; }
             set { if (this.version != value) { this.version = value; OnResourceChanged(this, EventArgs.Empty); } }
         }
@@ -79,9 +80,9 @@ namespace s4pi.Animation
         }
         [ElementPriority(2)]
         public float Duration
-        { 
-            get { return duration; } 
-            set { if (this.duration != value) { duration = value; this.OnResourceChanged(this, EventArgs.Empty); } } 
+        {
+            get { return duration; }
+            set { if (this.duration != value) { duration = value; this.OnResourceChanged(this, EventArgs.Empty); } }
         }
         [ElementPriority(3)]
         public Quaternion InitialOffsetQ
@@ -120,9 +121,10 @@ namespace s4pi.Animation
             set { if (this.surfacechildNamespaceHash != value) { this.surfacechildNamespaceHash = value; OnResourceChanged(this, EventArgs.Empty); } }
         }
         [ElementPriority(9)]
-        public string ClipName { 
-            get { return clip_name; } 
-            set { if (this.clip_name != value) { clip_name = value; this.OnResourceChanged(this, EventArgs.Empty); } } 
+        public string ClipName
+        {
+            get { return clip_name; }
+            set { if (this.clip_name != value) { clip_name = value; this.OnResourceChanged(this, EventArgs.Empty); } }
         }
         [ElementPriority(10)]
         public string RigNameSpace
@@ -158,7 +160,7 @@ namespace s4pi.Animation
         public ClipResource(int apiVersion, Stream s)
             : base(apiVersion, s)
         {
-            
+
             if (this.stream == null || this.stream.Length == 0)
             {
                 this.stream = UnParse();
@@ -205,7 +207,7 @@ namespace s4pi.Animation
             {
                 ClipEventType clipType = (ClipEventType)br.ReadUInt32();
                 uint size = br.ReadUInt32();
-                ClipEvent evt = ClipEvent.Create(clipType, this.OnResourceChanged, size);       
+                ClipEvent evt = ClipEvent.Create(clipType, this.OnResourceChanged, size);
                 evt.Parse(s);
                 events.Add(evt);
             }
@@ -294,7 +296,7 @@ namespace s4pi.Animation
                 this.Parse(s);
             }
             public Vector3(int apiVersion, EventHandler handler, float x, float y, float z)
-                : base(apiVersion, handler) 
+                : base(apiVersion, handler)
             {
                 this.x = x;
                 this.y = y;
@@ -359,7 +361,7 @@ namespace s4pi.Animation
                 this.Parse(s);
             }
             public Quaternion(int apiVersion, EventHandler handler, float x, float y, float z, float w)
-                : base(apiVersion, handler) 
+                : base(apiVersion, handler)
             {
                 this.x = x;
                 this.y = y;
@@ -413,7 +415,7 @@ namespace s4pi.Animation
             {
                 get { return "X: " + this.x.ToString() + ", Y: " + this.y.ToString() + ", Z: " + this.z.ToString() + ", W: " + this.w.ToString(); }
             }
-        } 
+        }
 
         public class ExplicitNameSpaceList : DependentList<ExplicitNameSpace>
         {

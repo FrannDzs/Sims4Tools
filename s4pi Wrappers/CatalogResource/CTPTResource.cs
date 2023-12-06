@@ -89,7 +89,7 @@ namespace CatalogResource
         public CountedTGIBlockList MaterialList
         {
             get { return matdList; }
-            set { if (matdList != value) { matdList = new CountedTGIBlockList(this.OnResourceChanged,TGIBlock.Order.ITG, value); this.OnResourceChanged(this, EventArgs.Empty); } }
+            set { if (matdList != value) { matdList = new CountedTGIBlockList(this.OnResourceChanged, TGIBlock.Order.ITG, value); this.OnResourceChanged(this, EventArgs.Empty); } }
         }
 
         public string Value { get { return ValueBuilder; } }

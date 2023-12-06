@@ -24,7 +24,7 @@
 using System;
 
 namespace s4pi.Miscellaneous
-{ 
+{
     [Flags]
     public enum WidthAndMappingFlags : byte
     {
